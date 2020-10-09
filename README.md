@@ -1,4 +1,4 @@
-# perfect-color-mode
+# 🌚🌝 Perfect Color Mode
 
 Perfect color mode implementation.
 
