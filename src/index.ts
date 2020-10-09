@@ -34,7 +34,7 @@ export interface Writable<T> extends Readable<T> {
 type ColorMode = string
 
 export interface PerfectColorMode {
-  mode: Writable<ColorMode> & { get: () => ColorMode }
+  mode: Writable<ColorMode | undefined>
   colorModes: ColorMode[]
 }
 
@@ -48,124 +48,103 @@ window.__perfect_color_mode__ = ((): PerfectColorMode => {
   const colorModes = ['light', 'dark']
   const colorModeKey = 'perfect-color-mode'
 
-  const colorModeOS: Readable<ColorMode> = {
-    subscribe() {
-      const query = matchMedia
+  type ColorModeOS = Readable<ColorMode | undefined>
+  const colorModeOS: ColorModeOS = ((): ColorModeOS => {
+    const matchesToMode = (matches: boolean): ColorMode =>
+      matches ? 'dark' : 'light'
+    const listeners = new Set<Function>()
+    const mediaQuery = matchMedia('(prefers-color-scheme: dark)')
+    let colorMode: ColorMode | undefined
+    const onChangeMediaQuery = (e: { matches: boolean }) => {
+      const newMode = matchesToMode(e.matches)
+      colorMode = newMode
+      listeners.forEach((cb) => cb(newMode))
     }
-  }
-
-  const colorModeSaved: Writeable<ColorMode> = {
-    subscribe() {
-
+    mediaQuery.addEventListener
+      ? mediaQuery.addEventListener('change', onChangeMediaQuery)
+      : mediaQuery.addListener(onChangeMediaQuery)
+    onChangeMediaQuery(mediaQuery)
+    return {
+      subscribe(cb) {
+        cb(colorMode)
+        listeners.add(cb)
+        return () => {
+          listeners.delete(cb)
+        }
+      },
     }
-  }
+  })()
 
-  let mediaQuery: MediaQueryList
-  let mediaQueryHasListener: boolean
-
-  /**
-   * If mode is not within colorModes we default to the first item
-   * in colorModes.
-   */
-  const parseColorMode = (mode: string): ColorMode =>
-    colorModes.includes(mode) ? (mode as ColorMode) : colorModes[0]
-
-  /**
-   * Convert media query matches to a ColorMode.
-   */
-  const matchesToMode = (matches: boolean): ColorMode =>
-    matches ? 'dark' : 'light'
-
-  const getSavedMode = () => {
-    const colorModeSaved: string | null = localStorage.getItem(colorModeKey)
-    return colorModeSaved !== null ? parseColorMode(colorModeSaved) : undefined
-  }
-
-  const getOSMode = () => {
-    if (!supportsMatchMedia) {
-      return undefined
-    }
-    mediaQuery = matchMedia('(prefers-color-scheme: dark)')
-    return matchesToMode(mediaQuery.matches)
-  }
-
-  /**
-   * Get the initial mode.
-   *
-   * - If a color mode is saved use that.
-   * - If not and matchMedia is supported than get preferred color mode.
-   * - If not then return the first colorMode.
-   */
-  const getInitialMode = () => {
-    const colorModeSaved = getSavedMode()
-    if (colorModeSaved !== undefined) {
-      return colorModeSaved
-    }
-    const colorModeOS = getOSMode()
-    if (colorModeOS) {
-      addMediaQueryListener()
-      return colorModeOS
-    }
-    return colorModes[0]
-  }
-
-  const onChangeMediaQuery = (e: { matches: boolean }) =>
-    internalSet(matchesToMode(e.matches), false)
-
-  const addEventListener = 'addEventListener'
-  const addMediaQueryListener = () => {
-    if (!mediaQueryHasListener && supportsMatchMedia) {
-      mediaQueryHasListener = true
-      mediaQuery[addEventListener]
-        ? mediaQuery[addEventListener]('change', onChangeMediaQuery)
-        : mediaQuery.addListener(onChangeMediaQuery)
-    }
-  }
-
-  const removeEventListener = 'removeEventListener'
-  const removeMediaQueryListener = () => {
-    if (mediaQueryHasListener && supportsMatchMedia) {
-      mediaQueryHasListener = false
-      mediaQuery[removeEventListener]
-        ? mediaQuery[removeEventListener]('change', onChangeMediaQuery)
-        : mediaQuery.removeListener(onChangeMediaQuery)
-    }
-  }
-
-  let currentMode: ColorMode
-  const htmlElement = document.documentElement
-  const internalSet = (mode: ColorMode, save: boolean) => {
-    htmlElement.classList.remove(currentMode)
-    htmlElement.classList.add(mode)
-    if (save) {
-      if (mode === undefined) {
-        localStorage.removeItem(colorModeKey)
+  type ColorModeSaved = Writable<ColorMode | undefined>
+  const colorModeSaved: ColorModeSaved = ((): ColorModeSaved => {
+    const parseColorMode = (mode: string | null): ColorMode | undefined =>
+      mode
+        ? colorModes.includes(mode)
+          ? (mode as ColorMode)
+          : colorModes[0]
+        : undefined
+    const listeners = new Set<Function>()
+    let mode: ColorMode | undefined
+    const set = (colorMode?: ColorMode) => {
+      if (colorMode !== undefined) {
+        localStorage.setItem(colorModeKey, colorMode)
       } else {
-        localStorage.setItem(colorModeKey, mode)
+        localStorage.removeItem(colorModeKey)
       }
+      listeners.forEach((cb) => cb(colorMode))
     }
-    currentMode = mode
-    listeners.forEach((l) => l(mode))
-  }
+    const savedMode = localStorage.getItem(colorModeKey)
+    const colorMode = parseColorMode(savedMode)
+    mode = colorMode
+    return {
+      subscribe: (cb) => {
+        cb(colorMode)
+        listeners.add(cb)
+        return () => listeners.delete(cb)
+      },
+      set,
+      update: (updater) => set(updater(mode)),
+    }
+  })()
 
-  const listeners = new Set<Function>()
-
-  internalSet(getInitialMode(), false)
-  return {
-    mode: {
-      get: () => currentMode,
+  const colorModeSavedOrColorModeOS: ColorModeSaved = ((): ColorModeSaved => {
+    let cmSaved: ColorMode | undefined
+    let cmOS: ColorMode | undefined
+    const getMerged = () => cmSaved || cmOS
+    const listeners = new Set<Function>()
+    colorModeSaved.subscribe((v) => {
+      cmSaved = v
+      listeners.forEach((cb) => cb(getMerged()))
+    })
+    colorModeOS.subscribe((v) => {
+      cmOS = v
+      listeners.forEach((cb) => cb(getMerged()))
+    })
+    return {
       subscribe: (listener) => {
-        listener(currentMode)
         listeners.add(listener)
+        listener(getMerged())
         return () => listeners.delete(listener)
       },
-      set: (mode: ColorMode) => {
-        internalSet(mode, true)
-      },
-      update: (updater) => {
-        internalSet(updater(currentMode), true)
-      },
-    },
+      set: colorModeSaved.set,
+      update: colorModeSaved.update,
+    }
+  })()
+
+  const htmlElement = document.documentElement
+  let colorMode: string | undefined
+  colorModeSavedOrColorModeOS.subscribe((v) => {
+    if (colorMode) {
+      htmlElement.classList.remove(colorMode)
+    }
+    if (v) {
+      htmlElement.classList.add(v)
+    }
+    colorMode = v
+  })
+
+  return {
+    mode: colorModeSavedOrColorModeOS,
     colorModes,
   }
 })()

@@ -3,13 +3,15 @@
 Perfect color mode implementation.
 
 - No flicker.
-- Framework agnostic.
+- Framework agnostic (easily supports React/Vue/Svelte).
 - Supports SSR.
 - Supports no-js.
 - Tiny - 498B gzipped.
 - Supports `prefers-color-scheme`.
+- Listens for changes to `prefers-color-scheme`.
 - Allows user to override and save their preference to `localStorage`.
-- Built for the web (no native support).
+- Allows clearing the saved preference and falling back to `prefers-color-scheme`.
+- Built for the web.
 
 ## Usage
 

@@ -35,83 +35,89 @@
     <script>window.__perfect_color_mode__ = (() => {
   const colorModes = ["light", "dark"];
   const colorModeKey = "perfect-color-mode";
-  const supportsMatchMedia = matchMedia !== void 0;
-  let mediaQuery;
-  let mediaQueryHasListener;
-  const parseColorMode = (mode) => colorModes.includes(mode) ? mode : colorModes[0];
-  const matchesToMode = (matches) => matches ? "dark" : "light";
-  const getSavedMode = () => {
-    const colorModeSaved = localStorage.getItem(colorModeKey);
-    return colorModeSaved !== null ? parseColorMode(colorModeSaved) : void 0;
-  };
-  const getOSMode = () => {
-    if (!supportsMatchMedia) {
-      return void 0;
-    }
-    mediaQuery = matchMedia("(prefers-color-scheme: dark)");
-    return matchesToMode(mediaQuery.matches);
-  };
-  const getInitialMode = () => {
-    const colorModeSaved = getSavedMode();
-    if (colorModeSaved !== void 0) {
-      return colorModeSaved;
-    }
-    const colorModeOS = getOSMode();
-    if (colorModeOS) {
-      addMediaQueryListener();
-      return colorModeOS;
-    }
-    return colorModes[0];
-  };
-  const onChangeMediaQuery = (e) => internalSet(matchesToMode(e.matches), false);
-  const addEventListener = "addEventListener";
-  const addMediaQueryListener = () => {
-    if (!mediaQueryHasListener && supportsMatchMedia) {
-      mediaQueryHasListener = true;
-      mediaQuery[addEventListener] ? mediaQuery[addEventListener]("change", onChangeMediaQuery) : mediaQuery.addListener(onChangeMediaQuery);
-    }
-  };
-  const removeEventListener = "removeEventListener";
-  const removeMediaQueryListener = () => {
-    if (mediaQueryHasListener && supportsMatchMedia) {
-      mediaQueryHasListener = false;
-      mediaQuery[removeEventListener] ? mediaQuery[removeEventListener]("change", onChangeMediaQuery) : mediaQuery.removeListener(onChangeMediaQuery);
-    }
-  };
-  let currentMode;
-  const htmlElement = document.documentElement;
-  const internalSet = (mode, save) => {
-    htmlElement.classList.remove(currentMode);
-    htmlElement.classList.add(mode);
-    if (save) {
-      if (mode === void 0) {
-        localStorage.removeItem(colorModeKey);
-        addMediaQueryListener();
-      } else {
-        localStorage.setItem(colorModeKey, mode);
-        removeMediaQueryListener();
+  const colorModeOS = (() => {
+    const matchesToMode = (matches) => matches ? "dark" : "light";
+    const listeners = new Set();
+    const mediaQuery = matchMedia("(prefers-color-scheme: dark)");
+    let colorMode2;
+    const onChangeMediaQuery = (e) => {
+      const newMode = matchesToMode(e.matches);
+      colorMode2 = newMode;
+      listeners.forEach((cb) => cb(newMode));
+    };
+    mediaQuery.addEventListener ? mediaQuery.addEventListener("change", onChangeMediaQuery) : mediaQuery.addListener(onChangeMediaQuery);
+    onChangeMediaQuery(mediaQuery);
+    return {
+      subscribe(cb) {
+        cb(colorMode2);
+        listeners.add(cb);
+        return () => {
+          listeners.delete(cb);
+        };
       }
-    }
-    currentMode = mode;
-    listeners.forEach((l) => l(mode));
-  };
-  const listeners = new Set();
-  internalSet(getInitialMode(), false);
-  return {
-    mode: {
-      get: () => currentMode,
+    };
+  })();
+  const colorModeSaved = (() => {
+    const parseColorMode = (mode2) => mode2 ? colorModes.includes(mode2) ? mode2 : colorModes[0] : void 0;
+    const listeners = new Set();
+    let mode;
+    const set = (colorMode3) => {
+      if (colorMode3 !== void 0) {
+        localStorage.setItem(colorModeKey, colorMode3);
+      } else {
+        localStorage.removeItem(colorModeKey);
+      }
+      listeners.forEach((cb) => cb(colorMode3));
+    };
+    const savedMode = localStorage.getItem(colorModeKey);
+    const colorMode2 = parseColorMode(savedMode);
+    mode = colorMode2;
+    return {
+      subscribe: (cb) => {
+        cb(colorMode2);
+        listeners.add(cb);
+        return () => listeners.delete(cb);
+      },
+      set,
+      update: (updater) => set(updater(mode))
+    };
+  })();
+  const colorModeSavedOrColorModeOS = (() => {
+    let cmSaved;
+    let cmOS;
+    const getMerged = () => cmSaved || cmOS;
+    const listeners = new Set();
+    colorModeSaved.subscribe((v) => {
+      cmSaved = v;
+      listeners.forEach((cb) => cb(getMerged()));
+    });
+    colorModeOS.subscribe((v) => {
+      cmOS = v;
+      listeners.forEach((cb) => cb(getMerged()));
+    });
+    return {
       subscribe: (listener) => {
-        listener(currentMode);
         listeners.add(listener);
+        listener(getMerged());
         return () => listeners.delete(listener);
       },
-      set: (mode) => {
-        internalSet(mode, true);
-      },
-      update: (updater) => {
-        internalSet(updater(currentMode), true);
-      }
-    },
+      set: colorModeSaved.set,
+      update: colorModeSaved.update
+    };
+  })();
+  const htmlElement = document.documentElement;
+  let colorMode;
+  colorModeSavedOrColorModeOS.subscribe((v) => {
+    if (colorMode) {
+      htmlElement.classList.remove(colorMode);
+    }
+    if (v) {
+      htmlElement.classList.add(v);
+    }
+    colorMode = v;
+  });
+  return {
+    mode: colorModeSavedOrColorModeOS,
     colorModes
   };
 })();
