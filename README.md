@@ -17,7 +17,8 @@ Perfect color mode implementation.
 
 Include `dist/index.js` in the `<head>` tag of your website.
 
-A class indicating the color mode will be added to `<html>`/the root (e.g. `dark` or `light`).
+A class indicating the color mode will be added to `<html>` (e.g. `dark` or `light`).
+This is done before the rest of your page is rendered (that's why it needs to be in head).
 
 To style your color modes you can use CSS variables, e.g.
 
