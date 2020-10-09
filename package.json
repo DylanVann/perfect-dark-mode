@@ -1,0 +1,32 @@
+{
+  "name": "perfect-color-mode",
+  "keywords": [
+    "perfect",
+    "color",
+    "mode"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DylanVann/perfect-color-mode.git"
+  },
+  "author": "Dylan Vann <dylan@dylanvann.com> (https://dylanvann.com)",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "run-s build:js build:js:min build:example",
+    "build:js": "esbuild src/index.ts --platform=browser --outfile=dist/index.js --format=esm",
+    "build:js:min": "esbuild src/index.ts --platform=browser --outfile=dist/index.min.js --format=esm --minify",
+    "build:ts": "tsc",
+    "build:example": "pug example.pug --pretty"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "pug": "^3.0.0",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}
