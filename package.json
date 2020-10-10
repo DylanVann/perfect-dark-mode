@@ -1,5 +1,5 @@
 {
-  "name": "perfect-color-mode",
+  "name": "perfect-dark-mode",
   "keywords": [
     "perfect",
     "color",
@@ -7,7 +7,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/DylanVann/perfect-color-mode.git"
+    "url": "https://github.com/DylanVann/perfect-dark-mode.git"
   },
   "author": "Dylan Vann <dylan@dylanvann.com> (https://dylanvann.com)",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "build:js": "esbuild src/index.ts --platform=browser --outfile=dist/index.js --format=esm --minify --sourcemap",
     "build:ts": "tsc",
     "example:build": "run-s example:build:copy-lib example:build:html",
-    "example:build:copy-lib": "cpx \"dist/**/*\" \"examples/vanilla/perfect-color-mode\"",
+    "example:build:copy-lib": "cpx \"dist/**/*\" \"examples/vanilla/perfect-dark-mode\"",
     "example:build:html": "pug examples/vanilla/index.pug --pretty",
     "example:serve": "serve examples/vanilla"
   },

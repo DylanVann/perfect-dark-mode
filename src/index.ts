@@ -46,7 +46,7 @@ declare global {
 
 window.__perfect_color_mode__ = ((): PerfectColorMode => {
   const colorModes = ['light', 'dark']
-  const colorModeKey = 'perfect-color-mode'
+  const colorModeKey = 'perfect-dark-mode'
 
   type ColorModeOS = Readable<ColorMode | undefined>
   const colorModeOS: ColorModeOS = ((): ColorModeOS => {

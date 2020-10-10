@@ -1,4 +1,4 @@
-# 🌚🌝 Perfect Color Mode
+# 🌚🌝 Perfect Dark Mode
 
 - No flicker.
 - Framework agnostic, supports **React** | **Vue** | **Svelte** | etc.

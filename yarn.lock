@@ -680,6 +680,16 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
+esbuild-linux-64@^0.7.10:
+  version "0.7.14"
+  resolved "https://registry.yarnpkg.com/esbuild-linux-64/-/esbuild-linux-64-0.7.14.tgz#c37a35ccdd81dade8cc558964ab9c52f2cd66c2a"
+  integrity sha512-Z7k9aCpgU8vMiw7g7cZ5qLN5mCDe9KERue8stQfbDzPj95DJ2tZ1qhOfyZAYZWmEFF9F/Gz1VAS5uh//iAGeAg==
+
+esbuild@^0.7.10:
+  version "0.7.14"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.7.14.tgz#9de555e75669187c2315317fbf489b229b1a4cbb"
+  integrity sha512-w2CEVeRcUhCGYMHnNNwb8q+9w42scL7RcNzJm85gZVzNBE3AF0sLq5YP/IdaTBJIFBphIKG3bGbwRH+zsgH/ig==
+
 escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
