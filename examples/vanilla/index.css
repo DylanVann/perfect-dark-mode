@@ -1,0 +1,35 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: white;
+    --background: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color: black;
+    --background: white;
+  }
+}
+
+:root.light {
+  --color: black;
+  --background: white;
+}
+
+:root.dark {
+  --color: white;
+  --background: black;
+}
+
+:root {
+  color: var(--color);
+  background: var(--background);
+  font-family: sans-serif;
+  transition: all 0.5s;
+}
+
+body {
+  max-width: 60ch;
+  margin: 0 auto;
+}

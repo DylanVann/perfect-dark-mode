@@ -92,6 +92,7 @@ window.__perfect_color_mode__ = ((): PerfectColorMode => {
         localStorage.removeItem(colorModeKey)
       }
       listeners.forEach((cb) => cb(colorMode))
+      mode = colorMode
     }
     const savedMode = localStorage.getItem(colorModeKey)
     const colorMode = parseColorMode(savedMode)

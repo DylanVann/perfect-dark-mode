@@ -1,9 +1,7 @@
 # 🌚🌝 Perfect Color Mode
 
-Perfect color mode implementation.
-
 - No flicker.
-- Framework agnostic (easily supports React/Vue/Svelte).
+- Framework agnostic, supports **React** | **Vue** | **Svelte** | etc.
 - Supports SSR.
 - Supports no-js.
 - Tiny - 498B gzipped.
@@ -21,6 +19,7 @@ A class indicating the color mode will be added to `<html>` (e.g. `dark` or `lig
 This is done before the rest of your page is rendered (that's why it needs to be in head).
 
 To style your color modes you can use CSS variables, e.g.
+You can add `@media (prefers-color-scheme: dark/light)` queries to support users with JS disabled.
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -59,12 +58,10 @@ In the rest of your app use `--color` and `--background` as needed.
 
 - You can `subscribe` to the mode, this can be used for rendering a toggle component.
 - The first call of your listener is synchronous so you can get the value before rendering.
-- You can `get` the mode if you want a more convenient way to synchronously get the mode
 
 ```js
 const { mode } = window.__perfect_color_mode__
 const unsubscribe = mode.subscribe((v) => console.log(v))
-const currentMode = mode.get()
 ```
 
 **Setting:**

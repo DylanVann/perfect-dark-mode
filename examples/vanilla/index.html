@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>🌚🌝 Perfect Color Mode Example</title>
+    <style>@media (prefers-color-scheme: dark) {
+  :root {
+    --color: white;
+    --background: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color: black;
+    --background: white;
+  }
+}
+
+:root.light {
+  --color: black;
+  --background: white;
+}
+
+:root.dark {
+  --color: white;
+  --background: black;
+}
+
+:root {
+  color: var(--color);
+  background: var(--background);
+  font-family: sans-serif;
+  transition: all 0.5s;
+}
+
+body {
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+button,
+label {
+  text-transform: capitalize;
+}
+
+    </style>
+    <script src="perfect-color-mode/index.js"></script>
+  </head>
+  <body>
+    <h1>🌚🌝 Perfect Color Mode Example</h1>
+    <p>By default we use the system color mode.</p>
+    <!-- This needs to be hidden initially because we don't know the color mode yet.-->
+    <!-- It will be shown by the JS.-->
+    <!-- For users with JS disabled there will not be a color mode toggle, they can change-->
+    <!-- their system color mode.-->
+    <p>You can set the color mode, this will be saved.</p>
+    <label id="label" style="visibility: hidden;">
+      <input type="checkbox" id="checkbox">dark | light
+    </label>
+    <p>You can reset the color mode and fallback to system color mode.</p>
+    <button id="button">reset</button>
+    <script>const { mode } = window.__perfect_color_mode__
+
+const label = document.getElementById('label')
+const checkbox = document.getElementById('checkbox')
+
+// Listen to the color mode and update the UI.
+mode.subscribe((v) => {
+  checkbox.checked = v === 'dark'
+  label.childNodes[2].textContent = v === 'dark' ? '🌚 Dark' : '🌝 Light'
+})
+
+// At this point our callback will have been called,
+// so the checkbox state and text will be correct and we can show them.
+label.style.visibility = 'unset'
+
+// When the checkbox is clicked we update the mode.
+// Our listener above will do the rest.
+checkbox.addEventListener('change', (e) =>
+  mode.update((v) => (v === 'light' ? 'dark' : 'light')),
+)
+
+const button = document.getElementById('button')
+
+button.addEventListener('click', () => mode.set(undefined))
+
+    </script>
+    <hr><ul>
+<li>No flicker.</li>
+<li>Framework agnostic, supports <strong>React</strong> | <strong>Vue</strong> | <strong>Svelte</strong> | etc.</li>
+<li>Supports SSR.</li>
+<li>Supports no-js.</li>
+<li>Tiny - 498B gzipped.</li>
+<li>Supports <code>prefers-color-scheme</code>.</li>
+<li>Listens for changes to <code>prefers-color-scheme</code>.</li>
+<li>Allows user to override and save their preference to <code>localStorage</code>.</li>
+<li>Allows clearing the saved preference and falling back to <code>prefers-color-scheme</code>.</li>
+<li>Built for the web.</li>
+</ul>
+
+  </body>
+</html>

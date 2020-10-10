@@ -13,11 +13,13 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "run-s build:js build:js:min build:example",
-    "build:js": "esbuild src/index.ts --platform=browser --outfile=dist/index.js --format=esm",
-    "build:js:min": "esbuild src/index.ts --platform=browser --outfile=dist/index.min.js --format=esm --minify",
+    "build": "run-s build:js example:build",
+    "build:js": "esbuild src/index.ts --platform=browser --outfile=dist/index.js --format=esm --minify --sourcemap",
     "build:ts": "tsc",
-    "build:example": "pug example.pug --pretty"
+    "example:build": "run-s example:build:copy-lib example:build:html",
+    "example:build:copy-lib": "cpx \"dist/**/*\" \"examples/vanilla/perfect-color-mode\"",
+    "example:build:html": "pug examples/vanilla/index.pug --pretty",
+    "example:serve": "serve examples/vanilla"
   },
   "prettier": {
     "semi": false,
@@ -25,8 +27,11 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "cpx": "^1.5.0",
+    "jstransformer-markdown-it": "^2.1.0",
     "npm-run-all": "^4.1.5",
     "pug": "^3.0.0",
-    "pug-cli": "^1.0.0-alpha6"
+    "pug-cli": "^1.0.0-alpha6",
+    "serve": "^11.3.2"
   }
 }
