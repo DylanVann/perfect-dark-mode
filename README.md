@@ -16,6 +16,8 @@
 
 ## Usage
 
+This package can be installed with `yarn add perfect-dark-mode`.
+
 Include `dist/index.js` in the `<head>` tag of your website.
 
 A class indicating the color mode will be added to `<html>` (e.g. `dark` or `light`).
