@@ -37,7 +37,8 @@
     "npm-run-all": "^4.1.5",
     "pug": "^3.0.0",
     "pug-cli": "^1.0.0-alpha6",
-    "serve": "^11.3.2"
+    "serve": "^11.3.2",
+    "typescript": "^4.0.3"
   },
   "optionalDependencies": {
     "esbuild": "^0.7.10",

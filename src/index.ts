@@ -40,11 +40,11 @@ export interface PerfectColorMode {
 
 declare global {
   interface Window {
-    __perfect_color_mode__: PerfectColorMode
+    __perfect_dark_mode__: PerfectColorMode
   }
 }
 
-window.__perfect_color_mode__ = ((): PerfectColorMode => {
+window.__perfect_dark_mode__ = ((): PerfectColorMode => {
   const colorModes = ['light', 'dark']
   const colorModeKey = 'perfect-dark-mode'
 

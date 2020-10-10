@@ -35,7 +35,7 @@ export interface PerfectColorMode {
 }
 declare global {
     interface Window {
-        __perfect_color_mode__: PerfectColorMode;
+        __perfect_dark_mode__: PerfectColorMode;
     }
 }
 export {};

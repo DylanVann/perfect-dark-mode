@@ -1,4 +1,4 @@
-const { mode } = window.__perfect_color_mode__
+const { mode } = window.__perfect_dark_mode__
 
 const label = document.getElementById('label')
 const checkbox = document.getElementById('checkbox')
