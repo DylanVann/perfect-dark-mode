@@ -1,10 +1,13 @@
 # 🌚🌝 Perfect Dark Mode
 
+[![Version][version-badge]][package]
+[![Size][size-badge]][size]
+
 - No flicker.
 - Framework agnostic, supports **React** | **Vue** | **Svelte** | etc.
 - Supports SSR.
 - Supports no-js.
-- Tiny - 498B gzipped.
+- Tiny, less than 1kb.
 - Supports `prefers-color-scheme`.
 - Listens for changes to `prefers-color-scheme`.
 - Allows user to override and save their preference to `localStorage`.
@@ -74,3 +77,8 @@ const { mode } = window.__perfect_dark_mode__
 mode.set('light')
 mode.update((mode) => (mode === 'light' ? 'dark' : 'light'))
 ```
+
+[package]: https://www.npmjs.com/package/perfect-dark-mode
+[version-badge]: https://img.shields.io/npm/v/perfect-dark-mode.svg
+[size]: https://bundlephobia.com/result?p=perfect-dark-mode
+[size-badge]: https://img.shields.io/bundlephobia/minzip/perfect-dark-mode?label=size
