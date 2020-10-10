@@ -144,6 +144,7 @@ window.__perfect_dark_mode__ = ((): PerfectColorMode => {
     colorMode = v
   })
 
+  htmlElement.classList.add('pdm')
   return {
     mode: colorModeSavedOrColorModeOS,
     colorModes,

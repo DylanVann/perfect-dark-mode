@@ -28,9 +28,7 @@ export interface Writable<T> extends Readable<T> {
 }
 declare type ColorMode = string;
 export interface PerfectColorMode {
-    mode: Writable<ColorMode> & {
-        get: () => ColorMode;
-    };
+    mode: Writable<ColorMode | undefined>;
     colorModes: ColorMode[];
 }
 declare global {
