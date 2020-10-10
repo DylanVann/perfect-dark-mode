@@ -35,12 +35,16 @@
 
 body {
   max-width: 60ch;
+  padding: 1rem 2.5rem;
   margin: 0 auto;
 }
 
-button,
 label {
-  text-transform: capitalize;
+  user-select: none;
+}
+
+hr {
+  border-style: solid;
 }
 
     </style>
@@ -55,10 +59,10 @@ label {
     <!-- their system color mode.-->
     <p>You can set the color mode, this will be saved.</p>
     <label id="label" style="visibility: hidden;">
-      <input type="checkbox" id="checkbox">dark | light
+      <input type="checkbox" id="checkbox">color mode
     </label>
     <p>You can reset the color mode and fallback to system color mode.</p>
-    <button id="button">reset</button>
+    <button id="button">Reset</button>
     <script>const { mode } = window.__perfect_color_mode__
 
 const label = document.getElementById('label')
