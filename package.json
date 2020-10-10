@@ -12,6 +12,9 @@
   "author": "Dylan Vann <dylan@dylanvann.com> (https://dylanvann.com)",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "run-s build:js example:build",
     "build:js": "esbuild src/index.ts --platform=browser --outfile=dist/index.js --format=esm --minify --sourcemap",
