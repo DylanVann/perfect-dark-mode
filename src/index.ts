@@ -128,7 +128,7 @@ window.__perfect_dark_mode__ = ((): PerfectColorMode => {
         return () => listeners.delete(listener)
       },
       set: colorModeSaved.set,
-      update: colorModeSaved.update,
+      update: (updater) => colorModeSaved.set(updater(getMerged())),
     }
   })()
 
