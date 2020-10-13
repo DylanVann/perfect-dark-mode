@@ -2,7 +2,7 @@
 - Framework agnostic, supports **React** | **Vue** | **Svelte** | etc.
 - Supports SSR.
 - Supports no-js.
-- Tiny - 498B gzipped.
+- Tiny, less than 1kb.
 - Supports `prefers-color-scheme`.
 - Listens for changes to `prefers-color-scheme`.
 - Allows user to override and save their preference to `localStorage`.
