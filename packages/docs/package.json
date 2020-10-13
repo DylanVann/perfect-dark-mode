@@ -1,0 +1,17 @@
+{
+  "name": "perfect-dark-mode-docs",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn build:ts && yarn build:html",
+    "build:ts": "esbuild --bundle lib.ts --platform=browser --outdir=dist --format=esm",
+    "build:html": "pug index.pug --pretty --out dist"
+  },
+  "devDependencies": {
+    "perfect-dark-mode": "*",
+    "jstransformer-markdown-it": "^2.1.0",
+    "pug": "^3.0.0",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}

@@ -1,0 +1,82 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: white;
+    --background: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color: black;
+    --background: white;
+  }
+}
+
+:root.light {
+  --color: black;
+  --background: white;
+}
+
+:root.dark {
+  --color: white;
+  --background: black;
+}
+
+:root {
+  color: var(--color) !important;
+  background: var(--background);
+  font-family: sans-serif;
+  font-size: 16px;
+  transition: all 0.5s;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.prose * {
+  color: var(--color) !important;
+}
+
+body {
+  padding-top: 1rem;
+  margin: 0 auto;
+}
+
+label {
+  user-select: none;
+}
+
+hr {
+  border-style: solid;
+}
+
+a {
+  color: var(--color);
+}
+
+a:visited {
+  color: var(--color);
+}
+
+input {
+  margin-right: 0.2rem;
+}
+
+button {
+  border: 1px solid var(--color);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+}
+
+a.badge img {
+  height: 20px;
+  display: inline-block;
+  margin: 0;
+}
+
+.npm {
+  margin-right: 4px;
+}
+
+.prose pre code {
+  color: var(--background) !important;
+}

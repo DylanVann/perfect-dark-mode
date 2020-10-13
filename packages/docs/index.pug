@@ -1,0 +1,47 @@
+doctype html
+html
+    head
+        meta(name="viewport" content="width=device-width,initial-scale=1")
+        title Perfect Dark Mode
+        link(rel="icon" type="image/png" href="sun.png")
+        script(src="lib.js")
+        link(rel="stylesheet" href="https://unpkg.com/tailwindcss@1.7.5/dist/base.min.css")
+        link(rel="stylesheet" href="https://unpkg.com/@tailwindcss/typography@0.2.0/dist/typography.min.css")
+        style
+            include ./index.css
+    body.prose
+        h1 🌚🌝 Perfect Dark Mode - <a href="https://github.com/DylanVann/perfect-dark-mode">GitHub</a>
+        a.badge.npm(href='https://www.npmjs.com/package/perfect-dark-mode')
+            img(src='https://img.shields.io/npm/v/perfect-dark-mode.svg' alt='Version')
+        a.badge(href='https://bundlephobia.com/result?p=perfect-dark-mode')
+            img(src='https://img.shields.io/bundlephobia/minzip/perfect-dark-mode?label=size' alt='Size')
+
+        include:markdown-it features.md
+
+        p Created by <a href="https://twitter.com/atomarranger">@atomarranger</a>
+
+        hr
+
+        h2 Minimal Example
+
+        p It's so minimal you can just view source.
+
+        p By default we use the system color mode.
+        // This needs to be hidden initially because we don't know the color mode yet.
+        // It will be shown by the JS.
+        // For users with JS disabled there will not be a color mode toggle, they can change
+        // their system color mode.
+        p You can set the color mode, this will be saved.
+        label(id="label" style="visibility: hidden;")
+            input(type="checkbox" id="checkbox")
+            | 🌝 color mode
+        p You can reset the color mode and fallback to system color mode.
+        button(id="button") Reset
+        p For debugging and understanding here is the saved color mode and the OS color mode.
+        p The displayed color mode is <code>SavedColorMode || OSColorMode</code>.
+        pre
+            code#mode-saved saved color mode:
+        pre
+            code#mode-os OS color mode:
+        script
+            include ./index.js

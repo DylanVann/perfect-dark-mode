@@ -1,30 +1,10 @@
 {
-  "name": "perfect-dark-mode",
-  "version": "0.0.5",
-  "description": "Perfect dark mode.",
-  "keywords": [
-    "perfect",
-    "color",
-    "mode"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/DylanVann/perfect-dark-mode.git"
-  },
-  "author": "Dylan Vann <dylan@dylanvann.com> (https://dylanvann.com)",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "build": "run-s build:js example:build",
-    "build:js": "esbuild src/index.ts --platform=browser --outfile=dist/index.js --format=esm --minify --sourcemap",
-    "build:ts": "tsc",
-    "example:build": "run-s example:build:copy-lib example:build:html",
-    "example:build:copy-lib": "cpx \"dist/**/*\" \"examples/vanilla/perfect-dark-mode\"",
-    "example:build:html": "pug examples/vanilla/index.pug --pretty",
-    "example:serve": "serve examples/vanilla"
+    "build": "wsrun build"
   },
   "prettier": {
     "semi": false,
@@ -32,16 +12,7 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "cpx": "^1.5.0",
-    "jstransformer-markdown-it": "^2.1.0",
-    "npm-run-all": "^4.1.5",
-    "pug": "^3.0.0",
-    "pug-cli": "^1.0.0-alpha6",
-    "serve": "^11.3.2",
-    "typescript": "^4.0.3"
-  },
-  "optionalDependencies": {
-    "esbuild": "^0.7.14",
-    "esbuild-linux-64": "^0.7.14"
+    "prettier": "^2.1.2",
+    "wsrun": "^5.2.4"
   }
 }

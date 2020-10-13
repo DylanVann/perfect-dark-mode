@@ -34,7 +34,21 @@ export interface Writable<T> extends Readable<T> {
 type ColorMode = string
 
 export interface PerfectColorMode {
+  /**
+   * The resolved color mode, can be set or updated.
+   */
   mode: Writable<ColorMode | undefined>
+  /**
+   * The saved color mode, probably only useful for debugging.
+   */
+  modeSaved: Writable<ColorMode | undefined>
+  /**
+   * The OS color mode, probably only useful for debugging.
+   */
+  modeOS: Readable<ColorMode | undefined>
+  /**
+   * A list of color modes, currently just light and dark.
+   */
   colorModes: ColorMode[]
 }
 
@@ -49,7 +63,7 @@ window.__perfect_dark_mode__ = ((): PerfectColorMode => {
   const colorModeKey = 'perfect-dark-mode'
 
   type ColorModeOS = Readable<ColorMode | undefined>
-  const colorModeOS: ColorModeOS = ((): ColorModeOS => {
+  const modeOS: ColorModeOS = ((): ColorModeOS => {
     const matchesToMode = (matches: boolean): ColorMode =>
       matches ? 'dark' : 'light'
     const listeners = new Set<Function>()
@@ -76,7 +90,7 @@ window.__perfect_dark_mode__ = ((): PerfectColorMode => {
   })()
 
   type ColorModeSaved = Writable<ColorMode | undefined>
-  const colorModeSaved: ColorModeSaved = ((): ColorModeSaved => {
+  const modeSaved: ColorModeSaved = ((): ColorModeSaved => {
     const parseColorMode = (mode: string | null): ColorMode | undefined =>
       mode
         ? colorModes.includes(mode)
@@ -108,16 +122,16 @@ window.__perfect_dark_mode__ = ((): PerfectColorMode => {
     }
   })()
 
-  const colorModeSavedOrColorModeOS: ColorModeSaved = ((): ColorModeSaved => {
+  const mode: ColorModeSaved = ((): ColorModeSaved => {
     let cmSaved: ColorMode | undefined
     let cmOS: ColorMode | undefined
     const getMerged = () => cmSaved || cmOS
     const listeners = new Set<Function>()
-    colorModeSaved.subscribe((v) => {
+    modeSaved.subscribe((v) => {
       cmSaved = v
       listeners.forEach((cb) => cb(getMerged()))
     })
-    colorModeOS.subscribe((v) => {
+    modeOS.subscribe((v) => {
       cmOS = v
       listeners.forEach((cb) => cb(getMerged()))
     })
@@ -127,14 +141,14 @@ window.__perfect_dark_mode__ = ((): PerfectColorMode => {
         listener(getMerged())
         return () => listeners.delete(listener)
       },
-      set: colorModeSaved.set,
-      update: (updater) => colorModeSaved.set(updater(getMerged())),
+      set: modeSaved.set,
+      update: (updater) => modeSaved.set(updater(getMerged())),
     }
   })()
 
   const htmlElement = document.documentElement
   let colorMode: string | undefined
-  colorModeSavedOrColorModeOS.subscribe((v) => {
+  mode.subscribe((v) => {
     if (colorMode) {
       htmlElement.classList.remove(colorMode)
     }
@@ -146,7 +160,9 @@ window.__perfect_dark_mode__ = ((): PerfectColorMode => {
 
   htmlElement.classList.add('pdm')
   return {
-    mode: colorModeSavedOrColorModeOS,
+    mode,
+    modeOS,
+    modeSaved,
     colorModes,
   }
 })()
