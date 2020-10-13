@@ -4,13 +4,16 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "yarn build:ts && yarn build:html",
+    "build": "run-s build:copy-lib build:ts && yarn build:html",
+    "build:copy-lib": "cpx \"../../node_modules/perfect-dark-mode/dist/**/*\" dist/perfect-dark-mode/dist",
     "build:ts": "esbuild --bundle lib.ts --platform=browser --outdir=dist --format=esm",
     "build:html": "pug index.pug --pretty --out dist"
   },
   "devDependencies": {
-    "perfect-dark-mode": "0.0.5",
+    "cpx": "^1.5.0",
     "jstransformer-markdown-it": "^2.1.0",
+    "npm-run-all": "^4.1.5",
+    "perfect-dark-mode": "0.0.5",
     "pug": "^3.0.0",
     "pug-cli": "^1.0.0-alpha6"
   }
