@@ -63,7 +63,8 @@ input {
   display: none;
 }
 
-label, button {
+button {
+  min-width: 120px;
   border: 1px solid var(--color);
   padding: 0.5rem 1rem;
   border-radius: 2px;

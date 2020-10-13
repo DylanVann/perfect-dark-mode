@@ -32,9 +32,7 @@ html
         // For users with JS disabled there will not be a color mode toggle, they can change
         // their system color mode.
         p You can set the color mode, this will be saved.
-        label(id="label" style="visibility: hidden;")
-            input(type="checkbox" id="checkbox")
-            | 🌝 color mode
+        button(id="toggle" style="visibility: hidden;") 🌝 color mode
         p You can reset the color mode and fallback to system color mode.
         button(id="button") Reset
         p For debugging and understanding here is the saved color mode and the OS color mode.
