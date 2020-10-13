@@ -4,9 +4,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "run-s build:copy-lib build:ts && yarn build:html",
+    "build": "run-s build:copy-lib build:html",
     "build:copy-lib": "cpx \"../../node_modules/perfect-dark-mode/dist/**/*\" dist/perfect-dark-mode/dist",
-    "build:ts": "esbuild --bundle lib.ts --platform=browser --outdir=dist --format=esm",
     "build:html": "pug index.pug --pretty --out dist"
   },
   "devDependencies": {
