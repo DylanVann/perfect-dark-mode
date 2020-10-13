@@ -60,7 +60,7 @@ a:visited {
 }
 
 input {
-  margin-right: 0.2rem;
+  display: none;
 }
 
 button {
