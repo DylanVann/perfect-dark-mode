@@ -1,14 +1,11 @@
 // This isn't important for the example, just nice.
 const changeFavicon = (src) => {
+  const oldLink = document.querySelector('link[rel="icon"]')
+  document.head.removeChild(oldLink)
   const link = document.createElement('link')
-  link.id = 'dynamic-favicon'
   link.rel = 'icon'
   link.type = 'image/png'
   link.href = src
-  const oldLink = document.getElementById('dynamic-favicon')
-  if (oldLink) {
-    document.head.removeChild(oldLink)
-  }
   document.head.appendChild(link)
 }
 
