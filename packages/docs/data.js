@@ -1,7 +1,7 @@
-import * as path from 'path'
-import fs from 'fs-extra'
-import gzipSize from 'gzip-size'
-import pug from 'pug'
+const path = require('path')
+const fs = require('fs-extra')
+const gzipSize = require('gzip-size')
+const pug = require('pug')
 
 const run = async () => {
   const pkg = fs.readJSONSync(

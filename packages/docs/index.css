@@ -2,6 +2,17 @@
   :root {
     --color: white;
     --background: black;
+    --black: rgba(255, 255, 255, 1);
+    --white: rgba(0, 0, 0, 1);
+    --gray-100: rgba(255, 255, 255, 0.1);
+    --gray-200: rgba(255, 255, 255, 0.2);
+    --gray-300: rgba(255, 255, 255, 0.3);
+    --gray-400: rgba(255, 255, 255, 0.4);
+    --gray-500: rgba(255, 255, 255, 0.5);
+    --gray-600: rgba(255, 255, 255, 0.6);
+    --gray-700: rgba(255, 255, 255, 0.7);
+    --gray-800: rgba(255, 255, 255, 0.8);
+    --gray-900: rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -9,30 +20,59 @@
   :root {
     --color: black;
     --background: white;
+    --black: rgba(0, 0, 0, 1);
+    --white: rgba(255, 255, 255, 1);
+    --gray-100: rgba(0, 0, 0, 0.1);
+    --gray-200: rgba(0, 0, 0, 0.2);
+    --gray-300: rgba(0, 0, 0, 0.3);
+    --gray-400: rgba(0, 0, 0, 0.4);
+    --gray-500: rgba(0, 0, 0, 0.5);
+    --gray-600: rgba(0, 0, 0, 0.6);
+    --gray-700: rgba(0, 0, 0, 0.7);
+    --gray-800: rgba(0, 0, 0, 0.8);
+    --gray-900: rgba(0, 0, 0, 0.9);
   }
 }
 
 :root.light {
   --color: black;
   --background: white;
+  --black: rgba(0, 0, 0, 1);
+  --white: rgba(255, 255, 255, 1);
+  --gray-100: rgba(0, 0, 0, 0.1);
+  --gray-200: rgba(0, 0, 0, 0.2);
+  --gray-300: rgba(0, 0, 0, 0.3);
+  --gray-400: rgba(0, 0, 0, 0.4);
+  --gray-500: rgba(0, 0, 0, 0.5);
+  --gray-600: rgba(0, 0, 0, 0.6);
+  --gray-700: rgba(0, 0, 0, 0.7);
+  --gray-800: rgba(0, 0, 0, 0.8);
+  --gray-900: rgba(0, 0, 0, 0.9);
 }
 
 :root.dark {
   --color: white;
   --background: black;
+  --black: rgba(255, 255, 255, 1);
+  --white: rgba(0, 0, 0, 1);
+  --gray-100: rgba(255, 255, 255, 0.1);
+  --gray-200: rgba(255, 255, 255, 0.2);
+  --gray-300: rgba(255, 255, 255, 0.3);
+  --gray-400: rgba(255, 255, 255, 0.4);
+  --gray-500: rgba(255, 255, 255, 0.5);
+  --gray-600: rgba(255, 255, 255, 0.6);
+  --gray-700: rgba(255, 255, 255, 0.7);
+  --gray-800: rgba(255, 255, 255, 0.8);
+  --gray-900: rgba(255, 255, 255, 0.9);
 }
 
 :root {
-  color: var(--color) !important;
+  color: var(--color);
   background: var(--background);
   font-family: sans-serif;
   font-size: 16px;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
-}
-
-.prose * {
-  color: var(--color) !important;
 }
 
 body {
@@ -64,10 +104,11 @@ input {
 
 button {
   min-width: 120px;
-  border: 1px solid var(--color);
   padding: 0.5rem 1rem;
   border-radius: 2px;
   font-weight: bold;
+  background: var(--color);
+  color: var(--background);
 }
 
 a.badge {
@@ -97,5 +138,5 @@ a.badge svg .text {
 }
 
 .prose pre code {
-  color: var(--background) !important;
+  color: var(--background);
 }
