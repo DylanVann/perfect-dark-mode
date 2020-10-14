@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "run-s build:data build:copy-lib build:html",
+    "build": "run-s build:copy-lib build:data build:html",
     "build:copy-lib": "cpx \"../../node_modules/perfect-dark-mode/dist/**/*\" dist/perfect-dark-mode/dist",
     "build:data": "node data.js",
     "build:html": "pug index.pug --pretty --out dist --obj data.json",
