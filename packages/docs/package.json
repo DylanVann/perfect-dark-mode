@@ -6,7 +6,8 @@
   "scripts": {
     "build": "run-s build:copy-lib build:html",
     "build:copy-lib": "cpx \"../../node_modules/perfect-dark-mode/dist/**/*\" dist/perfect-dark-mode/dist",
-    "build:html": "pug index.pug --pretty --out dist"
+    "build:html": "pug index.pug --pretty --out dist",
+    "serve": "serve dist"
   },
   "devDependencies": {
     "cpx": "^1.5.0",
@@ -14,6 +15,7 @@
     "npm-run-all": "^4.1.5",
     "perfect-dark-mode": "0.0.5",
     "pug": "^3.0.0",
-    "pug-cli": "^1.0.0-alpha6"
+    "pug-cli": "^1.0.0-alpha6",
+    "serve": "^11.3.2"
   }
 }

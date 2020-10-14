@@ -27,7 +27,6 @@
   background: var(--background);
   font-family: sans-serif;
   font-size: 16px;
-  transition: all 0.5s;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
