@@ -76,9 +76,7 @@
 }
 
 body {
-  padding-top: 1rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0.5rem;
   margin: 0 auto;
 }
 
@@ -113,12 +111,7 @@ button {
 
 a.badge {
   text-decoration: none;
-}
-
-a.badge svg {
-  height: 20px;
   display: inline-block;
-  margin: 0;
 }
 
 a.badge svg .background {
@@ -129,14 +122,21 @@ a.badge svg .text {
   fill: var(--background);
 }
 
-.npm {
-  margin-right: 4px;
-}
-
 .prose pre {
   background: var(--color);
 }
 
 .prose pre code {
   color: var(--background);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  margin: 0;
 }

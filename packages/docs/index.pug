@@ -1,4 +1,5 @@
 include ./badge
+include ./simpleBadge
 doctype html
 html
     head
@@ -11,12 +12,17 @@ html
         style
             include ./index.css
     body.prose
-        h1 🌚🌝 Perfect Dark Mode - <a href="https://github.com/DylanVann/perfect-dark-mode">GitHub</a>
+        div.header
+            h1 🌚🌝 Perfect Dark Mode
+            button.toggle(style="visibility: hidden;") 🌝 color mode
 
-        a.badge.npm(href='https://www.npmjs.com/package/perfect-dark-mode')
-            +badge("npm", version)
-        a.badge.size(href='https://bundlephobia.com/result?p=perfect-dark-mode')
-            +badge("size", size)
+        div.flex.space-x-4
+            a.badge(href='https://www.npmjs.com/package/perfect-dark-mode')
+                +badge("npm", version)
+            a.badge(href='https://bundlephobia.com/result?p=perfect-dark-mode')
+                +badge("size", size)
+            a.badge(href="https://github.com/DylanVann/perfect-dark-mode")
+                +simpleBadge("GitHub")
 
         include:markdown-it features.md
 
@@ -34,7 +40,7 @@ html
         // For users with JS disabled there will not be a color mode toggle, they can change
         // their system color mode.
         p You can set the color mode, this will be saved.
-        button(id="toggle" style="visibility: hidden;") 🌝 color mode
+        button.toggle(style="visibility: hidden;") 🌝 color mode
         p You can reset the color mode and fallback to system color mode.
         button(id="button") Reset
         p For debugging and understanding here is the saved color mode and the OS color mode.

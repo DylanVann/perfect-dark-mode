@@ -13,17 +13,27 @@ const changeFavicon = (src) => {
 const { mode } = window.__perfect_dark_mode__
 
 // Get some elements we will use.
-const toggleElement = document.getElementById('toggle')
+const toggleElements = document.querySelectorAll('.toggle')
 
 // Listen to the color mode and update the UI.
 mode.subscribe((v) => {
-  toggleElement.textContent = v === 'dark' ? '🌚 Dark' : '🌝 Light'
+  toggleElements.forEach(
+    (el) => (el.textContent = v === 'dark' ? '🌚 Dark' : '🌝 Light'),
+  )
   changeFavicon(v === 'dark' ? 'moon.png' : 'sun.png')
 })
 
 // At this point our callback will have been called,
 // so the checkbox state and text will be correct and we can show them.
-toggleElement.style.visibility = 'unset'
+toggleElements.forEach((el) => (el.style.visibility = 'unset'))
+
+// When the checkbox is clicked we update the mode.
+// Our listener above will do the rest.
+toggleElements.forEach((el) => {
+  el.addEventListener('click', (e) =>
+    mode.update((v) => (v === 'light' ? 'dark' : 'light')),
+  )
+})
 
 // We want to make sure that if the OS mode is 'light'
 // and the saved mode is 'dark' that we do not transition
@@ -35,12 +45,6 @@ requestAnimationFrame(() =>
       (document.documentElement.style.transition =
         'background 0.5s, color 0.5s'),
   ),
-)
-
-// When the checkbox is clicked we update the mode.
-// Our listener above will do the rest.
-toggleElement.addEventListener('click', (e) =>
-  mode.update((v) => (v === 'light' ? 'dark' : 'light')),
 )
 
 const button = document.getElementById('button')

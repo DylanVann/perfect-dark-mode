@@ -16,7 +16,7 @@ module.exports = {
     tailwindcss('./tailwind.config.js'),
     production &&
       purgecss({
-        content: ['dist/index.html', 'index.js'],
+        content: ['index.pug', 'index.js'],
         defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
       }),
     production && cssnano({ preset: 'default' }),

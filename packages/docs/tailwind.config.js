@@ -1111,7 +1111,7 @@ const typographyTheme = {
 const theme = merge({}, typographyTheme, defaultTheme)
 
 module.exports = {
-  purge: ['dist/index.html', 'index.js'],
+  purge: ['index.pug', 'index.js'],
   future: {
     defaultLineHeights: true,
     purgeLayersByDefault: true,
