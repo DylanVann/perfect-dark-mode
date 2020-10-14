@@ -3,14 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "build": "run-s build:copy-lib build:html",
+    "build": "run-s build:data build:copy-lib build:html",
     "build:copy-lib": "cpx \"../../node_modules/perfect-dark-mode/dist/**/*\" dist/perfect-dark-mode/dist",
-    "build:html": "pug index.pug --pretty --out dist",
+    "build:data": "node data.js",
+    "build:html": "pug index.pug --pretty --out dist --obj data.json",
     "serve": "serve dist"
   },
   "devDependencies": {
     "cpx": "^1.5.0",
+    "fs-extra": "^9.0.1",
+    "gzip-size": "^5.1.1",
     "jstransformer-markdown-it": "^2.1.0",
     "npm-run-all": "^4.1.5",
     "perfect-dark-mode": "0.0.5",

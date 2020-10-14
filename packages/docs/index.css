@@ -70,10 +70,22 @@ button {
   font-weight: bold;
 }
 
-a.badge img {
+a.badge {
+  text-decoration: none;
+}
+
+a.badge svg {
   height: 20px;
   display: inline-block;
   margin: 0;
+}
+
+a.badge svg .background {
+  fill: var(--color);
+}
+
+a.badge svg .text {
+  fill: var(--background);
 }
 
 .npm {
