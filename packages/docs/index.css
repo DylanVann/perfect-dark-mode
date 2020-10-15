@@ -13,6 +13,7 @@
     --gray-700: rgba(255, 255, 255, 0.7);
     --gray-800: rgba(255, 255, 255, 0.8);
     --gray-900: rgba(255, 255, 255, 0.9);
+    --focus: rgba(144, 205, 244, 0.5);
   }
 }
 
@@ -31,6 +32,7 @@
     --gray-700: rgba(0, 0, 0, 0.7);
     --gray-800: rgba(0, 0, 0, 0.8);
     --gray-900: rgba(0, 0, 0, 0.9);
+    --focus: rgba(236, 201, 75, 0.5);
   }
 }
 
@@ -48,6 +50,7 @@
   --gray-700: rgba(0, 0, 0, 0.7);
   --gray-800: rgba(0, 0, 0, 0.8);
   --gray-900: rgba(0, 0, 0, 0.9);
+  --focus: rgba(236, 201, 75, 0.5);
 }
 
 :root.dark {
@@ -64,6 +67,7 @@
   --gray-700: rgba(255, 255, 255, 0.7);
   --gray-800: rgba(255, 255, 255, 0.8);
   --gray-900: rgba(255, 255, 255, 0.9);
+  --focus: rgba(144, 205, 244, 0.5);
 }
 
 :root {
@@ -75,7 +79,8 @@
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-.container, .prose {
+.container,
+.prose {
   max-width: 65ch;
   padding: 0.5rem;
   margin: 0 auto;
@@ -100,7 +105,6 @@ input {
 button {
   min-width: 120px;
   padding: 0.5rem 1rem;
-  border-radius: 2px;
   font-weight: bold;
   background: var(--color);
   color: var(--background);
@@ -109,6 +113,11 @@ button {
 a.badge {
   text-decoration: none;
   display: inline-block;
+}
+
+svg {
+  display: block;
+  float: left;
 }
 
 svg .background {

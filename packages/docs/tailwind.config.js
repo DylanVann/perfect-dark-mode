@@ -31,6 +31,9 @@ const defaultTheme = {
       900: 'var(--gray-900)',
     },
   },
+  boxShadow: {
+    outline: '0 0 0 3px var(--focus)',
+  },
   typography: {
     default: {
       css: {
@@ -1108,7 +1111,7 @@ const typographyTheme = {
   },
 }
 
-const theme = merge({}, typographyTheme, defaultTheme)
+const theme = merge(defaultTheme, typographyTheme)
 
 module.exports = {
   purge: ['index.pug', 'index.js'],
@@ -1119,6 +1122,5 @@ module.exports = {
     standardFontWeights: true,
   },
   theme,
-  variants: {},
   plugins: [require('@tailwindcss/typography')],
 }

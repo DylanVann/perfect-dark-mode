@@ -51,9 +51,11 @@ requestAnimationFrame(() =>
   ),
 )
 
-const button = document.getElementById('button')
+const resetButtons = document.querySelectorAll('.reset')
 
-button.addEventListener('click', () => mode.set(undefined))
+resetButtons.forEach((el) =>
+  el.addEventListener('click', () => mode.set(undefined)),
+)
 
 const { modeOS, modeSaved } = window.__perfect_dark_mode__
 

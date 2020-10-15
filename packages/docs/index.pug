@@ -13,25 +13,29 @@ html
         style
             include ./index.css
     body
+        - var outline = ['focus:outline-none focus:shadow-outline focus:border-yellow-300']
         div.container
             div.header.flex.items-center.mb-3.justify-between.flex-col(class="md:flex-row")
                 h1.mb-3.text-3xl(class="md:mb-0 md:text-4xl") <img class="emoji" src="moon.png"><img class="emoji" src="sun.png"> Perfect Dark Mode
-                button.toggle.flex.flex-col.items-center(style="visibility: hidden;")
+                button.rounded-sm.toggle.flex.flex-col.items-center(style="visibility: hidden;" class=outline)
                     span.label <img class="emoji" src="sun.png"> color mode
                     span.text-xs (Click Me)
 
             div.flex.space-x-2.justify-center(class="md:justify-start")
-                a.badge(href='https://www.npmjs.com/package/perfect-dark-mode' target="blank" rel="noopener")
+                a.badge.rounded-sm.overflow-hidden(href='https://www.npmjs.com/package/perfect-dark-mode' target="blank" rel="noopener" class=outline)
                     +badge("npm", version)
-                a.badge(href='https://bundlephobia.com/result?p=perfect-dark-mode' target="blank" rel="noopener")
+                a.badge.rounded-sm.overflow-hidden(href='https://bundlephobia.com/result?p=perfect-dark-mode' target="blank" rel="noopener" class=outline)
                     +badge("size", size)
-                a.badge(href="https://github.com/DylanVann/perfect-dark-mode" target="blank" rel="noopener")
+                a.badge.rounded-sm.overflow-hidden(href="https://github.com/DylanVann/perfect-dark-mode" target="blank" rel="noopener" class=outline)
                     +simpleBadge("GitHub")
 
         div.prose
             include:markdown-it features.md
 
-            p Created by <a href="https://twitter.com/atomarranger" target="blank" rel="noopener">@atomarranger</a>
+            p
+                | Created by
+                |
+                a.rounded-sm(href="https://twitter.com/atomarranger" target="blank" rel="noopener" class=outline) @atomarranger
 
             hr
 
@@ -45,10 +49,10 @@ html
             // For users with JS disabled there will not be a color mode toggle, they can change
             // their system color mode.
             p You can set the color mode, this will be saved.
-            button.toggle(style="visibility: hidden;")
+            button.rounded-sm.toggle(style="visibility: hidden;" class=outline)
                 span.label <img class="emoji" src="sun.png"> color mode
             p You can reset the color mode and fallback to system color mode.
-            button(id="button") Reset
+            button.rounded-sm.reset(class=outline) Reset
             p For debugging and understanding here is the saved color mode and the OS color mode.
             p The displayed color mode is <code>SavedColorMode || OSColorMode</code>.
             pre
