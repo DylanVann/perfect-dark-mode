@@ -80,6 +80,48 @@
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
+.title {
+  font-size: 24.6753px;
+  line-height: 43px;
+  padding: 0.05px 0;
+}
+
+.title::before {	
+  content: "";	
+  margin-top: -0.4533em;	
+  display: block;	
+  height: 0;	
+}
+
+.title::after {	
+  content: "";	
+  margin-bottom: -0.5233em;	
+  display: block;	
+  height: 0;	
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 36.3636px;
+    line-height: 52px;
+    padding: 0.05px 0;
+  }
+
+  .title::before {
+    content: '';
+    margin-top: -0.2964em;
+    display: block;
+    height: 0;
+  }
+
+  .title::after {
+    content: '';
+    margin-bottom: -0.3664em;
+    display: block;
+    height: 0;
+  }
+}
+
 h1,
 h2,
 h3,
