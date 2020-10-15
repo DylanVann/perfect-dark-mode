@@ -75,7 +75,8 @@
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-body {
+.container, .prose {
+  max-width: 65ch;
   padding: 0.5rem;
   margin: 0 auto;
 }
