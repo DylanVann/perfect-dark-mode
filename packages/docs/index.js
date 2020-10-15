@@ -21,8 +21,8 @@ mode.subscribe((v) => {
     (el) =>
       (el.querySelector('.label').innerHTML =
         v === 'dark'
-          ? '<img class="emoji" src="moon.png"> Dark'
-          : '<img class="emoji" src="sun.png"> Light'),
+          ? '<img class="emoji" src="moon.png" alt=""> Dark'
+          : '<img class="emoji" src="sun.png" alt=""> Light'),
   )
   changeFavicon(v === 'dark' ? 'moon.png' : 'sun.png')
 })
