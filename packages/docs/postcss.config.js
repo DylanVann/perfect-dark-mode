@@ -10,8 +10,9 @@ module.exports = {
   plugins: [
     postcssImport(),
     copy({
+      basePath: ['src', 'node_modules', '../../node_modules'],
       template: '[name].[ext][query]',
-      dest: 'static',
+      dest: 'dist',
     }),
     tailwindcss('./tailwind.config.js'),
     production &&

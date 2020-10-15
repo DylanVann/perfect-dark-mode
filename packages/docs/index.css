@@ -73,10 +73,18 @@
 :root {
   color: var(--color);
   background: var(--background);
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Libre Baskerville', serif;
+  letter-spacing: -0.05em;
 }
 
 ::selection {
@@ -86,8 +94,8 @@
 .container,
 .prose {
   max-width: 65ch;
-  padding: 0.5rem;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 hr {

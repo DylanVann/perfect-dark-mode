@@ -16,6 +16,8 @@
     "@tailwindcss/typography": "^0.2.0",
     "cpx": "^1.5.0",
     "cssnano": "^4.1.10",
+    "fontsource-libre-baskerville": "^3.0.9",
+    "fontsource-montserrat": "^3.0.9",
     "fs-extra": "^9.0.1",
     "gzip-size": "^5.1.1",
     "jstransformer-markdown-it": "^2.1.0",

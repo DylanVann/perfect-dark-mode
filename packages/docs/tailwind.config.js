@@ -15,6 +15,8 @@ const round = (num) =>
 const rem = (px) => `${round(px / 16)}rem`
 const em = (px, base) => `${round(px / base)}em`
 
+const fontTitle = ['Libre Baskerville', 'serif']
+
 const defaultTheme = {
   colors: {
     white: 'var(--white)',
@@ -42,7 +44,17 @@ const defaultTheme = {
           fontWeight: '900',
         },
         h1: {
+          fontFamily: fontTitle,
           fontWeight: '700',
+        },
+        h2: {
+          fontFamily: fontTitle,
+        },
+        h3: {
+          fontFamily: fontTitle,
+        },
+        h4: {
+          fontFamily: fontTitle,
         },
       },
     },
