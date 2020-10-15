@@ -13,11 +13,13 @@ html
         style
             include ./index.css
     body.prose
-        div.header
-            h1 🌚🌝 Perfect Dark Mode
-            button.toggle(style="visibility: hidden;") 🌝 color mode
+        div.header.flex.items-center.mb-3.justify-between.flex-col(class="md:flex-row")
+            h1(class="mb-3 md:mb-0") 🌚🌝 Perfect Dark Mode
+            button.toggle.flex.flex-col.items-center(style="visibility: hidden;")
+                span.label 🌝 color mode
+                span.text-xs (Click Me)
 
-        div.flex.space-x-2
+        div.flex.space-x-2.justify-center(class="md:justify-start")
             a.badge(href='https://www.npmjs.com/package/perfect-dark-mode' target="blank" rel="noopener")
                 +badge("npm", version)
             a.badge(href='https://bundlephobia.com/result?p=perfect-dark-mode' target="blank" rel="noopener")
@@ -41,7 +43,8 @@ html
         // For users with JS disabled there will not be a color mode toggle, they can change
         // their system color mode.
         p You can set the color mode, this will be saved.
-        button.toggle(style="visibility: hidden;") 🌝 color mode
+        button.toggle(style="visibility: hidden;")
+            span.label 🌝 color mode
         p You can reset the color mode and fallback to system color mode.
         button(id="button") Reset
         p For debugging and understanding here is the saved color mode and the OS color mode.

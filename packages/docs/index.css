@@ -80,10 +80,6 @@ body {
   margin: 0 auto;
 }
 
-label {
-  user-select: none;
-}
-
 hr {
   border-style: solid;
 }
@@ -135,13 +131,7 @@ svg .text-shadow {
   color: var(--background);
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.header h1 {
-  margin: 0;
+/* We'll set this ourselves with tailwind utilities. */
+.prose h1 {
+  margin: inherit !important;
 }

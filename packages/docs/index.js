@@ -18,7 +18,9 @@ const toggleElements = document.querySelectorAll('.toggle')
 // Listen to the color mode and update the UI.
 mode.subscribe((v) => {
   toggleElements.forEach(
-    (el) => (el.textContent = v === 'dark' ? '🌚 Dark' : '🌝 Light'),
+    (el) =>
+      (el.querySelector('.label').textContent =
+        v === 'dark' ? '🌚 Dark' : '🌝 Light'),
   )
   changeFavicon(v === 'dark' ? 'moon.png' : 'sun.png')
 })
