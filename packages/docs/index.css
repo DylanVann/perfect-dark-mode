@@ -114,12 +114,17 @@ a.badge {
   display: inline-block;
 }
 
-a.badge svg .background {
+svg .background {
   fill: var(--color);
 }
 
-a.badge svg .text {
+svg .text {
   fill: var(--background);
+}
+
+svg .text-shadow {
+  fill: var(--background);
+  opacity: 0.6;
 }
 
 .prose pre {
