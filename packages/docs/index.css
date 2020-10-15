@@ -74,6 +74,7 @@
   color: var(--color);
   background: var(--background);
   font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   font-size: 16px;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
@@ -84,6 +85,7 @@ h2,
 h3,
 h4 {
   font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
   letter-spacing: -0.05em;
 }
 
