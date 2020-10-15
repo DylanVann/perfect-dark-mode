@@ -135,3 +135,12 @@ svg .text-shadow {
 .prose h1 {
   margin: inherit !important;
 }
+
+.emoji {
+  display: inline;
+  height: 1em;
+  width: 1em;
+  margin: 0 !important;
+  margin-top: -0.2em !important;
+  vertical-align: middle;
+}

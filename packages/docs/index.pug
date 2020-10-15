@@ -14,9 +14,9 @@ html
             include ./index.css
     body.prose
         div.header.flex.items-center.mb-3.justify-between.flex-col(class="md:flex-row")
-            h1(class="mb-3 md:mb-0") 🌚🌝 Perfect Dark Mode
+            h1(class="mb-3 md:mb-0") <img class="emoji" src="moon.png"><img class="emoji" src="sun.png"> Perfect Dark Mode
             button.toggle.flex.flex-col.items-center(style="visibility: hidden;")
-                span.label 🌝 color mode
+                span.label <img class="emoji" src="sun.png"> color mode
                 span.text-xs (Click Me)
 
         div.flex.space-x-2.justify-center(class="md:justify-start")
@@ -44,7 +44,7 @@ html
         // their system color mode.
         p You can set the color mode, this will be saved.
         button.toggle(style="visibility: hidden;")
-            span.label 🌝 color mode
+            span.label <img class="emoji" src="sun.png"> color mode
         p You can reset the color mode and fallback to system color mode.
         button(id="button") Reset
         p For debugging and understanding here is the saved color mode and the OS color mode.

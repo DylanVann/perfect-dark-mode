@@ -19,8 +19,10 @@ const toggleElements = document.querySelectorAll('.toggle')
 mode.subscribe((v) => {
   toggleElements.forEach(
     (el) =>
-      (el.querySelector('.label').textContent =
-        v === 'dark' ? '🌚 Dark' : '🌝 Light'),
+      (el.querySelector('.label').innerHTML =
+        v === 'dark'
+          ? '<img class="emoji" src="moon.png"> Dark'
+          : '<img class="emoji" src="sun.png"> Light'),
   )
   changeFavicon(v === 'dark' ? 'moon.png' : 'sun.png')
 })
