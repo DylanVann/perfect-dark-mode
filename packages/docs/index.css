@@ -79,6 +79,10 @@
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
+::selection {
+  background: var(--focus);
+}
+
 .container,
 .prose {
   max-width: 65ch;
