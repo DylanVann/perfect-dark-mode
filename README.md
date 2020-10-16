@@ -12,6 +12,7 @@
 - Listens for changes to `prefers-color-scheme`.
 - Allows user to override and save their preference to `localStorage`.
 - Allows clearing the saved preference and falling back to `prefers-color-scheme`.
+- Supports any number of color modes, not just `light` and `dark`.
 - Built for the web.
 
 ## Usage
