@@ -84,7 +84,7 @@
   --black: rgba(0, 0, 0, 1);
   --white: rgba(255, 255, 255, 1);
   --code-color: black;
-  --code-background: rgb(242, 245, 255);
+  --code-background: #e1f2fc;
   --gray-100: rgba(0, 0, 0, 0.1);
   --gray-200: rgba(0, 0, 0, 0.2);
   --gray-300: rgba(0, 0, 0, 0.3);
