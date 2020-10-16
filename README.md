@@ -65,7 +65,7 @@ In the rest of your app use `--color` and `--background` as needed.
 - The first call of your listener is synchronous so you can get the value before rendering.
 
 ```js
-const { mode } = window.__perfect_dark_mode__
+const { mode } = window.__pdm__
 const unsubscribe = mode.subscribe((v) => console.log(v))
 ```
 
@@ -75,7 +75,7 @@ const unsubscribe = mode.subscribe((v) => console.log(v))
 - You can `update` the mode based on the current mode.
 
 ```js
-const { mode } = window.__perfect_dark_mode__
+const { mode } = window.__pdm__
 mode.set('light')
 mode.update((mode) => (mode === 'light' ? 'dark' : 'light'))
 ```

@@ -10,21 +10,24 @@ const changeFavicon = (src) => {
 }
 
 // Here's the important stuff.
-const { mode } = window.__perfect_dark_mode__
+const { mode, modes, modeSaved, modeOS } = window.__pdm__
 
 // Get some elements we will use.
-const toggleElements = document.querySelectorAll('.toggle')
+const toggleElements = document.querySelectorAll('.pdm-toggle')
+
+const modeToLabel = (m) => {
+  if (m === 'dark' || m === 'light' || m === 'blue') {
+    return `<img class="emoji" src="images/${m}.png" alt=""> ${m}`
+  }
+  return m
+}
 
 // Listen to the color mode and update the UI.
-mode.subscribe((v) => {
+mode.subscribe((m) => {
   toggleElements.forEach(
-    (el) =>
-      (el.querySelector('.label').innerHTML =
-        v === 'dark'
-          ? '<img class="emoji" src="moon.png" alt=""> Dark'
-          : '<img class="emoji" src="sun.png" alt=""> Light'),
+    (el) => (el.querySelector('.label').innerHTML = modeToLabel(m)),
   )
-  changeFavicon(v === 'dark' ? 'moon.png' : 'sun.png')
+  changeFavicon(`images/${m}.png`)
 })
 
 // At this point our callback will have been called,
@@ -51,13 +54,11 @@ requestAnimationFrame(() =>
   ),
 )
 
-const resetButtons = document.querySelectorAll('.reset')
+const resetButtons = document.querySelectorAll('.pdm-reset')
 
 resetButtons.forEach((el) =>
   el.addEventListener('click', () => mode.set(undefined)),
 )
-
-const { modeOS, modeSaved } = window.__perfect_dark_mode__
 
 modeSaved.subscribe(
   (v) =>
@@ -70,3 +71,25 @@ modeOS.subscribe(
   (v) =>
     (document.getElementById('mode-os').textContent = `OS Color Mode: ${v}`),
 )
+
+// We can use a select element for choosing a color mode
+// instead of a toggle button.
+const selectEls = document.querySelectorAll('.pdm-select')
+
+// Update the select options with the modes.
+modes.subscribe((modes) => {
+  selectEls.forEach((el) => {
+    // Preserve the current selection by saving then re-assigning.
+    const prevValue = el.value
+    el.innerHTML = modes
+      .map((m) => `<option value="${m}">${m}</option>`)
+      .join('\n')
+    el.value = prevValue
+  })
+})
+
+selectEls.forEach((el) =>
+  el.addEventListener('change', (e) => mode.set(e.target.value)),
+)
+
+mode.subscribe((m) => selectEls.forEach((el) => (el.value = m)))

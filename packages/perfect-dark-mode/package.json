@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "build": "run-p build:ts build:js",
-    "build:js": "esbuild src/index.ts --platform=browser --outdir=dist --format=esm --minify --sourcemap",
+    "build:js": "esbuild --bundle src/index.ts --platform=browser --outdir=dist --format=iife --minify --sourcemap",
     "build:ts": "tsc"
   },
   "prettier": {
@@ -38,7 +38,7 @@
     "typescript": "^4.0.3"
   },
   "optionalDependencies": {
-    "esbuild": "^0.7.14",
-    "esbuild-linux-64": "^0.7.14"
+    "esbuild": "^0.7.15",
+    "esbuild-linux-64": "^0.7.15"
   }
 }
