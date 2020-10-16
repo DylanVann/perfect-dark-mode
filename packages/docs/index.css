@@ -72,7 +72,7 @@
 
 :root.blue {
   --color: #2a4365;
-  --background: #EBF8FF;
+  --background: #ebf8ff;
 }
 
 :root {
@@ -164,7 +164,8 @@ input {
   display: none;
 }
 
-button, select {
+button,
+select {
   text-transform: capitalize;
   min-width: 120px;
   padding: 0.5rem 1rem;
@@ -210,10 +211,23 @@ svg .text-shadow {
 }
 
 .emoji {
-  display: inline;
+  display: inline-block;
+  background-size: contain;
   height: 1em;
   width: 1em;
   margin: 0 !important;
   margin-top: -0.25em !important;
   vertical-align: middle;
+}
+
+.emoji.light {
+  background-image: url('images/light.png');
+}
+
+.emoji.dark {
+  background-image: url('images/dark.png');
+}
+
+.emoji.blue {
+  background-image: url('images/blue.png');
 }

@@ -17,7 +17,7 @@ const toggleElements = document.querySelectorAll('.pdm-toggle')
 
 const modeToLabel = (m) => {
   if (m === 'dark' || m === 'light' || m === 'blue') {
-    return `<img class="emoji" src="images/${m}.png" alt=""> ${m}`
+    return `<i class="emoji ${m}"></i> ${m}`
   }
   return m
 }
