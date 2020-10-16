@@ -93,3 +93,16 @@ selectEls.forEach((el) =>
 )
 
 mode.subscribe((m) => selectEls.forEach((el) => (el.value = m)))
+
+const colorModeLinks = document.querySelectorAll('.codestyle')
+
+mode.subscribe((m) => {
+  colorModeLinks.forEach((link) => {
+    if (!link.className.includes(m)) {
+      link.disabled = true
+    } else {
+      link.disabled = false
+      link.media = 'screen'
+    }
+  })
+})

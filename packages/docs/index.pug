@@ -13,6 +13,10 @@ html(data-pdm="light dark blue" lang="en")
         link(rel="preload" as="font" href="libre-baskerville-latin-700-normal.woff2" type="font/woff2" crossorigin="anonymous")
         link(rel="preload" as="font" href="montserrat-latin-400-normal.woff2" type="font/woff2" crossorigin="anonymous")
         link(rel="preload" as="font" href="montserrat-latin-700-normal.woff2" type="font/woff2" crossorigin="anonymous")
+
+        link(class="codestyle light" rel="stylesheet" href="/syntax/prism-base16-ateliersulphurpool.light.css" media="(prefers-color-scheme: light)")
+        link(class="codestyle dark" rel="stylesheet" href="/syntax/prism-nord.css" media="(prefers-color-scheme: dark)")
+
         style
             include ./index.css
     body
@@ -33,7 +37,7 @@ html(data-pdm="light dark blue" lang="en")
                     +simpleBadge("GitHub")
 
         div.prose.px-3
-            include:markdown-it features.md
+            include:markdown features.md
 
             p
                 | Created by
@@ -63,7 +67,7 @@ html(data-pdm="light dark blue" lang="en")
             pre
                 code#mode-os OS Color Mode:
 
-            :markdown-it
+            :markdown
                 ## More Color Modes
 
                 Perfect Dark Mode allows for more than just `light` and `dark` color modes.
@@ -76,7 +80,7 @@ html(data-pdm="light dark blue" lang="en")
                 option(value="light") light
                 option(value="dark") dark
 
-            include:markdown-it usage.md
+            include:markdown usage.md
 
             p
                 | Follow me on twitter for more things like this

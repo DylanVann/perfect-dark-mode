@@ -4,11 +4,13 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "run-s build:copy-lib build:data build:html build:tailwind",
-    "build:copy-lib": "cpx \"../../node_modules/perfect-dark-mode/dist/**/*\" dist/perfect-dark-mode/dist",
+    "build": "run-s build:copy:* build:data build:html build:tailwind",
+    "build:copy:lib": "cpx '../../node_modules/perfect-dark-mode/dist/**/*' dist/perfect-dark-mode/dist",
+    "build:copy:style-light": "cpx ../../node_modules/prism-themes/themes/prism-base16-ateliersulphurpool.light.css dist/syntax",
+    "build:copy:style-dark": "cpx ../../node_modules/prism-themes/themes/prism-nord.css dist/syntax",
     "build:tailwind": "NODE_ENV=production postcss tailwind.css -o dist/tailwind.css",
     "build:data": "node data.js",
-    "build:html": "pug index.pug --pretty --out dist --obj data.json",
+    "build:html": "pug index.pug --pretty --out dist -O obj.js",
     "serve": "serve dist"
   },
   "devDependencies": {
@@ -27,6 +29,8 @@
     "postcss-cli": "^8.1.0",
     "postcss-copy": "^7.1.0",
     "postcss-import": "^12.0.1",
+    "prism-themes": "^1.4.1",
+    "prismjs": "^1.22.0",
     "pug": "^3.0.0",
     "pug-cli": "^1.0.0-alpha6",
     "serve": "^11.3.2",

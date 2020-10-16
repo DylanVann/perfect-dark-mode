@@ -145,8 +145,8 @@ const typographyTheme = {
           'code::before': false,
           'code::after': false,
           pre: {
-            color: defaultTheme.colors.gray[300],
-            backgroundColor: defaultTheme.colors.gray[800],
+            color: false,
+            backgroundColor: false,
             overflowX: 'auto',
           },
           'pre code': {
