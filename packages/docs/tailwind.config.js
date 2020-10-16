@@ -142,12 +142,8 @@ const typographyTheme = {
             color: defaultTheme.colors.gray[900],
             fontWeight: '600',
           },
-          'code::before': {
-            content: '"`"',
-          },
-          'code::after': {
-            content: '"`"',
-          },
+          'code::before': false,
+          'code::after': false,
           pre: {
             color: defaultTheme.colors.gray[300],
             backgroundColor: defaultTheme.colors.gray[800],
