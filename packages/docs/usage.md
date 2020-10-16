@@ -1,20 +1,3 @@
-# 🌚🌝 Perfect Dark Mode
-
-[![Version][version-badge]][package]
-[![Size][size-badge]][size]
-
-- No flicker.
-- Framework agnostic, supports **React** | **Vue** | **Svelte** | etc.
-- Supports SSR.
-- Supports no-js.
-- Tiny, less than 1kb.
-- Supports `prefers-color-scheme`.
-- Listens for changes to `prefers-color-scheme`.
-- Allows user to override and save their preference to `localStorage`.
-- Allows clearing the saved preference and falling back to `prefers-color-scheme`.
-- Supports any number of color modes, not just `light` and `dark`.
-- Built for the web.
-
 ## Installation
 
 **Yarn:**
@@ -131,8 +114,3 @@ mode.update((mode) => (mode === 'light' ? 'dark' : 'light'))
       be updated by the user in their system settings.
     - We do listen for changes to the OS color mode.
     - `subscribe(listener: (mode: ColorMode) => void): () => void`
-
-[package]: https://www.npmjs.com/package/perfect-dark-mode
-[version-badge]: https://img.shields.io/npm/v/perfect-dark-mode.svg
-[size]: https://bundlephobia.com/result?p=perfect-dark-mode
-[size-badge]: https://img.shields.io/bundlephobia/minzip/perfect-dark-mode?label=size
