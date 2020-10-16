@@ -1285,12 +1285,12 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-linux-64@^0.7.14, esbuild-linux-64@^0.7.15:
+esbuild-linux-64@^0.7.15:
   version "0.7.15"
   resolved "https://registry.yarnpkg.com/esbuild-linux-64/-/esbuild-linux-64-0.7.15.tgz#7a1a0d959d432f6ab94a62bb36c5c8c49c77bc05"
   integrity sha512-eksVv0DPf+s9/OJLRPBqiOnUZCIHHlY0jQ1nrKipbrKb0QhyopP8RXRHKi7MhDjMtYUXxCGrretu01B2ygjF1g==
 
-esbuild@^0.7.14, esbuild@^0.7.15:
+esbuild@^0.7.15:
   version "0.7.15"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.7.15.tgz#b50fe68fa12f41f42afab1c49a2b4524de5b6431"
   integrity sha512-tgvd7miwyQVAzlDIcrs9vwoVEL33NmDRggTwKSkcdTj25BOfSWoIUuFXG4vvHRQTkJDk2uHJSi7bhBdPmMzodA==
@@ -2853,14 +2853,6 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-perfect-dark-mode@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/perfect-dark-mode/-/perfect-dark-mode-0.0.5.tgz#18b90ec1618335a970044ee0de9368c1d4c0e460"
-  integrity sha512-Zv8Xo5c9Sh18/4mSTC8a/tq+2zAuOdVzNio6AX0EI/w/t5vBM0hW/IhFKbNNdxm8q7afnJ7c5oz3UaTF3tZl6A==
-  optionalDependencies:
-    esbuild "^0.7.14"
-    esbuild-linux-64 "^0.7.14"
-
 picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
@@ -4175,10 +4167,10 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-tailwindcss@^1.9.2:
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.9.2.tgz#6a6b423d0a2ff4376ca1a007ef70eae852788562"
-  integrity sha512-D3uKSZZkh4GaKiZWmPEfNrqEmEuYdwaqXOQ7trYSQQFI5laSD9+b2FUUj5g39nk5R1omKp5tBW9wZsfJq+KIVA==
+tailwindcss@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.9.3.tgz#1f6c66026f0562ffcd7951e2d209c0ae4ffceae3"
+  integrity sha512-y640+ZQFeuKE9URSTd/rb1jb3LNWz2EpiOCQCV2Wm8fJ/zbKmuLUaQrztxNhF5JfFIJj/qUbQGMUpN8QI0A9kQ==
   dependencies:
     "@fullhuman/postcss-purgecss" "^2.1.2"
     autoprefixer "^9.4.5"
