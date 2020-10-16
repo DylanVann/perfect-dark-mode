@@ -132,6 +132,21 @@ mode.update((mode) => (mode === 'light' ? 'dark' : 'light'))
     - We do listen for changes to the OS color mode.
     - `subscribe(listener: (mode: ColorMode) => void): () => void`
 
+## Pure Usage
+
+If for some reason you don't want PDM to automatically initialize itself and add itself on `window.__pdm__` you can use the pure version:
+
+```js
+import { createPerfectDarkMode } from 'perfect-dark-mode'
+
+const pdm = createPerfectDarkMode()
+```
+
+This version comes in a couple module formats:
+
+- `dist/pure.esm.js`
+- `dist/pure.cjs.js`
+
 [package]: https://www.npmjs.com/package/perfect-dark-mode
 [version-badge]: https://img.shields.io/npm/v/perfect-dark-mode.svg
 [size]: https://bundlephobia.com/result?p=perfect-dark-mode

@@ -2,7 +2,7 @@ const execa = require('execa')
 
 const outputs = [
   { entry: 'src/index.ts', formats: ['iife'] },
-  { entry: 'src/pure.ts', formats: ['cjs', 'esm', 'iife'] },
+  { entry: 'src/pure.ts', formats: ['cjs', 'esm'] },
 ]
 
 const run = async () => {
