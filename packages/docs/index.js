@@ -115,17 +115,29 @@ mode.subscribe((m) => {
 
 // Get a floating button element.
 const floatingButtonEl = document.querySelector('.floating-button')
+const topBarEl = document.querySelector('.top-bar')
+let showingFloatingButton = false
 
 // Show this floating button when the user scrolls down.
 window.addEventListener(
   'scroll',
   () => {
     if (window.scrollY > 200) {
-      floatingButtonEl.classList.remove('opacity-0')
-      floatingButtonEl.classList.add('opacity-100')
+      if (!showingFloatingButton) {
+        floatingButtonEl.classList.remove('opacity-0')
+        floatingButtonEl.classList.add('opacity-100')
+        topBarEl.classList.remove('pointer-events-none')
+        topBarEl.classList.add('pointer-events-auto')
+        showingFloatingButton = true
+      }
     } else {
-      floatingButtonEl.classList.add('opacity-0')
-      floatingButtonEl.classList.remove('opacity-100')
+      if (showingFloatingButton) {
+        floatingButtonEl.classList.add('opacity-0')
+        floatingButtonEl.classList.remove('opacity-100')
+        topBarEl.classList.add('pointer-events-none')
+        topBarEl.classList.remove('pointer-events-auto')
+        showingFloatingButton = false
+      }
     }
   },
   { passive: true },
