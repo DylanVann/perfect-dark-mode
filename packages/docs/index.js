@@ -13,32 +13,39 @@ const changeFavicon = (src) => {
 const { mode, modes, modeSaved, modeOS } = window.__pdm__
 
 // Get some elements we will use.
-const toggleElements = document.querySelectorAll('.pdm-toggle')
-
-const modeToLabel = (m) => {
-  if (m === 'dark' || m === 'light' || m === 'blue') {
-    return `<i class="emoji ${m}"></i> ${m}`
-  }
-  return m
-}
+const toggleEls = document.querySelectorAll('.pdm-toggle')
+const cycleEls = document.querySelectorAll('.pdm-cycle')
+const emojiEls = document.querySelectorAll('.pdm-emoji')
+const labelEls = document.querySelectorAll('.pdm-label')
+const resetButtonEls = document.querySelectorAll('.pdm-reset')
+const modeSavedEls = document.querySelectorAll('.pdm-mode-saved')
+const modeOSEls = document.querySelectorAll('.pdm-mode-os')
 
 // Listen to the color mode and update the UI.
 mode.subscribe((m) => {
-  toggleElements.forEach(
-    (el) => (el.querySelector('.label').innerHTML = modeToLabel(m)),
-  )
+  emojiEls.forEach((el) => (el.className = `pdm-emoji emoji ${m}`))
+  labelEls.forEach((el) => (el.textContent = m))
   changeFavicon(`images/${m}.png`)
 })
 
 // At this point our callback will have been called,
-// so the checkbox state and text will be correct and we can show them.
-toggleElements.forEach((el) => (el.style.visibility = 'unset'))
+// so the text of these will be correct and we can show them.
+toggleEls.forEach((el) => (el.style.visibility = 'unset'))
+cycleEls.forEach((el) => (el.style.visibility = 'unset'))
 
-// When the checkbox is clicked we update the mode.
-// Our listener above will do the rest.
-toggleElements.forEach((el) => {
+// These elements will toggle between light and dark modes.
+toggleEls.forEach((el) => {
   el.addEventListener('click', (e) =>
     mode.update((v) => (v === 'light' ? 'dark' : 'light')),
+  )
+})
+
+// These elements will cycle through all modes.
+cycleEls.forEach((el) => {
+  el.addEventListener('click', (e) =>
+    mode.update(
+      (mode, modes, modeIndex) => modes[(modeIndex + 1) % modes.length],
+    ),
   )
 })
 
@@ -54,22 +61,21 @@ requestAnimationFrame(() =>
   ),
 )
 
-const resetButtons = document.querySelectorAll('.pdm-reset')
-
-resetButtons.forEach((el) =>
+// These elements will clear the saved color mode,
+// which will cause the color mode to fallback to
+// the OS color mode.
+resetButtonEls.forEach((el) =>
   el.addEventListener('click', () => mode.set(undefined)),
 )
 
-modeSaved.subscribe(
-  (v) =>
-    (document.getElementById(
-      'mode-saved',
-    ).textContent = `Saved Color Mode: ${v}`),
+// Show the saved mode for debugging.
+modeSaved.subscribe((v) =>
+  modeSavedEls.forEach((el) => (el.textContent = `Saved Color Mode: ${v}`)),
 )
 
-modeOS.subscribe(
-  (v) =>
-    (document.getElementById('mode-os').textContent = `OS Color Mode: ${v}`),
+// Show the OS mode for debugging.
+modeOS.subscribe((v) =>
+  modeOSEls.forEach((el) => (el.textContent = `OS Color Mode: ${v}`)),
 )
 
 // We can use a select element for choosing a color mode
@@ -107,31 +113,20 @@ mode.subscribe((m) => {
   })
 })
 
-const subscribeButtons = document.querySelectorAll('.subscribe')
+// Get a floating button element.
+const floatingButtonEl = document.querySelector('.floating-button')
 
-subscribeButtons.forEach((el) => {
-  el.addEventListener('submit', (e) => {
-    e.preventDefault()
-    const formId = 1747454
-    const name = e.target.elements.name.value
-    const email = e.target.elements.email.value
-    document
-      .querySelectorAll('.subscribed')
-      .forEach((el) => el.classList.remove('hidden'))
-    document
-      .querySelectorAll('.subscribe .content')
-      .forEach((el) => el.classList.add('invisible'))
-    fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        api_key: '2jnVrugk1S7PzsMPVIhMVg',
-        first_name: name,
-        email,
-        email_address: email,
-      }),
-    })
-  })
-})
+// Show this floating button when the user scrolls down.
+window.addEventListener(
+  'scroll',
+  () => {
+    if (window.scrollY > 200) {
+      floatingButtonEl.classList.remove('opacity-0')
+      floatingButtonEl.classList.add('opacity-100')
+    } else {
+      floatingButtonEl.classList.add('opacity-0')
+      floatingButtonEl.classList.remove('opacity-100')
+    }
+  },
+  { passive: true },
+)

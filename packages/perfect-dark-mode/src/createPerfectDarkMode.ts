@@ -56,6 +56,19 @@ export interface PerfectDarkMode {
   modes: Writable<ColorMode[]>
 }
 
+type ColorModeReadable = Readable<ColorMode | undefined>
+type ColorModeWritable = Writable<ColorMode | undefined>
+type ColorModesWritable = Writable<ColorMode[]>
+interface ColorModeWritableWithEnhancedUpdater extends ColorModeWritable {
+  update: (
+    updater: (
+      value: ColorMode | undefined,
+      modes: ColorMode[],
+      modeIndex: number | undefined,
+    ) => ColorMode,
+  ) => void
+}
+
 export const createPerfectDarkMode = ({
   modes = ['light', 'dark'],
 }: PerfectDarkModeOptions = {}): PerfectDarkMode => {
@@ -63,7 +76,7 @@ export const createPerfectDarkMode = ({
   const localStorage = window.localStorage
 
   let currentModes = modes
-  const modesWritable: Writable<string[]> = ((): Writable<string[]> => {
+  const modesWritable: ColorModesWritable = ((): ColorModesWritable => {
     const modesListeners = new Set<Function>()
     const set = (v: string[]) => {
       currentModes = v
@@ -82,8 +95,7 @@ export const createPerfectDarkMode = ({
     }
   })()
 
-  type ColorModeOS = Readable<ColorMode | undefined>
-  const modeOS: ColorModeOS = ((): ColorModeOS => {
+  const modeOS: ColorModeReadable = ((): ColorModeReadable => {
     const matchesToMode = (matches: boolean): ColorMode =>
       matches ? 'dark' : 'light'
     const listeners = new Set<Function>()
@@ -107,8 +119,7 @@ export const createPerfectDarkMode = ({
     }
   })()
 
-  type ColorModeSaved = Writable<ColorMode | undefined>
-  const modeSaved: ColorModeSaved = ((): ColorModeSaved => {
+  const modeSaved: ColorModeWritable = ((): ColorModeWritable => {
     const parseColorMode = (mode: string | null): ColorMode | undefined =>
       mode
         ? currentModes.includes(mode)
@@ -142,7 +153,7 @@ export const createPerfectDarkMode = ({
     }
   })()
 
-  const mode: ColorModeSaved = ((): ColorModeSaved => {
+  const mode: ColorModeWritableWithEnhancedUpdater = ((): ColorModeWritableWithEnhancedUpdater => {
     let cmSaved: ColorMode | undefined
     let cmOS: ColorMode | undefined
     const getMerged = () => cmSaved || cmOS
@@ -163,7 +174,9 @@ export const createPerfectDarkMode = ({
       },
       set: modeSaved.set,
       update(updater) {
-        modeSaved.set(updater(getMerged()))
+        const mode = getMerged()
+        const index = mode ? currentModes.indexOf(mode) : undefined
+        modeSaved.set(updater(mode, currentModes, index))
       },
     }
   })()

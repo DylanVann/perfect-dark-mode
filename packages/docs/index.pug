@@ -3,7 +3,7 @@ include ./simpleBadge
 doctype html
 html(data-pdm="light dark blue" lang="en")
     head
-        meta(name="viewport" content="width=device-width,initial-scale=1")
+        meta(name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover")
         meta(charset="utf-8")
         meta(name="description" content="Perfect dark mode, no flicker, framework agnostic.")
         title Perfect Dark Mode
@@ -21,11 +21,16 @@ html(data-pdm="light dark blue" lang="en")
             include ./index.css
     body
         - var outline = ['focus:outline-none focus:shadow-outline focus:border-yellow-300']
+        div.container.fixed.top-0.right-0.left-0.flex.flew-row.px-3.mt-3(class="md:mt-6")
+            button.rounded-sm.pdm-cycle.ml-auto.floating-button.opacity-0.transition-opacity.duration-300.ease-in-out(style="visibility: hidden;" class=outline)
+                i.emoji.light.pdm-emoji
         div.container.px-3.mb-3
             div.header.flex.items-center.justify-between.flex-col.my-3(class="md:flex-row md:my-6")
                 h1.mb-3.title(class="md:mb-0") <i class="emoji dark"></i><i class="emoji light"></i> Perfect Dark Mode
-                button.rounded-sm.pdm-toggle.flex.flex-col.items-center(style="visibility: hidden;" class=outline)
-                    span.label <i class="emoji light"></i> color mode
+                button.min-w-1.rounded-sm.pdm-toggle.flex.flex-col.items-center(style="visibility: hidden;" class=outline)
+                    div
+                        i.emoji.light.pdm-emoji
+                        span.ml-1.pdm-label color mode
                     span.text-xs (Click Me)
 
             div.flex.space-x-2.justify-center(class="md:justify-start")
@@ -56,16 +61,17 @@ html(data-pdm="light dark blue" lang="en")
             // For users with JS disabled there will not be a color mode toggle, they can change
             // their system color mode.
             p You can set the color mode, this will be saved.
-            button.rounded-sm.pdm-toggle(style="visibility: hidden;" class=outline)
-                span.label <i class="emoji light"></i> color mode
+            button.min-w-1.rounded-sm.pdm-toggle(style="visibility: hidden;" class=outline)
+                i.emoji.light.pdm-emoji
+                span.ml-1.pdm-label color mode
             p You can reset the color mode and fallback to system color mode.
-            button.rounded-sm.pdm-reset(class=outline) Reset
+            button.min-w-1.rounded-sm.pdm-reset(class=outline) Reset
             p For debugging and understanding here is the saved color mode and the OS color mode.
             p The displayed color mode is <code>SavedColorMode || OSColorMode</code>.
             pre
-                code#mode-saved Saved Color Mode:
+                code.pdm-mode-saved Saved Color Mode:
             pre
-                code#mode-os OS Color Mode:
+                code.pdm-mode-os OS Color Mode:
 
             :markdown
                 ## More Color Modes
@@ -76,7 +82,7 @@ html(data-pdm="light dark blue" lang="en")
                 These become available on `.modes`.
                 `.modes` is a `Writable` like `.mode`, so it can also be `set` or `update`ed.
 
-            select.pdm-select(name="color mode", class=outline)
+            select.pdm-select.form-select.bg-color.text-background(name="color mode", class=outline + ' border-0 focus:border-0')
                 option(value="light") light
                 option(value="dark") dark
 
@@ -100,8 +106,10 @@ html(data-pdm="light dark blue" lang="en")
                     div
                         label(for='email' class=label) Email
                         input(required='' name='email' type='email' placeholder="Email" class=input)
-                    button.rounded-sm.overflow-hidden(type='submit' class=outline) Subscribe
+                    button.min-w-1.rounded-sm.overflow-hidden(type='submit' class=outline) Subscribe
                     a(href='https://twitter.com/atomarranger' target="blank" rel="noopener" class=outline) Or follow me on Twitter for more stuff like this.
 
             script
                 include ./index.js
+            script
+                include ./form.js

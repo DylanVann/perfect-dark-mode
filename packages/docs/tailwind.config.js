@@ -19,6 +19,8 @@ const fontTitle = ['Libre Baskerville', 'serif']
 
 const defaultTheme = {
   colors: {
+    color: 'var(--color)',
+    background: 'var(--background)',
     white: 'var(--white)',
     black: 'var(--black)',
     gray: {
@@ -1130,5 +1132,11 @@ module.exports = {
     standardFontWeights: true,
   },
   theme,
-  plugins: [require('@tailwindcss/typography')],
+  variants: {
+    borderWidth: ['focus'],
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/custom-forms'),
+  ],
 }
