@@ -115,7 +115,9 @@ mode.update((mode) => (mode === 'light' ? 'dark' : 'light'))
     - Can be set or updated.
     - `subscribe(listener: (mode: ColorMode) => void): () => void`
     - `set(mode: ColorMode): void`
-    - `update(updater: (mode: ColorMode) => ColorMode): void`
+    - `update(updater: (mode: ColorMode, modes: ColorMode[], index: number | undefined) => ColorMode): void`
+      - The update function gives you the current modes and the current mode index so you can cycle
+        through by returning `modes[(modeIndex + 1) % modes.length]`.
   - `modes: Writable<ColorMode[]>`
     - Valid color modes, can be used to render a list.
     - Can be set or updated.
