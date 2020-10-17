@@ -1299,15 +1299,15 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-linux-64@^0.7.15:
-  version "0.7.15"
-  resolved "https://registry.yarnpkg.com/esbuild-linux-64/-/esbuild-linux-64-0.7.15.tgz#7a1a0d959d432f6ab94a62bb36c5c8c49c77bc05"
-  integrity sha512-eksVv0DPf+s9/OJLRPBqiOnUZCIHHlY0jQ1nrKipbrKb0QhyopP8RXRHKi7MhDjMtYUXxCGrretu01B2ygjF1g==
+esbuild-linux-64@^0.7.16:
+  version "0.7.16"
+  resolved "https://registry.yarnpkg.com/esbuild-linux-64/-/esbuild-linux-64-0.7.16.tgz#5d1766da346a0b4e27aabaf9355aa3d720e7dfbd"
+  integrity sha512-8/HIOMmjPqsajFD9rtjAv7QwNjvmVIFbNeVETSMIacj6Ry58lNzPO1GQZhax0lfl45KQVeO2jRbTQrcbXHreBg==
 
-esbuild@^0.7.15:
-  version "0.7.15"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.7.15.tgz#b50fe68fa12f41f42afab1c49a2b4524de5b6431"
-  integrity sha512-tgvd7miwyQVAzlDIcrs9vwoVEL33NmDRggTwKSkcdTj25BOfSWoIUuFXG4vvHRQTkJDk2uHJSi7bhBdPmMzodA==
+esbuild@^0.7.16:
+  version "0.7.16"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.7.16.tgz#688fe048b98eca5121bc1a8686cba99ea1f9b5ab"
+  integrity sha512-qPQ3OE2BCCioUSep3Bnm1BA9EEkamGJwIowyjKmntCKSHIFuNoyfP+cV4HA5zJnQJAjhdM/JOuAnKq8PxlW1Dg==
 
 escalade@^3.0.2, escalade@^3.1.0:
   version "3.1.1"
