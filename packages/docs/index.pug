@@ -36,7 +36,7 @@ html(data-pdm="light dark blue" lang="en")
                 a.badge.rounded-sm.overflow-hidden(href="https://github.com/DylanVann/perfect-dark-mode" target="blank" rel="noopener" class=outline)
                     +simpleBadge("GitHub")
 
-        div.prose.px-3
+        div.prose.px-3.pb-10
             include:markdown features.md
 
             p
@@ -82,10 +82,26 @@ html(data-pdm="light dark blue" lang="en")
 
             include:markdown usage.md
 
-            p
-                | Follow me on twitter for more things like this
-                |
-                a.rounded-sm(href="https://twitter.com/atomarranger" target="blank" rel="noopener" class=outline) @atomarranger
+            hr
+
+            - var label = 'block text-gray-700 text-sm font-bold mb-2'
+            - var input = 'shadow appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white'
+
+            p.mb-4
+                strong Join my Newsletter
+                br
+                | I'll send you an email when I have something interesting to show.
+            form.subscribe.relative
+                div.subscribed.absolute.top-0.bottom-0.left-0.right-0.flex.items-center.justify-center.bg-white.hidden Subscribed!
+                div.content.flex.flex-col.space-y-4
+                    div
+                        label(for='name' class=label) Name
+                        input(type='text' name='name' placeholder="Name" class=input)
+                    div
+                        label(for='email' class=label) Email
+                        input(required='' name='email' type='email' placeholder="Email" class=input)
+                    button.rounded-sm.overflow-hidden(type='submit') Subscribe
+                    a(href='https://twitter.com/atomarranger' target="blank" rel="noopener" class=outline) Or follow me on Twitter for more stuff like this.
 
             script
                 include ./index.js
