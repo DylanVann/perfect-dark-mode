@@ -1,6 +1,6 @@
 ## Installation
 
-**Yarn:**
+### Yarn
 
 ```bash
 yarn add perfect-dark-mode
@@ -10,7 +10,7 @@ Then you must somehow add `node_modules/perfect-dark-mode/dist/index.js` as a sc
 
 How you do this will depend on the framework you are using.
 
-**UNPKG:**
+### UNPKG
 
 You can add directly this directly to the `<head>` of your page:
 
@@ -69,7 +69,7 @@ Here is a simple implementation of dark and light modes:
 
 In the rest of your app use `--color` and `--background` as needed.
 
-**Listening:**
+## Listening
 
 - You can `subscribe` to the mode, this can be used for rendering a toggle component.
 - The first call of your listener is synchronous so you can get the value before rendering.
@@ -79,7 +79,7 @@ const { mode } = window.__pdm__
 const unsubscribe = mode.subscribe((v) => console.log(v))
 ```
 
-**Setting:**
+## Setting
 
 - You can `set` the mode.
 - You can `update` the mode based on the current mode.

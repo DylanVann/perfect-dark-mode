@@ -245,3 +245,21 @@ svg .text-shadow {
 .emoji.blue {
   background-image: url('images/blue.png');
 }
+
+.markdownIt-Anchor {
+  position: relative;
+  text-decoration: none !important;
+}
+
+.markdownIt-Anchor::before {
+  position: absolute;
+  display: table-cell;
+  vertical-align: middle;
+  left: -1em;
+  content: '#';
+  visibility: hidden;
+}
+
+.markdownIt-Anchor:hover::before {
+  visibility: visible;
+}

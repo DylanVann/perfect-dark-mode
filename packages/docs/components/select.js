@@ -1,7 +1,3 @@
-//----------------------------------------------------------
-// Select
-//----------------------------------------------------------
-
 var { mode, modes } = window.__pdm__
 
 // We can use a select element for choosing a color mode

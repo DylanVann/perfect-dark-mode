@@ -1,7 +1,3 @@
-//----------------------------------------------------------
-// Form
-//----------------------------------------------------------
-
 // Get the elements.
 var subscribeButtons = document.querySelectorAll('.subscribe')
 

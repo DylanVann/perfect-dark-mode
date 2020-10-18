@@ -51,23 +51,30 @@ html(data-pdm="light dark blue" lang="en")
 
             hr
 
-            h2 Examples
+            :markdown
+                ## Examples
 
-            h3 Label
+                ### Label
+
+                Display a label showing the mode.
 
             span.pdm-label(style="visibility: hidden;") Light
 
             include:code(lang="js") ./components/label.js
 
-            h3 Emoji
+            :markdown
+                ### Emoji
+
+                Display an emoji showing the mode.
 
             i.emoji.light.pdm-emoji(style="visibility: hidden;")
 
             include:code(lang="js") ./components/emoji.js
 
-            h3 Toggle
+            :markdown
+                ### Toggle
 
-            p You can toggle the color mode.
+                You can toggle the color mode.
 
             button.min-w-1.rounded-sm.pdm-toggle(class=outline)
                 i.emoji.light.pdm-emoji(style="visibility: hidden;")
@@ -75,11 +82,11 @@ html(data-pdm="light dark blue" lang="en")
 
             include:code(lang="js") ./components/toggle-button.js
 
-            h3 Select
-
-            p You can use a select for the color mode.
-
             :markdown
+                ### Select
+
+                You can use a select for the color mode.
+
                 Perfect Dark Mode allows for more than just `light` and `dark` color modes.
 
                 On initialization PDM will read a list of modes from the `<html>` element's `data-pdm` attribute.
@@ -90,19 +97,32 @@ html(data-pdm="light dark blue" lang="en")
 
             include:code(lang="js") ./components/select.js
 
-            h3 Reset
+            :markdown
+                ### Cycle
 
-            p You can reset the color mode and fallback to system color mode.
+                You can use the `.update` method to cycle through color modes.
+
+            button.min-w-1.rounded-sm.pdm-cycle(class=outline)
+                i.emoji.light.pdm-emoji(style="visibility: hidden;")
+                span.ml-1.pdm-label(style="visibility: hidden;") Light
+
+            include:code(lang="js") ./components/cycle-button.js
+
+            :markdown
+                ### Reset
+
+                You can reset the color mode and fallback to system color mode.
 
             button.min-w-1.rounded-sm.pdm-reset(class=outline) Reset
 
             include:code(lang="js") ./components/reset-button.js
 
-            h3 Mode
+            :markdown
+                ### Mode
 
-            p For debugging/understanding here is the saved color mode and the OS color mode.
+                For debugging/understanding here is the saved color mode and the OS color mode.
 
-            p The displayed color mode is <code>SavedColorMode || OSColorMode</code>.
+                The displayed color mode is `SavedColorMode || OSColorMode`.
 
             pre
                 code.pdm-mode-saved Saved Color Mode:

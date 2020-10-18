@@ -14,9 +14,16 @@ module.exports = {
       return ''
     },
     markdown: (text, options) => {
-      return require('jstransformer-markdown-it').render(text, {
+      const markdownIt = require('markdown-it')
+      const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor')
+        .default
+      const prism = require('prismjs')
+
+      const md = markdownIt({
+        html: true,
+        linkify: true,
+        typographer: true,
         highlight: (str, lang) => {
-          const prism = require('prismjs')
           if (lang) {
             try {
               return prism.highlight(str, prism.languages[lang], lang)
@@ -26,7 +33,11 @@ module.exports = {
           }
           return ''
         },
+      }).use(markdownItTocAndAnchor, {
+        wrapHeadingTextInAnchor: true,
       })
+
+      return md.render(text)
     },
   },
   ...require('./data.json'),

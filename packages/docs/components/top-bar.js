@@ -1,7 +1,3 @@
-//----------------------------------------------------------
-// Top Bar
-//----------------------------------------------------------
-
 // Get a floating button element.
 var floatingButtonEl = document.querySelector('.floating-button')
 var topBarEl = document.querySelector('.top-bar')
