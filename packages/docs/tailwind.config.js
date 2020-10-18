@@ -1124,7 +1124,7 @@ const typographyTheme = {
 const theme = merge(defaultTheme, typographyTheme)
 
 module.exports = {
-  purge: ['index.pug', 'components/*.js'],
+  purge: ['index.pug', 'components/*.js', 'markdown/*.md'],
   future: {
     defaultLineHeights: true,
     purgeLayersByDefault: true,

@@ -1,3 +1,5 @@
+const { render } = require('pug')
+
 module.exports = {
   filters: {
     code: (text, options) => {
@@ -14,10 +16,13 @@ module.exports = {
       return ''
     },
     markdown: (text, options) => {
+      const replaceAll = require('string.prototype.replaceall')
       const markdownIt = require('markdown-it')
       const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor')
         .default
       const prism = require('prismjs')
+      const fs = require('fs')
+      const path = require('path')
 
       const md = markdownIt({
         html: true,
@@ -35,9 +40,34 @@ module.exports = {
         },
       }).use(markdownItTocAndAnchor, {
         wrapHeadingTextInAnchor: true,
+        tocFirstLevel: 2,
       })
 
-      return md.render(text)
+      let rendered = md.render(text)
+
+      rendered = replaceAll(
+        rendered,
+        /<include lang="(.*)" src="(.*)" \/>/g,
+        (match, lang, src) => {
+          const text = fs.readFileSync(path.join(__dirname, src), {
+            encoding: 'utf8',
+          })
+          const code = prism.highlight(text, prism.languages[lang], lang)
+          return `<pre><code language="language-${lang}">${code}</code></pre>`
+        },
+      )
+
+      rendered = replaceAll(rendered, /<copy src="(.*)" \/>/g, (match, src) => {
+        let text = fs.readFileSync(path.join(__dirname, src), {
+          encoding: 'utf8',
+        })
+        text = `<script>\n${text}</script>`
+        const lang = 'js'
+        const code = prism.highlight(text, prism.languages[lang], lang)
+        return `<pre><code language="language-${lang}">${code}</code></pre>`
+      })
+
+      return rendered
     },
   },
   ...require('./data.json'),

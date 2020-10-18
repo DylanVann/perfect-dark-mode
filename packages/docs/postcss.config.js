@@ -1,4 +1,5 @@
 const tailwindcss = require('tailwindcss')
+const tailwindConfig = require('./tailwind.config.js')
 const purgecss = require('@fullhuman/postcss-purgecss')
 const cssnano = require('cssnano')
 const copy = require('postcss-copy')
@@ -14,10 +15,10 @@ module.exports = {
       template: '[name].[ext][query]',
       dest: 'dist',
     }),
-    tailwindcss('./tailwind.config.js'),
+    tailwindcss(tailwindConfig),
     production &&
       purgecss({
-        content: ['index.pug', 'index.js'],
+        content: tailwindConfig.purge,
         defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
       }),
     production && cssnano({ preset: 'default' }),
