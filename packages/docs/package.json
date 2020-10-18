@@ -10,7 +10,7 @@
     "build:copy:style-dark": "cpx ../../node_modules/prism-themes/themes/prism-nord.css dist/syntax",
     "build:tailwind": "NODE_ENV=production postcss tailwind.css -o dist/tailwind.css",
     "build:data": "node data.js",
-    "build:html": "pug index.pug --out dist -O obj.js",
+    "build:html": "pug index.pug --out dist --obj options.js",
     "serve": "serve dist"
   },
   "devDependencies": {

@@ -42,7 +42,7 @@ html(data-pdm="light dark blue" lang="en")
                     +simpleBadge("GitHub")
 
         div.prose.px-3.pb-10
-            include:markdown features.md
+            include:markdown ./markdown/features.md
 
             p
                 | Created by
@@ -132,7 +132,9 @@ html(data-pdm="light dark blue" lang="en")
 
             include:code(lang="js") ./components/mode.js
 
-            include:markdown usage.md
+            include:markdown ./markdown/installation.md
+
+            include:markdown ./markdown/usage.md
 
             hr
 
