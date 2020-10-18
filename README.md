@@ -4,7 +4,9 @@
 [![Size][size-badge]][size]
 
 - No flicker.
-- Framework agnostic, supports **React** | **Vue** | **Svelte** | etc.
+- Framework agnostic, easily supports **React** | **Vue** | **Svelte** | etc.
+  - [react-perfect-dark-mode](./packages/react-perfect-dark-mode)
+  - [gatsby-plugin-perfect-dark-mode]('./packages/gatsby-plugin-perfect-dark-mode)
 - Supports SSR.
 - Supports no-js.
 - Tiny, less than 1kb.
@@ -13,6 +15,7 @@
 - Allows user to override and save their preference to `localStorage`.
 - Allows clearing the saved preference and falling back to `prefers-color-scheme`.
 - Supports any number of color modes, not just `light` and `dark`.
+- Syncs across tabs.
 - Built for the web.
 
 ## Installation

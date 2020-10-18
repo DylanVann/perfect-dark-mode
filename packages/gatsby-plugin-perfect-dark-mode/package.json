@@ -1,5 +1,5 @@
 {
-  "name": "perfect-dark-mode",
+  "name": "gatsby-plugin-perfect-dark-mode",
   "version": "0.0.7",
   "description": "Perfect dark mode.",
   "keywords": [
@@ -14,21 +14,34 @@
   "license": "MIT",
   "author": "Dylan Vann <dylan@dylanvann.com> (https://dylanvann.com)",
   "sideEffects": "false",
-  "main": "dist/pure.cjs.js",
-  "module": "dist/pure.esm.js",
-  "types": "dist/pure.d.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "files": [
+    "gatsby-ssr.js",
     "dist"
   ],
   "scripts": {
-    "build": "run-p build:ts build:js",
-    "build:js": "node build.js",
-    "build:ts": "tsc"
+    "build": "run-p build:js",
+    "build:js": "node build.js"
+  },
+  "dependencies": {
+    "react-perfect-dark-mode": "*"
   },
   "devDependencies": {
+    "@types/react": "^16.9.53",
+    "cpx": "^1.5.0",
     "esbuild": "^0.7.16",
     "execa": "^4.0.3",
+    "jstransformer-markdown-it": "^2.1.0",
     "npm-run-all": "^4.1.5",
+    "pug": "^3.0.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "react": "^16.14.0",
+    "serve": "^11.3.2",
     "typescript": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }

@@ -1,11 +1,11 @@
 /** Callback to inform of a value updates. */
-declare type Subscriber<T> = (value: T) => void
+export type Subscriber<T> = (value: T) => void
 
 /** Unsubscribes from value updates. */
-declare type Unsubscriber = () => void
+export type Unsubscriber = () => void
 
 /** Callback to update a value. */
-declare type Updater<T> = (value: T) => T
+export type Updater<T> = (value: T) => T
 
 /** Readable interface for subscribing. */
 export interface Readable<T> {
@@ -31,7 +31,7 @@ export interface Writable<T> extends Readable<T> {
   update(updater: Updater<T>): void
 }
 
-type ColorMode = string
+export type ColorMode = string
 
 export interface PerfectDarkModeOptions {
   modes?: string[]
@@ -56,17 +56,17 @@ export interface PerfectDarkMode {
   modes: Writable<ColorMode[]>
 }
 
-type ColorModeReadable = Readable<ColorMode | undefined>
-type ColorModeWritable = Writable<ColorMode | undefined>
-type ColorModesWritable = Writable<ColorMode[]>
-interface ColorModeWritableWithEnhancedUpdater extends ColorModeWritable {
-  update: (
-    updater: (
-      value: ColorMode | undefined,
-      modes: ColorMode[],
-      modeIndex: number | undefined,
-    ) => ColorMode,
-  ) => void
+export type ColorModeReadable = Readable<ColorMode | undefined>
+export type ColorModeWritable = Writable<ColorMode | undefined>
+export type ColorModesWritable = Writable<ColorMode[]>
+export type EnhancedUpdater = (
+  value: ColorMode | undefined,
+  modes: ColorMode[],
+  modeIndex: number | undefined,
+) => ColorMode
+export interface ColorModeWritableWithEnhancedUpdater
+  extends ColorModeWritable {
+  update: (updater: EnhancedUpdater) => void
 }
 
 export const createPerfectDarkMode = ({
@@ -140,6 +140,10 @@ export const createPerfectDarkMode = ({
     const savedMode = localStorage.getItem(colorModeKey)
     const colorMode = parseColorMode(savedMode)
     mode = colorMode
+    window.addEventListener(
+      'storage',
+      (e) => e.key === colorModeKey && set(e.newValue || undefined),
+    )
     return {
       subscribe(cb) {
         cb(colorMode)

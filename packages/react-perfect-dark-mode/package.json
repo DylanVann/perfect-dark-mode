@@ -1,5 +1,5 @@
 {
-  "name": "perfect-dark-mode",
+  "name": "react-perfect-dark-mode",
   "version": "0.0.7",
   "description": "Perfect dark mode.",
   "keywords": [
@@ -14,9 +14,9 @@
   "license": "MIT",
   "author": "Dylan Vann <dylan@dylanvann.com> (https://dylanvann.com)",
   "sideEffects": "false",
-  "main": "dist/pure.cjs.js",
-  "module": "dist/pure.esm.js",
-  "types": "dist/pure.d.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -25,10 +25,18 @@
     "build:js": "node build.js",
     "build:ts": "tsc"
   },
+  "dependencies": {
+    "perfect-dark-mode": "*"
+  },
   "devDependencies": {
+    "@types/react": "^16.9.53",
     "esbuild": "^0.7.16",
     "execa": "^4.0.3",
     "npm-run-all": "^4.1.5",
+    "react": "^16.14.0",
     "typescript": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }

@@ -8,4 +8,5 @@
 - Allows user to override and save their preference to `localStorage`.
 - Allows clearing the saved preference and falling back to `prefers-color-scheme`.
 - Supports any number of color modes, not just `light` and `dark`.
+- Syncs across tabs.
 - Built for the web.
