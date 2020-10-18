@@ -4,13 +4,14 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "run-s build:copy:* build:data build:html build:tailwind",
+    "build": "run-s build:copy:* build:data build:tailwind build:html build:pretty",
+    "build:pretty": "prettier --write dist/index.html",
     "build:copy:lib": "cpx '../../node_modules/perfect-dark-mode/dist/**/*' dist/perfect-dark-mode/dist",
     "build:copy:style-light": "cpx ../../node_modules/prism-themes/themes/prism-base16-ateliersulphurpool.light.css dist/syntax",
     "build:copy:style-dark": "cpx ../../node_modules/prism-themes/themes/prism-nord.css dist/syntax",
     "build:tailwind": "NODE_ENV=production postcss tailwind.css -o dist/tailwind.css",
     "build:data": "node data.js",
-    "build:html": "pug index.pug --pretty --out dist -O obj.js",
+    "build:html": "pug index.pug --out dist -O obj.js",
     "serve": "serve dist"
   },
   "devDependencies": {

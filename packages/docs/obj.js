@@ -1,8 +1,21 @@
 module.exports = {
   filters: {
+    code: (text, options) => {
+      const lang = options.lang
+      const prism = require('prismjs')
+      if (lang) {
+        try {
+          const code = prism.highlight(text, prism.languages[lang], lang)
+          return `<pre><code language="language-${lang}">${code}</code></pre>`
+        } catch (e) {
+          return ''
+        }
+      }
+      return ''
+    },
     markdown: (text, options) => {
       return require('jstransformer-markdown-it').render(text, {
-        highlight: function (str, lang) {
+        highlight: (str, lang) => {
           const prism = require('prismjs')
           if (lang) {
             try {

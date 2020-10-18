@@ -22,15 +22,15 @@ html(data-pdm="light dark blue" lang="en")
     body
         - var outline = ['focus:outline-none focus:shadow-outline focus:border-yellow-300']
         div.container.fixed.top-0.right-0.left-0.flex.flew-row.px-3.mt-3.pointer-events-none.top-bar(class="md:mt-6")
-            button.rounded-sm.pdm-cycle.ml-auto.floating-button.opacity-0.transition-opacity.duration-300.ease-in-out(style="visibility: hidden;" class=outline)
-                i.emoji.light.pdm-emoji
+            button.rounded-sm.pdm-cycle.ml-auto.floating-button.opacity-0.transition-opacity.duration-300.ease-in-out(class=outline)
+                i.emoji.light.pdm-emoji(style="visibility: hidden;")
         div.container.px-3.mb-3
             div.header.flex.items-center.justify-between.flex-col.my-3(class="md:flex-row md:my-6")
                 h1.mb-3.title(class="md:mb-0") <i class="emoji dark"></i><i class="emoji light"></i> Perfect Dark Mode
-                button.min-w-1.rounded-sm.pdm-toggle.flex.flex-col.items-center(style="visibility: hidden;" class=outline)
+                button.min-w-1.rounded-sm.pdm-toggle.flex.flex-col.items-center(class=outline)
                     div
-                        i.emoji.light.pdm-emoji
-                        span.ml-1.pdm-label color mode
+                        i.emoji.light.pdm-emoji(style="visibility: hidden;")
+                        span.ml-1.pdm-label(style="visibility: hidden;") color mode
                     span.text-xs (Click Me)
 
             div.flex.space-x-2.justify-center(class="md:justify-start")
@@ -51,31 +51,35 @@ html(data-pdm="light dark blue" lang="en")
 
             hr
 
-            h2 Minimal Example
+            h2 Examples
 
-            p It's so minimal you can just view source.
+            h3 Label
 
-            p By default we use the system color mode.
-            // This needs to be hidden initially because we don't know the color mode yet.
-            // It will be shown by the JS.
-            // For users with JS disabled there will not be a color mode toggle, they can change
-            // their system color mode.
-            p You can set the color mode, this will be saved.
-            button.min-w-1.rounded-sm.pdm-toggle(style="visibility: hidden;" class=outline)
-                i.emoji.light.pdm-emoji
-                span.ml-1.pdm-label color mode
-            p You can reset the color mode and fallback to system color mode.
-            button.min-w-1.rounded-sm.pdm-reset(class=outline) Reset
-            p For debugging and understanding here is the saved color mode and the OS color mode.
-            p The displayed color mode is <code>SavedColorMode || OSColorMode</code>.
-            pre
-                code.pdm-mode-saved Saved Color Mode:
-            pre
-                code.pdm-mode-os OS Color Mode:
+            span.pdm-label(style="visibility: hidden;") Light
+
+            include:code(lang="js") ./components/label.js
+
+            h3 Emoji
+
+            i.emoji.light.pdm-emoji(style="visibility: hidden;")
+
+            include:code(lang="js") ./components/emoji.js
+
+            h3 Toggle
+
+            p You can toggle the color mode.
+
+            button.min-w-1.rounded-sm.pdm-toggle(class=outline)
+                i.emoji.light.pdm-emoji(style="visibility: hidden;")
+                span.ml-1.pdm-label(style="visibility: hidden;") Light
+
+            include:code(lang="js") ./components/toggle-button.js
+
+            h3 Select
+
+            p You can use a select for the color mode.
 
             :markdown
-                ## More Color Modes
-
                 Perfect Dark Mode allows for more than just `light` and `dark` color modes.
 
                 On initialization PDM will read a list of modes from the `<html>` element's `data-pdm` attribute.
@@ -83,8 +87,30 @@ html(data-pdm="light dark blue" lang="en")
                 `.modes` is a `Writable` like `.mode`, so it can also be `set` or `update`ed.
 
             select.pdm-select.form-select.bg-color.text-background(name="color mode", class=outline + ' border-0 focus:border-0')
-                option(value="light") light
-                option(value="dark") dark
+
+            include:code(lang="js") ./components/select.js
+
+            h3 Reset
+
+            p You can reset the color mode and fallback to system color mode.
+
+            button.min-w-1.rounded-sm.pdm-reset(class=outline) Reset
+
+            include:code(lang="js") ./components/reset-button.js
+
+            h3 Mode
+
+            p For debugging/understanding here is the saved color mode and the OS color mode.
+
+            p The displayed color mode is <code>SavedColorMode || OSColorMode</code>.
+
+            pre
+                code.pdm-mode-saved Saved Color Mode:
+
+            pre
+                code.pdm-mode-os OS Color Mode:
+
+            include:code(lang="js") ./components/mode.js
 
             include:markdown usage.md
 
@@ -110,6 +136,15 @@ html(data-pdm="light dark blue" lang="en")
                     a(href='https://twitter.com/atomarranger' target="blank" rel="noopener" class=outline) Or follow me on Twitter for more stuff like this.
 
             script
-                include ./index.js
-            script
-                include ./form.js
+                include ./components/change-favicon.js
+                include ./components/cycle-button.js
+                include ./components/emoji.js
+                include ./components/label.js
+                include ./components/mode.js
+                include ./components/reset-button.js
+                include ./components/root.js
+                include ./components/select.js
+                include ./components/syntax-highlight.js
+                include ./components/toggle-button.js
+                include ./components/top-bar.js
+                include ./components/form.js
