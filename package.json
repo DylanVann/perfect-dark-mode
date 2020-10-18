@@ -4,7 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "wsrun build"
+    "build": "wsrun --stages build"
   },
   "prettier": {
     "semi": false,
