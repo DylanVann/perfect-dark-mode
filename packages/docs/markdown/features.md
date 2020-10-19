@@ -1,5 +1,7 @@
 - No flicker.
-- Framework agnostic, supports **React** | **Vue** | **Svelte** | etc.
+- Framework agnostic, easily supports **React** | **Vue** | **Svelte** | etc.
+  - [`react-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/react-perfect-dark-mode)
+  - [`gatsby-plugin-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/gatsby-plugin-perfect-dark-mode)
 - Supports SSR.
 - Supports no-js.
 - Tiny, less than 1kb.
