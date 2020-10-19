@@ -1,6 +1,6 @@
 # gatsby-plugin-perfect-dark-mode
 
-![Example!](https://perfect-dark-mode-gatsby.netlify.app/)
+[Example](https://perfect-dark-mode-gatsby.netlify.app/).
 
 ## Installation
 
