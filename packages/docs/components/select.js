@@ -10,7 +10,12 @@ modes.subscribe((modes) => {
     // Preserve the current selection by saving then re-assigning.
     var prevValue = el.value
     el.innerHTML = modes
-      .map((m) => `<option value="${m}">${m}</option>`)
+      .map(
+        (m) =>
+          `<option value="${m}">${
+            m.charAt(0).toUpperCase() + m.slice(1)
+          }</option>`,
+      )
       .join('\n')
     el.value = prevValue
   })
