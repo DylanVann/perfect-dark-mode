@@ -129,6 +129,9 @@ export const createPerfectDarkMode = ({
     const listeners = new Set<Function>()
     let mode: ColorMode | undefined
     const set = (colorMode?: ColorMode) => {
+      if (colorMode === mode) {
+        return
+      }
       if (colorMode !== undefined) {
         localStorage.setItem(colorModeKey, colorMode)
       } else {
