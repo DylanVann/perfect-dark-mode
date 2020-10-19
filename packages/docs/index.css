@@ -262,7 +262,7 @@ svg .text-shadow {
   visibility: visible;
 }
 
-.toc {
+.toc ul {
   list-style: none;
 }
 
