@@ -15,6 +15,28 @@ module.exports = {
       }
       return ''
     },
+    'markdown-toc': (text, options) => {
+      const markdownIt = require('markdown-it')
+      const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor')
+        .default
+      let toc
+
+      const md = markdownIt({
+        html: true,
+        linkify: true,
+        typographer: true,
+      })
+        .use(markdownItTocAndAnchor, {
+          wrapHeadingTextInAnchor: true,
+          tocFirstLevel: 2,
+          tocCallback: (tocMarkdown, tocArray, tocHtml) => {
+            toc = tocHtml
+          },
+        })
+        .render(text)
+
+      return toc
+    },
     markdown: (text, options) => {
       const replaceAll = require('string.prototype.replaceall')
       const markdownIt = require('markdown-it')

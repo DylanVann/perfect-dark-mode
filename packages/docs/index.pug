@@ -21,10 +21,10 @@ html(data-pdm="light dark blue" lang="en")
             include ./index.css
     body
         - var outline = ['focus:outline-none focus:shadow-outline']
-        div.container.fixed.top-0.right-0.left-0.flex.flew-row.px-3.mt-3.pointer-events-none.top-bar(class="md:mt-6")
+        div.max-w-65.mx-auto.fixed.top-0.right-0.left-0.flex.flew-row.px-3.mt-3.pointer-events-none.top-bar(class="md:mt-6")
             button.rounded-sm.pdm-cycle.ml-auto.floating-button.opacity-0.transition-opacity.duration-300.ease-in-out(class=outline)
                 i.emoji.light.pdm-emoji(style="visibility: hidden;")
-        div.container.px-3.mb-3
+        div.max-w-65.mx-auto.px-3.mb-3
             div.header.flex.items-center.justify-between.flex-col.my-3(class="md:flex-row md:my-6")
                 h1.mb-3.title(class="md:mb-0") <i class="emoji dark"></i><i class="emoji light"></i> Perfect Dark Mode
                 button.min-w-1.rounded-sm.pdm-toggle.flex.flex-col.items-center(class=outline)
@@ -41,7 +41,7 @@ html(data-pdm="light dark blue" lang="en")
                 a.badge.rounded-sm.overflow-hidden(href="https://github.com/DylanVann/perfect-dark-mode" target="blank" rel="noopener" class=outline)
                     +simpleBadge("GitHub")
 
-        div.prose.px-3.pb-10
+        div.prose.max-w-65.mx-auto.mb-12.px-3
             include:markdown ./markdown/features.md
 
             p
@@ -49,41 +49,47 @@ html(data-pdm="light dark blue" lang="en")
                 |
                 a.rounded-sm(href="https://twitter.com/atomarranger" target="blank" rel="noopener" class=outline) @atomarranger
 
-            hr
+        div.flex.flex-row
+            div.order-3.flex-1.flex-shrink.w-0.hidden(class="xl:block")
+                div.sticky.top-0.p-3.overflow-y-auto.max-h-screen
+                    div.border-l.border-gray-100.pl-3.py-3.toc
+                        include:markdown-toc ./markdown/docs.md
+            div.prose.px-3.pb-10.order-2.min-w-0.mx-auto
+                include:markdown ./markdown/docs.md
 
-            include:markdown ./markdown/docs.md
+                hr
 
-            hr
+                - var label = 'block text-gray-700 text-sm font-bold mb-2'
+                - var input = 'shadow appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white'
 
-            - var label = 'block text-gray-700 text-sm font-bold mb-2'
-            - var input = 'shadow appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white'
+                p.mb-4
+                    strong Join my Newsletter
+                    br
+                    | I'll send you an email when I have something interesting to show.
+                form.subscribe.relative
+                    div.subscribed.absolute.top-0.bottom-0.left-0.right-0.flex.items-center.justify-center.bg-white.hidden Subscribed!
+                    div.content.flex.flex-col.space-y-4
+                        div
+                            label(for='name' class=label) Name
+                            input(type='text' name='name' placeholder="Name" class=input)
+                        div
+                            label(for='email' class=label) Email
+                            input(required='' name='email' type='email' placeholder="Email" class=input)
+                        button.min-w-1.rounded-sm.overflow-hidden(type='submit' class=outline) Subscribe
+                        a(href='https://twitter.com/atomarranger' target="blank" rel="noopener" class=outline) Or follow me on Twitter for more stuff like this.
+            div.order-1.flex-1.flex-shrink.w-0.hidden(class="xl:block")
 
-            p.mb-4
-                strong Join my Newsletter
-                br
-                | I'll send you an email when I have something interesting to show.
-            form.subscribe.relative
-                div.subscribed.absolute.top-0.bottom-0.left-0.right-0.flex.items-center.justify-center.bg-white.hidden Subscribed!
-                div.content.flex.flex-col.space-y-4
-                    div
-                        label(for='name' class=label) Name
-                        input(type='text' name='name' placeholder="Name" class=input)
-                    div
-                        label(for='email' class=label) Email
-                        input(required='' name='email' type='email' placeholder="Email" class=input)
-                    button.min-w-1.rounded-sm.overflow-hidden(type='submit' class=outline) Subscribe
-                    a(href='https://twitter.com/atomarranger' target="blank" rel="noopener" class=outline) Or follow me on Twitter for more stuff like this.
-
-            script
-                include ./components/change-favicon.js
-                include ./components/cycle-button.js
-                include ./components/emoji.js
-                include ./components/label.js
-                include ./components/mode.js
-                include ./components/reset-button.js
-                include ./components/root.js
-                include ./components/select.js
-                include ./components/syntax-highlight.js
-                include ./components/toggle-button.js
-                include ./components/top-bar.js
-                include ./components/form.js
+        script
+            include ./components/change-favicon.js
+            include ./components/cycle-button.js
+            include ./components/emoji.js
+            include ./components/label.js
+            include ./components/mode.js
+            include ./components/reset-button.js
+            include ./components/root.js
+            include ./components/select.js
+            include ./components/syntax-highlight.js
+            include ./components/toggle-button.js
+            include ./components/top-bar.js
+            include ./components/form.js
+            include ./components/toc.js

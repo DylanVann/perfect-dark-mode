@@ -106,6 +106,7 @@
   touch-action: pan-x pan-y;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
+  scroll-behavior: smooth;
 }
 
 .title {
@@ -164,13 +165,6 @@ h4 {
   background: var(--focus);
 }
 
-.container,
-.prose {
-  max-width: 65ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 hr {
   border-style: solid;
 }
@@ -185,6 +179,10 @@ a:visited {
 
 .min-w-1 {
   min-width: 120px;
+}
+
+.max-w-65 {
+  max-width: 65ch;
 }
 
 button,
@@ -262,4 +260,26 @@ svg .text-shadow {
 
 .markdownIt-Anchor:hover::before {
   visibility: visible;
+}
+
+.toc {
+  list-style: none;
+}
+
+.toc a,
+.toc a:visited {
+  color: var(--gray-300);
+}
+
+.toc a.active,
+.toc a.active:visited {
+  color: var(--gray-900);
+}
+
+.toc ul ul {
+  padding-inline-start: 1rem;
+}
+
+.markdownIt-TOC {
+  padding: 0;
 }

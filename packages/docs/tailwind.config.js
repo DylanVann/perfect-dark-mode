@@ -19,6 +19,7 @@ const fontTitle = ['Libre Baskerville', 'serif']
 
 const defaultTheme = {
   colors: {
+    ...require('tailwindcss/defaultTheme').colors,
     color: 'var(--color)',
     background: 'var(--background)',
     white: 'var(--white)',
