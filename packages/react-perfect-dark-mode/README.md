@@ -2,6 +2,10 @@
 
 ## Installation
 
+For this to work you need to first install [`perfect-dark-mode`](../../README.md)
+into the `<head> of your document.
+This needs to be done so the mode is setup as soon as possible.
+
 ```bash
 yarn add react-perfect-dark-mode
 ```

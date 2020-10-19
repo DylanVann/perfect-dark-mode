@@ -4,6 +4,9 @@
 
 ## Installation
 
+You do not need to install `perfect-dark-mode` like you do for `react-perfect-dark-mode`.
+This plugin puts `perfect-dark-mode` in `<head>` for you.
+
 ```bash
 yarn add gatsby-plugin-perfect-dark-mode
 ```
