@@ -84,7 +84,7 @@ module.exports = {
           encoding: 'utf8',
         })
         text = `<script>\n${text}</script>`
-        const lang = 'js'
+        const lang = 'html'
         const code = prism.highlight(text, prism.languages[lang], lang)
         return `<pre><code language="language-${lang}">${code}</code></pre>`
       })
