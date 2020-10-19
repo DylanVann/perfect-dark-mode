@@ -1,8 +1,16 @@
 import { useCallback, useLayoutEffect, useState } from 'react'
-import type { ColorMode, EnhancedUpdater, Updater } from 'perfect-dark-mode'
+import type {
+  ColorMode,
+  EnhancedUpdater,
+  PerfectDarkMode,
+  Updater,
+} from 'perfect-dark-mode'
 
 export * from 'perfect-dark-mode'
-export const pdm = window.__pdm__
+
+export const pdm: PerfectDarkMode =
+  typeof window !== 'undefined' && (window.__pdm__ as any)
+
 export const usePerfectDarkMode = (): {
   mode: ColorMode | undefined
   setMode: (mode: ColorMode) => void
@@ -11,7 +19,7 @@ export const usePerfectDarkMode = (): {
   setModes: (modes: ColorMode[]) => void
   updateModes: (updater: Updater<ColorMode[]>) => void
 } => {
-  const { mode: pdmMode, modes: pdmModes } = pdm
+  const { mode: pdmMode, modes: pdmModes } = pdm || {}
   const [mode, setModeInternal] = useState<ColorMode | undefined>(undefined)
   const [modes, setModesInternal] = useState<ColorMode[]>(() => [])
   useLayoutEffect(() => pdm.mode.subscribe((v) => setModeInternal(v)), [])
