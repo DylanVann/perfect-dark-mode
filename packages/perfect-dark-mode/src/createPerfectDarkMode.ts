@@ -96,13 +96,11 @@ export const createPerfectDarkMode = ({
   })()
 
   const modeOS: ColorModeReadable = ((): ColorModeReadable => {
-    const matchesToMode = (matches: boolean): ColorMode =>
-      matches ? 'dark' : 'light'
     const listeners = new Set<Function>()
     const mediaQuery = matchMedia('(prefers-color-scheme: dark)')
     let colorMode: ColorMode | undefined
-    const onChangeMediaQuery = (e: { matches: boolean }) => {
-      const newMode = matchesToMode(e.matches)
+    const onChangeMediaQuery = ({ matches }: { matches: boolean }) => {
+      const newMode = matches ? 'dark' : 'light'
       colorMode = newMode
       listeners.forEach((cb) => cb(newMode))
     }
@@ -163,44 +161,45 @@ export const createPerfectDarkMode = ({
   const mode: ColorModeWritableWithEnhancedUpdater = ((): ColorModeWritableWithEnhancedUpdater => {
     let cmSaved: ColorMode | undefined
     let cmOS: ColorMode | undefined
-    const getMerged = () => cmSaved || cmOS
+    let cmMerged: ColorMode | undefined
     const listeners = new Set<Function>()
     modeSaved.subscribe((v) => {
       cmSaved = v
-      listeners.forEach((cb) => cb(getMerged()))
+      cmMerged = cmSaved || cmOS
+      listeners.forEach((cb) => cb(cmMerged))
     })
     modeOS.subscribe((v) => {
       cmOS = v
-      listeners.forEach((cb) => cb(getMerged()))
+      cmMerged = cmSaved || cmOS
+      listeners.forEach((cb) => cb(cmMerged))
     })
     return {
       subscribe(listener) {
         listeners.add(listener)
-        listener(getMerged())
+        listener(cmMerged)
         return () => listeners.delete(listener)
       },
       set: modeSaved.set,
       update(updater) {
-        const mode = getMerged()
-        const index = mode ? currentModes.indexOf(mode) : undefined
-        modeSaved.set(updater(mode, currentModes, index))
+        const index = cmMerged ? currentModes.indexOf(cmMerged) : undefined
+        modeSaved.set(updater(cmMerged, currentModes, index))
       },
     }
   })()
 
-  const htmlElement = document.documentElement
+  const htmlClassList = document.documentElement.classList
   let colorMode: string | undefined
   mode.subscribe((v) => {
     if (colorMode) {
-      htmlElement.classList.remove(colorMode)
+      htmlClassList.remove(colorMode)
     }
     if (v) {
-      htmlElement.classList.add(v)
+      htmlClassList.add(v)
     }
     colorMode = v
   })
 
-  htmlElement.classList.add('pdm')
+  htmlClassList.add('pdm')
   return {
     mode,
     modes: modesWritable,
