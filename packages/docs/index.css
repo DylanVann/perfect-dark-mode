@@ -181,10 +181,6 @@ a:visited {
   min-width: 120px;
 }
 
-.max-w-65 {
-  max-width: 65ch;
-}
-
 button,
 select {
   text-transform: capitalize;
