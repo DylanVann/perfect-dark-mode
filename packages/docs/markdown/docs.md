@@ -121,7 +121,7 @@ How you do this will depend on the framework you are using.
 
 ### UNPKG
 
-You can add directly this directly to the `<head>` of your page:
+Add this code to the `<head>` of your page:
 
 ```html
 <script src="https://unpkg.com/perfect-dark-mode@0.0.6/dist/index.js"></script>
@@ -129,7 +129,7 @@ You can add directly this directly to the `<head>` of your page:
 
 ### Copy and Paste
 
-You can add this code to the `<head>` of your page.
+Add this code to the `<head>` of your page:
 
 <copy src="./dist/perfect-dark-mode/dist/index.js" />
 
