@@ -20,7 +20,7 @@
 
 ## Installation
 
-**Yarn:**
+### Yarn
 
 ```bash
 yarn add perfect-dark-mode
@@ -30,12 +30,12 @@ Then you must somehow add `node_modules/perfect-dark-mode/dist/index.js` as a sc
 
 How you do this will depend on the framework you are using.
 
-**UNPKG:**
+### UNPKG
 
 Add this code to the `<head>` of your page:
 
 ```html
-<script src="https://unpkg.com/perfect-dark-mode@0.0.6/dist/index.js"></script>
+<script src="https://unpkg.com/perfect-dark-mode@0.0.9/dist/index.js"></script>
 ```
 
 ## Usage
