@@ -1,26 +1,24 @@
 const execa = require('execa')
+const fs = require('fs-extra')
+const path = require('path')
 
 const run = async () => {
+  await execa('tsc')
+
   await execa('esbuild', [
-    '--bundle',
-    'src/index.ts',
+    'src/index.tsx',
     '--platform=browser',
     `--outfile=dist/index.js`,
     `--format=cjs`,
-    '--external:react',
-    '--external:perfect-dark-mode',
     '--minify',
     '--sourcemap',
   ])
 
   await execa('esbuild', [
-    '--bundle',
-    'src/index.ts',
+    'src/index.tsx',
     '--platform=browser',
     `--outfile=dist/index.mjs`,
     `--format=esm`,
-    '--external:react',
-    '--external:perfect-dark-mode',
     '--minify',
     '--sourcemap',
   ])

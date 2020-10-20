@@ -149,8 +149,8 @@ const pdm = createPerfectDarkMode()
 
 This version comes in a couple module formats:
 
-- `dist/pure.esm.js`
-- `dist/pure.cjs.js`
+- `dist/pure.js` - CJS
+- `dist/pure.mjs` - ESM
 
 [package]: https://www.npmjs.com/package/perfect-dark-mode
 [version-badge]: https://img.shields.io/npm/v/perfect-dark-mode.svg

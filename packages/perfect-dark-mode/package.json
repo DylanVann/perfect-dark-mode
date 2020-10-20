@@ -13,9 +13,9 @@
   },
   "license": "MIT",
   "author": "Dylan Vann <dylan@dylanvann.com> (https://dylanvann.com)",
-  "sideEffects": "false",
-  "main": "dist/pure.cjs.js",
-  "module": "dist/pure.esm.js",
+  "sideEffects": false,
+  "main": "dist/pure.js",
+  "module": "dist/pure.mjs",
   "types": "dist/pure.d.ts",
   "files": [
     "dist"

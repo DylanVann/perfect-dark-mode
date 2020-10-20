@@ -1,29 +1,74 @@
 const execa = require('execa')
-
-const outputs = [
-  { entry: 'src/index.ts', formats: ['iife'] },
-  { entry: 'src/pure.ts', formats: ['cjs', 'esm'] },
-]
+const path = require('path')
+const fs = require('fs-extra')
 
 const run = async () => {
-  for (const output of outputs) {
-    for (const format of output.formats) {
-      const outputExtension =
-        output.entry !== 'src/index.ts' ? `.${format}` : ``
-      const outputFilename = `dist/${output.entry
-        .replace('src/', '')
-        .replace('.ts', '')}${outputExtension}.js`
-      await execa('esbuild', [
-        '--bundle',
-        output.entry,
-        '--platform=browser',
-        `--outfile=${outputFilename}`,
-        `--format=${format}`,
-        '--minify',
-        '--sourcemap',
-      ])
-    }
-  }
+  await execa('esbuild', [
+    '--bundle',
+    'src/index.ts',
+    '--platform=browser',
+    `--outfile=dist/index.js`,
+    `--format=iife`,
+    '--minify',
+    '--sourcemap',
+  ])
+
+  await execa('esbuild', [
+    '--bundle',
+    'src/pure.ts',
+    '--platform=browser',
+    `--outfile=dist/pure.js`,
+    `--format=cjs`,
+    '--minify',
+    '--sourcemap',
+  ])
+
+  await execa('esbuild', [
+    '--bundle',
+    'src/pure.ts',
+    '--platform=browser',
+    `--outfile=dist/pure.mjs`,
+    `--format=esm`,
+    '--minify',
+    '--sourcemap',
+  ])
+
+  const template = fs.readFileSync(
+    path.join(__dirname, 'src/code.template.ts'),
+    { encoding: 'utf8' },
+  )
+
+  const perfectDarkModeCode = await fs.readFile(
+    path.join(__dirname, 'dist/index.js'),
+    {
+      encoding: 'utf8',
+    },
+  )
+
+  const rendered = template.replace('{{code}}', perfectDarkModeCode)
+  await fs.writeFile('src/code.ts', rendered)
+
+  await execa('esbuild', [
+    '--bundle',
+    'src/code.ts',
+    '--platform=browser',
+    `--outfile=dist/code.js`,
+    `--format=cjs`,
+    '--minify',
+    '--sourcemap',
+  ])
+
+  await execa('esbuild', [
+    '--bundle',
+    'src/code.ts',
+    '--platform=browser',
+    `--outfile=dist/code.mjs`,
+    `--format=esm`,
+    '--minify',
+    '--sourcemap',
+  ])
+
+  await execa('tsc')
 }
 
 run()

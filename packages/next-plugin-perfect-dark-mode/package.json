@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-plugin-perfect-dark-mode",
+  "name": "next-plugin-perfect-dark-mode",
   "version": "0.0.7",
   "description": "Perfect dark mode.",
   "keywords": [
@@ -18,9 +18,11 @@
   "module": "src/index.mjs",
   "types": "src/index.d.ts",
   "files": [
-    "gatsby-ssr.js",
     "dist"
   ],
+  "scripts": {
+    "build": "node build.js"
+  },
   "dependencies": {
     "perfect-dark-mode": "*",
     "react-perfect-dark-mode": "*"
@@ -29,10 +31,12 @@
     "@types/react": "^16.9.53",
     "esbuild": "^0.7.17",
     "execa": "^4.0.3",
+    "next": "^9",
     "react": "^16.14.0",
     "typescript": "^4.0.3"
   },
   "peerDependencies": {
+    "next": "^9",
     "react": "*"
   }
 }

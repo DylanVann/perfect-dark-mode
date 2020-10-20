@@ -1,5 +1,6 @@
 const React = require('react')
 const fs = require('fs')
+const { code } = require('perfect-dark-mode/dist/code')
 
 exports.onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents([

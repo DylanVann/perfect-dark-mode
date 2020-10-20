@@ -244,5 +244,5 @@ const pdm = createPerfectDarkMode()
 
 This version comes in a couple module formats:
 
-- `dist/pure.esm.js`
-- `dist/pure.cjs.js`
+- `dist/pure.js` - CJS
+- `dist/pure.mjs` - ESM

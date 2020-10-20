@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "wsrun --stages build"
+    "build": "wsrun --stages --exclude-missing build"
   },
   "prettier": {
     "semi": false,
