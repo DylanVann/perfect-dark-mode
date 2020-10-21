@@ -25,11 +25,9 @@ import { usePerfectDarkMode } from 'react-perfect-dark-mode'
 
 export const Toggle = () => {
   const { mode, updateMode } = usePerfectDarkMode()
-  const [visible, setVisible] = useState(false)
-  useEffect(() => setVisible(true), [])
   return () => (
     <button
-      style={{ visibility: visible ? 'visible' : 'hidden' }}
+      style={{ visibility: mode !== undefined ? 'visible' : 'hidden' }}
       onClick={() =>
         updateMode(
           (mode, modes, modeIndex) => modes[(modeIndex + 1) % modes.length],

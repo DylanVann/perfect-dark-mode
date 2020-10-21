@@ -22,12 +22,10 @@ const Layout = ({ location, title, children }) => {
   }
 
   const { mode, updateMode } = usePerfectDarkMode()
-  const [visible, setVisible] = useState(false)
-  useEffect(() => setVisible(true), [])
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
       <button
-        style={{ visibility: visible ? "visible" : "hidden" }}
+        style={{ visibility: mode !== undefined ? "visible" : "hidden" }}
         onClick={() =>
           updateMode(
             (mode, modes, modeIndex) => modes[(modeIndex + 1) % modes.length]
