@@ -3,6 +3,8 @@
   - [`react-perfect-dark-mode`](#react-perfect-dark-mode)
   - [`gatsby-plugin-perfect-dark-mode`](#gatsby-plugin-perfect-dark-mode)
   - [`next-plugin-perfect-dark-mode`](#next-plugin-perfect-dark-mode)
+  - [`vue-plugin-perfect-dark-mode`](#vue-plugin-perfect-dark-mode)
+  - Svelte - This was written for Svelte :). `window.__pdm__.mode` is a [`Writable`](https://svelte.dev/docs#writable).
 - Supports SSR.
 - Supports no-js.
 - Tiny, less than 1kb.

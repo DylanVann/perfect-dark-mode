@@ -254,3 +254,5 @@ This version comes in a couple module formats:
 <markdown src="../../packages/gatsby-plugin-perfect-dark-mode/README.md" />
 
 <markdown src="../../packages/next-plugin-perfect-dark-mode/README.md" />
+
+<markdown src="../../packages/vue-perfect-dark-mode/README.md" />
