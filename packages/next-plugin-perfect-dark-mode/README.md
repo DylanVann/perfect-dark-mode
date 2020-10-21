@@ -1,4 +1,4 @@
-# next-plugin-perfect-dark-mode
+# `next-plugin-perfect-dark-mode`
 
 [![Version][version-badge]][package]
 [![Size][size-badge]][size]
@@ -11,7 +11,7 @@
 This plugin makes it easy to add `perfect-dark-mode` to Next.js.
 
 - [Example](https://perfect-dark-mode-next.netlify.app/)
-- [Example Code](../../examples/nextjs-blog)
+- [Example Code](https://github.com/DylanVann/perfect-dark-mode/tree/main/examples/nextjs-blog)
 
 ## Installation
 
@@ -39,6 +39,9 @@ export default function Home() {
       {/* Add this line. */}
       <InjectPerfectDarkMode />
       {/* The rest... */}
+    </div>
+  )
+}
 ```
 
 In a component you can use the hook:

@@ -1,4 +1,4 @@
-# react-perfect-dark-mode
+# `react-perfect-dark-mode`
 
 [![Version][version-badge]][package]
 [![Size][size-badge]][size]

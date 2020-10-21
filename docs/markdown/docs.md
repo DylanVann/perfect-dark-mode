@@ -1,3 +1,5 @@
+# `perfect-dark-mode`
+
 ## Examples
 
 ### Label
@@ -246,3 +248,9 @@ This version comes in a couple module formats:
 
 - `dist/pure.js` - CJS
 - `dist/pure.mjs` - ESM
+
+<markdown src="../../packages/react-perfect-dark-mode/README.md" />
+
+<markdown src="../../packages/gatsby-plugin-perfect-dark-mode/README.md" />
+
+<markdown src="../../packages/next-plugin-perfect-dark-mode/README.md" />

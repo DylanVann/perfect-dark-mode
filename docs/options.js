@@ -1,10 +1,22 @@
+const fs = require('fs')
+const path = require('path')
 const { render } = require('pug')
+const prism = require('prismjs')
+require('prismjs/components/prism-jsx.min')
+const replaceAll = require('string.prototype.replaceall')
+const markdownIt = require('markdown-it')
+const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default
+
+const replaceMarkdown = (text) =>
+  replaceAll(text, /<markdown src="(.*)" \/>/g, (match, src) => {
+    const content = fs.readFileSync(path.join(__dirname, 'markdown', src))
+    return content
+  })
 
 module.exports = {
   filters: {
     code: (text, options) => {
       const lang = options.lang
-      const prism = require('prismjs')
       if (lang) {
         try {
           const code = prism.highlight(text, prism.languages[lang], lang)
@@ -15,10 +27,8 @@ module.exports = {
       }
       return ''
     },
-    'markdown-toc': (text, options) => {
-      const markdownIt = require('markdown-it')
-      const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor')
-        .default
+    'markdown-toc': (originalText, options) => {
+      let text = replaceMarkdown(originalText)
       let toc
 
       const md = markdownIt({
@@ -28,7 +38,7 @@ module.exports = {
       })
         .use(markdownItTocAndAnchor, {
           wrapHeadingTextInAnchor: true,
-          tocFirstLevel: 2,
+          tocFirstLevel: 1,
           tocCallback: (tocMarkdown, tocArray, tocHtml) => {
             toc = tocHtml
           },
@@ -37,15 +47,8 @@ module.exports = {
 
       return toc
     },
-    markdown: (text, options) => {
-      const replaceAll = require('string.prototype.replaceall')
-      const markdownIt = require('markdown-it')
-      const markdownItTocAndAnchor = require('markdown-it-toc-and-anchor')
-        .default
-      const prism = require('prismjs')
-      const fs = require('fs')
-      const path = require('path')
-
+    markdown: (originalText, options) => {
+      let text = replaceMarkdown(originalText)
       const md = markdownIt({
         html: true,
         linkify: true,
@@ -65,10 +68,9 @@ module.exports = {
         tocFirstLevel: 2,
       })
 
-      let rendered = md.render(text)
-
-      rendered = replaceAll(
-        rendered,
+      text = md.render(text)
+      text = replaceAll(
+        text,
         /<include lang="(.*)" src="(.*)" \/>/g,
         (match, lang, src) => {
           const text = fs.readFileSync(path.join(__dirname, src), {
@@ -78,8 +80,7 @@ module.exports = {
           return `<pre><code language="language-${lang}">${code}</code></pre>`
         },
       )
-
-      rendered = replaceAll(rendered, /<copy src="(.*)" \/>/g, (match, src) => {
+      text = replaceAll(text, /<copy src="(.*)" \/>/g, (match, src) => {
         let text = fs.readFileSync(path.join(__dirname, src), {
           encoding: 'utf8',
         })
@@ -89,7 +90,7 @@ module.exports = {
         return `<pre><code language="language-${lang}">${code}</code></pre>`
       })
 
-      return rendered
+      return text
     },
   },
   ...require('./data.json'),
