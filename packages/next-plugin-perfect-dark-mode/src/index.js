@@ -1,13 +1,13 @@
-const NextHead = require('next/head')
-const jsxRuntime = require('react/jsx-runtime')
-const { code } = require('perfect-dark-mode/dist/code')
+let h = require('next/head')
+let j = require('react/jsx-runtime')
+let { code } = require('perfect-dark-mode/dist/code')
 
-const { jsx } = jsxRuntime
-const Head = NextHead.default
+let { jsx } = j
+let H = h.default
 
 module.exports = require('react-perfect-dark-mode')
 
 module.exports.InjectPerfectDarkMode = () =>
-  jsx(Head, {
+  jsx(H, {
     children: jsx('script', { dangerouslySetInnerHTML: { __html: code } }),
   })
