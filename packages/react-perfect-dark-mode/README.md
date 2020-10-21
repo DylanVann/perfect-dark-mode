@@ -1,5 +1,13 @@
 # react-perfect-dark-mode
 
+[![Version][version-badge]][package]
+[![Size][size-badge]][size]
+
+[package]: https://www.npmjs.com/package/react-perfect-dark-mode
+[version-badge]: https://img.shields.io/npm/v/react-perfect-dark-mode.svg
+[size]: https://bundlephobia.com/result?p=react-perfect-dark-mode
+[size-badge]: https://img.shields.io/bundlephobia/minzip/react-perfect-dark-mode?label=size
+
 ## Installation
 
 For this to work you need to first install [`perfect-dark-mode`](../../README.md)

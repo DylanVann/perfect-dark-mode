@@ -1,5 +1,13 @@
 # next-plugin-perfect-dark-mode
 
+[![Version][version-badge]][package]
+[![Size][size-badge]][size]
+
+[package]: https://www.npmjs.com/package/next-plugin-perfect-dark-mode
+[version-badge]: https://img.shields.io/npm/v/next-plugin-perfect-dark-mode.svg
+[size]: https://bundlephobia.com/result?p=next-plugin-perfect-dark-mode
+[size-badge]: https://img.shields.io/bundlephobia/minzip/next-plugin-perfect-dark-mode?label=size
+
 This plugin makes it easy to add `perfect-dark-mode` to Next.js.
 
 - [Example](https://perfect-dark-mode-next.netlify.app/)
