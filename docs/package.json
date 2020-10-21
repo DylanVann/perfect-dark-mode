@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "run-s build:copy:* build:data build:tailwind build:html",
+    "build:copy:images": "cpx 'static/**/*' dist",
     "build:copy:lib": "cpx '../node_modules/perfect-dark-mode/dist/**/*' dist/perfect-dark-mode/dist",
     "build:copy:style-dark": "cpx ../node_modules/prism-themes/themes/prism-nord.css dist/syntax",
     "build:copy:style-light": "cpx ../node_modules/prism-themes/themes/prism-base16-ateliersulphurpool.light.css dist/syntax",
