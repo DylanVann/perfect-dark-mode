@@ -32,10 +32,10 @@ export const usePerfectDarkMode = () => {
 
   return {
     mode,
-    setMode: pdmMode.set,
-    updateMode: pdmMode.update,
+    setMode: pdmMode && pdmMode.set,
+    updateMode: pdmMode && pdmMode.update,
     modes,
-    setModes: pdmModes.set,
-    updateModes: pdmModes.update,
+    setModes: pdmModes && pdmModes.set,
+    updateModes: pdmModes && pdmModes.update,
   }
 }
