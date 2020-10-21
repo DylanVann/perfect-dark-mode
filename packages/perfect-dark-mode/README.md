@@ -45,7 +45,7 @@ Add this code to the `<head>` of your page:
 
 ## Usage
 
-A class indicating the color mode will be added to `<html>` (e.g. `dark` or `light`).
+A class indicating the color mode will be added to `<html>` (e.g. `pdm-light` or `pdm-dark`).
 This is done before the rest of your page is rendered (that's why it needs to be in head).
 
 This package is intended to:
