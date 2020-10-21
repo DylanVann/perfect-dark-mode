@@ -34,6 +34,7 @@ export interface Writable<T> extends Readable<T> {
 export type ColorMode = string
 
 export interface PerfectDarkModeOptions {
+  prefix?: string
   modes?: string[]
 }
 
@@ -70,9 +71,10 @@ export interface ColorModeWritableWithEnhancedUpdater
 }
 
 export const createPerfectDarkMode = ({
+  prefix = 'pdm',
   modes = ['light', 'dark'],
 }: PerfectDarkModeOptions = {}): PerfectDarkMode => {
-  const colorModeKey = 'pdm'
+  const colorModeKey = prefix
   const localStorage = window.localStorage
 
   let currentModes = modes
@@ -188,18 +190,18 @@ export const createPerfectDarkMode = ({
   })()
 
   const htmlClassList = document.documentElement.classList
-  let colorMode: string | undefined
+  let prevMode: string | undefined
   mode.subscribe((v) => {
-    if (colorMode) {
-      htmlClassList.remove(colorMode)
+    if (prevMode) {
+      htmlClassList.remove(`${prefix}-${prevMode}`)
     }
     if (v) {
-      htmlClassList.add(v)
+      htmlClassList.add(`${prefix}-${v}`)
     }
-    colorMode = v
+    prevMode = v
   })
 
-  htmlClassList.add('pdm')
+  htmlClassList.add(prefix)
   return {
     mode,
     modes: modesWritable,

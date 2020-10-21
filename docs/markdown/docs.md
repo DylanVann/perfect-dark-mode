@@ -166,12 +166,12 @@ Here is a simple implementation of dark and light modes:
   }
 }
 
-:root.light {
+.pdm-light {
   --color: black;
   --background: white;
 }
 
-:root.dark {
+.pdm-dark {
   --color: white;
   --background: black;
 }

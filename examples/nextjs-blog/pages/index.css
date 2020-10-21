@@ -5,7 +5,7 @@
   }
 }
 
-:root.light {
+.pdm-light {
   --color: #2e353f;
   --background: #fff;
 }
@@ -17,7 +17,7 @@
   }
 }
 
-:root.dark {
+.pdm-dark {
   --color: #fff;
   --background: #000;
 }

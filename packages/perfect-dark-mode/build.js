@@ -1,6 +1,7 @@
 const execa = require('execa')
 const path = require('path')
 const fs = require('fs-extra')
+const replaceAll = require('string.prototype.replaceall')
 
 const run = async () => {
   await execa('esbuild', [
@@ -42,7 +43,13 @@ const run = async () => {
     },
   )
 
-  const rendered = template.replace('{{code}}', perfectDarkModeCode)
+  const escape = (v) => {
+    let out = v
+    out = replaceAll(out, '`', '\\`')
+    out = replaceAll(out, '$', '\\$')
+    return out
+  }
+  const rendered = template.replace('{{code}}', escape(perfectDarkModeCode))
   await fs.writeFile('src/code.ts', rendered)
 
   await execa('esbuild', [

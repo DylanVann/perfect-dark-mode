@@ -41,7 +41,7 @@ You'll need to add some CSS.
   }
 }
 
-:root.light {
+.pdm-light {
   --color-background: #fff;
   --color-primary: #005b99;
   --color-text: #2e353f;
@@ -63,7 +63,7 @@ You'll need to add some CSS.
   }
 }
 
-:root.dark {
+.pdm-dark {
   --color-background: #000;
   --color-primary: #005b99;
   --color-text: #fff;
