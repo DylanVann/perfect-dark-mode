@@ -23,7 +23,7 @@ export default function Home() {
             )
           }
         >
-          {mode}
+          {mode || 'light'}
         </button>
 
         <h1 className="title">

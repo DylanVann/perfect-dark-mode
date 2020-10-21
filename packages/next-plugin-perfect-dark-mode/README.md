@@ -2,6 +2,9 @@
 
 This plugin makes it easy to add `perfect-dark-mode` to Next.js.
 
+- [Example](https://perfect-dark-mode-next.netlify.app/)
+- [Example Code](../../examples/nextjs-blog)
+
 ## Installation
 
 ```bash
