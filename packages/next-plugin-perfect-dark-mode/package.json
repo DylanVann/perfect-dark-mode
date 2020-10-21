@@ -18,19 +18,14 @@
   "module": "src/index.mjs",
   "types": "src/index.d.ts",
   "files": [
-    "dist"
+    "src"
   ],
-  "scripts": {
-    "build": "node build.js"
-  },
   "dependencies": {
     "perfect-dark-mode": "*",
     "react-perfect-dark-mode": "*"
   },
   "devDependencies": {
     "@types/react": "^16.9.53",
-    "esbuild": "^0.7.17",
-    "execa": "^4.0.3",
     "next": "^9",
     "react": "^16.14.0",
     "typescript": "^4.0.3"

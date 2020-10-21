@@ -10,7 +10,6 @@ const run = async () => {
     `--outfile=dist/index.js`,
     `--format=iife`,
     '--minify',
-    '--sourcemap',
   ])
 
   await execa('esbuild', [
@@ -20,7 +19,6 @@ const run = async () => {
     `--outfile=dist/pure.js`,
     `--format=cjs`,
     '--minify',
-    '--sourcemap',
   ])
 
   await execa('esbuild', [
@@ -30,7 +28,6 @@ const run = async () => {
     `--outfile=dist/pure.mjs`,
     `--format=esm`,
     '--minify',
-    '--sourcemap',
   ])
 
   const template = fs.readFileSync(
@@ -55,7 +52,6 @@ const run = async () => {
     `--outfile=dist/code.js`,
     `--format=cjs`,
     '--minify',
-    '--sourcemap',
   ])
 
   await execa('esbuild', [
@@ -65,7 +61,6 @@ const run = async () => {
     `--outfile=dist/code.mjs`,
     `--format=esm`,
     '--minify',
-    '--sourcemap',
   ])
 
   await execa('tsc')

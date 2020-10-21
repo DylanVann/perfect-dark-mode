@@ -1,14 +1,31 @@
 import Head from 'next/head'
+import {
+  InjectPerfectDarkMode,
+  usePerfectDarkMode,
+} from 'next-plugin-perfect-dark-mode'
 
 export default function Home() {
+  const { mode, updateMode } = usePerfectDarkMode()
   return (
     <div className="container">
+      <InjectPerfectDarkMode />
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
+        <button
+          style={{ visibility: mode !== undefined ? 'visible' : 'hidden' }}
+          onClick={() =>
+            updateMode(
+              (mode, modes, modeIndex) => modes[(modeIndex + 1) % modes.length],
+            )
+          }
+        >
+          {mode}
+        </button>
+
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
