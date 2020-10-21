@@ -51,7 +51,7 @@ import { usePerfectDarkMode } from 'next-plugin-perfect-dark-mode'
 
 export const Toggle = () => {
   const { mode, updateMode } = usePerfectDarkMode()
-  return () => (
+  return (
     <button
       style={{ visibility: mode !== undefined ? 'visible' : 'hidden' }}
       onClick={() =>
