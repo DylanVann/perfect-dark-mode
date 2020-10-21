@@ -171,13 +171,19 @@ export const createPerfectDarkMode = ({
     const listeners = new Set<Function>()
     modeSaved.subscribe((v) => {
       cmSaved = v
-      cmMerged = cmSaved || cmOS
-      listeners.forEach((cb) => cb(cmMerged))
+      const newMode = cmSaved || cmOS
+      if (newMode !== cmMerged) {
+        cmMerged = newMode
+        listeners.forEach((cb) => cb(cmMerged))
+      }
     })
     modeOS.subscribe((v) => {
       cmOS = v
-      cmMerged = cmSaved || cmOS
-      listeners.forEach((cb) => cb(cmMerged))
+      const newMode = cmSaved || cmOS
+      if (newMode !== cmMerged) {
+        cmMerged = newMode
+        listeners.forEach((cb) => cb(cmMerged))
+      }
     })
     return {
       subscribe(listener) {
