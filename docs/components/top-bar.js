@@ -10,13 +10,19 @@ window.addEventListener(
     if (window.scrollY > 200) {
       if (!showingFloatingButton) {
         floatingButtonEl.classList.replace('opacity-0', 'opacity-100')
-        topBarEl.classList.replace('pointer-events-none', 'pointer-events-auto')
+        floatingButtonEl.classList.replace(
+          'pointer-events-none',
+          'pointer-events-auto',
+        )
         showingFloatingButton = true
       }
     } else {
       if (showingFloatingButton) {
         floatingButtonEl.classList.replace('opacity-100', 'opacity-0')
-        topBarEl.classList.replace('pointer-events-auto', 'pointer-events-none')
+        floatingButtonEl.classList.replace(
+          'pointer-events-auto',
+          'pointer-events-none',
+        )
         showingFloatingButton = false
       }
     }
