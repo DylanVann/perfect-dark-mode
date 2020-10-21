@@ -5,7 +5,7 @@ const pug = require('pug')
 
 const run = async () => {
   const pkg = fs.readJSONSync(
-    path.join(path.resolve(), '../perfect-dark-mode/package.json'),
+    path.join(path.resolve(), '../packages/perfect-dark-mode/package.json'),
   )
   const fileContent = fs.readFileSync(
     path.join(path.resolve(), 'dist/perfect-dark-mode/dist/index.js'),

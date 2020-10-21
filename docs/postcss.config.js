@@ -11,7 +11,7 @@ module.exports = {
   plugins: [
     postcssImport(),
     copy({
-      basePath: ['src', 'node_modules', '../../node_modules'],
+      basePath: ['src', 'node_modules', '../node_modules'],
       template: '[name].[ext][query]',
       dest: 'dist',
     }),
