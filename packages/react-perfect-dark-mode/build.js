@@ -9,8 +9,7 @@ const run = async () => {
     `--format=cjs`,
     '--external:react',
     '--external:perfect-dark-mode',
-    '--minify',
-    '--sourcemap',
+    '--minify'
   ])
 
   await execa('esbuild', [
@@ -21,8 +20,7 @@ const run = async () => {
     `--format=esm`,
     '--external:react',
     '--external:perfect-dark-mode',
-    '--minify',
-    '--sourcemap',
+    '--minify'
   ])
 }
 
