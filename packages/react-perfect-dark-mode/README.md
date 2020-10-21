@@ -21,7 +21,7 @@ yarn add react-perfect-dark-mode
 ## Usage
 
 ```js
-import { usePerfectDarkMode } from 'gatsby-plugin-perfect-dark-mode'
+import { usePerfectDarkMode } from 'react-perfect-dark-mode'
 
 export const Toggle = () => {
   const { mode, updateMode } = usePerfectDarkMode()

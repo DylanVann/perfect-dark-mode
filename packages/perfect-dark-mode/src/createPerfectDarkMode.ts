@@ -38,36 +38,40 @@ export interface PerfectDarkModeOptions {
   modes?: string[]
 }
 
-export interface PerfectDarkMode {
-  /**
-   * The resolved color mode, can be set or updated.
-   */
-  mode: Writable<ColorMode | undefined>
-  /**
-   * The saved color mode, probably only useful for debugging.
-   */
-  modeSaved: Writable<ColorMode | undefined>
-  /**
-   * The OS color mode, probably only useful for debugging.
-   */
-  modeOS: Readable<ColorMode | undefined>
-  /**
-   * A list of color modes.
-   */
-  modes: Writable<ColorMode[]>
-}
-
 export type ColorModeReadable = Readable<ColorMode | undefined>
+
 export type ColorModeWritable = Writable<ColorMode | undefined>
+
 export type ColorModesWritable = Writable<ColorMode[]>
+
 export type EnhancedUpdater = (
   value: ColorMode | undefined,
   modes: ColorMode[],
   modeIndex: number | undefined,
 ) => ColorMode
+
 export interface ColorModeWritableWithEnhancedUpdater
   extends ColorModeWritable {
   update: (updater: EnhancedUpdater) => void
+}
+
+export interface PerfectDarkMode {
+  /**
+   * The resolved color mode, can be set or updated.
+   */
+  mode: ColorModeWritableWithEnhancedUpdater
+  /**
+   * The saved color mode, probably only useful for debugging.
+   */
+  modeSaved: ColorModeWritable
+  /**
+   * The OS color mode, probably only useful for debugging.
+   */
+  modeOS: ColorModeReadable
+  /**
+   * A list of color modes.
+   */
+  modes: ColorModesWritable
 }
 
 export const createPerfectDarkMode = ({
