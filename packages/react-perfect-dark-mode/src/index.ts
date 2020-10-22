@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
 import type {
   ColorMode,
   EnhancedUpdater,
@@ -22,10 +22,12 @@ export const usePerfectDarkMode = (): UsePerfectDarkMode => {
     typeof window !== 'undefined' ? window.__pdm__ : ({} as any)
   const { mode: pdmMode, modes: pdmModes } = pdm
 
-  const [mode, setModeInternal] = useState<ColorMode | undefined>(undefined)
-  const [modes, setModesInternal] = useState<ColorMode[]>(() => [])
-  useEffect(() => pdmMode.subscribe((v) => setModeInternal(v)), [])
-  useEffect(() => pdmModes.subscribe((v) => setModesInternal(v)))
+  const [mode, setModeInternal] = React.useState<ColorMode | undefined>(
+    undefined,
+  )
+  const [modes, setModesInternal] = React.useState<ColorMode[]>(() => [])
+  React.useEffect(() => pdmMode.subscribe((v) => setModeInternal(v)), [])
+  React.useEffect(() => pdmModes.subscribe((v) => setModesInternal(v)))
 
   return {
     mode,
