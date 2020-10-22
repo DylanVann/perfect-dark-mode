@@ -53,20 +53,25 @@ Add this code to the `<head>` of your page:
 A class indicating the color mode will be added to `<html>` (e.g. `pdm-light` or `pdm-dark`).
 This is done before the rest of your page is rendered (that's why it needs to be in head).
 
-This package is intended to:
+### This package does:
 
 - Determine the correct color mode when the page is loaded.
 - Save changes to the mode.
 - Allow for listening to the mode and building controls that depend on it.
 
-It does not handle styling the modes for you.
-To style your color modes you should use CSS variables.
+### This package does not:
 
-You can also add `@media (prefers-color-scheme: dark/light)` queries to support users with JS disabled.
+- Handle styling for you.
+  - Styling should be done using CSS variables.
+- Automatically convert your page to dark mode.
+  - This would be error prone, it is better to intentionally design your color modes using CSS variables.
+- Provide UI components for you.
+  - This page does show some examples of how to make simple controls in various frameworks that listen to the mode.
 
-Here is a simple implementation of dark and light modes:
+Here is a simple implementation of dark and light modes using CSS variables and the classes added by PDM:
 
 ```css
+/* This supports users with JS disabled. */
 @media (prefers-color-scheme: dark) {
   :root {
     --color: white;
@@ -74,6 +79,7 @@ Here is a simple implementation of dark and light modes:
   }
 }
 
+/* This supports users with JS disabled. */
 @media (prefers-color-scheme: light) {
   :root {
     --color: black;
@@ -81,16 +87,21 @@ Here is a simple implementation of dark and light modes:
   }
 }
 
+/* Styles for when light mode is enabled. */
 .pdm-light {
   --color: black;
   --background: white;
 }
 
+/* Styles for when dark mode is enabled. */
 .pdm-dark {
   --color: white;
   --background: black;
 }
 
+/* Default color and background. */
+/* If you add a color or background on other components (e.g. body or some custom Button) */
+/* that will override these. You will need to change those styles to use these CSS variables. */
 :root {
   color: var(--color);
   background: var(--background);
