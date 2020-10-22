@@ -46,7 +46,8 @@ export default function Home() {
 
 In a component you can use the hook:
 
-```js
+```jsx
+import React from 'react'
 import { usePerfectDarkMode } from 'next-plugin-perfect-dark-mode'
 
 export const Toggle = () => {

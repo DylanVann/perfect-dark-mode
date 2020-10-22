@@ -83,7 +83,8 @@ You'll need to add some CSS.
 
 In a component you can use the hook:
 
-```js
+```jsx
+import React from 'react'
 import { usePerfectDarkMode } from 'gatsby-plugin-perfect-dark-mode'
 
 export const Toggle = () => {

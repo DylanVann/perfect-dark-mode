@@ -20,7 +20,8 @@ yarn add react-perfect-dark-mode
 
 ## Usage
 
-```js
+```jsx
+import React from 'react'
 import { usePerfectDarkMode } from 'react-perfect-dark-mode'
 
 export const Toggle = () => {
