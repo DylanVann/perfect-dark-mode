@@ -1,5 +1,8 @@
 ## Installation
 
+There are a few options for installing `perfect-dark-mode`.
+Note, if you use Gatsby or Next.js you do not need to do this.
+
 ### Yarn
 
 ```bash
