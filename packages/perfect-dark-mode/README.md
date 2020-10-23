@@ -1,19 +1,14 @@
 # `perfect-dark-mode`
 
-[![Version][version-badge]][package]
-[![Size][size-badge]][size]
-
-[package]: https://www.npmjs.com/package/perfect-dark-mode
-[version-badge]: https://img.shields.io/npm/v/perfect-dark-mode.svg
-[size]: https://bundlephobia.com/result?p=perfect-dark-mode
-[size-badge]: https://img.shields.io/bundlephobia/minzip/perfect-dark-mode?label=size
+[![Version](https://img.shields.io/npm/v/perfect-dark-mode.svg)](https://www.npmjs.com/package/perfect-dark-mode)
+[![Size](https://img.shields.io/bundlephobia/minzip/perfect-dark-mode?label=size)](https://bundlephobia.com/result?p=perfect-dark-mode)
 
 - No flicker.
 - Framework agnostic, easily supports **React** | **Vue** | **Svelte** | etc.
-  - [`react-perfect-dark-mode`][react-perfect-dark-mode]
-  - [`gatsby-plugin-perfect-dark-mode`][gatsby-plugin-perfect-dark-mode]
-  - [`next-plugin-perfect-dark-mode`][next-plugin-perfect-dark-mode]
-  - [`vue-perfect-dark-mode`][vue-perfect-dark-mode]
+  - [`react-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/react-perfect-dark-mode)
+  - [`gatsby-plugin-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/gatsby-plugin-perfect-dark-mode)
+  - [`next-plugin-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/next-plugin-perfect-dark-mode)
+  - [`vue-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/vue-perfect-dark-mode)
   - Svelte - This was written for Svelte :). `window.__pdm__.mode` is a [`Writable`](https://svelte.dev/docs#writable).
 - Supports SSR.
 - Supports no-js.
@@ -25,11 +20,6 @@
 - Supports any number of color modes, not just `light` and `dark`.
 - Syncs across tabs.
 - Built for the web.
-
-[react-perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/react-perfect-dark-mode
-[gatsby-plugin-perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/gatsby-plugin-perfect-dark-mode
-[next-plugin-perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/next-plugin-perfect-dark-mode
-[vue-perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/vue-perfect-dark-mode
 
 ## Installation
 
