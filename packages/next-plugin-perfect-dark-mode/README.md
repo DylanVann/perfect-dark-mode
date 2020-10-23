@@ -15,11 +15,12 @@ This plugin makes it easy to add `perfect-dark-mode` to Next.js.
 
 ## Installation
 
+You do not need to add `perfect-dark-mode` to `<head>` like you do for `react-perfect-dark-mode`.
+This plugin provides `InjectPerfectDarkMode` to do that.
+
 ```bash
 yarn add next-plugin-perfect-dark-mode
 ```
-
-## Usage
 
 You must render `InjectPerfectDarkMode` on any page you use it on.
 
@@ -43,6 +44,8 @@ export default function Home() {
   )
 }
 ```
+
+## Usage
 
 In a component you can use the hook:
 

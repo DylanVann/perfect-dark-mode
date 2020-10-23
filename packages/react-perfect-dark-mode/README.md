@@ -10,15 +10,15 @@
 
 ## Installation
 
-For this to work you need to first install [`perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/perfect-dark-mode)
-into the `<head>` of your document.
-This needs to be done so the mode is setup as soon as possible.
+You must first install [`perfect-dark-mode`][perfect-dark-mode] into the `<head>` of your document.
 
 ```bash
 yarn add react-perfect-dark-mode
 ```
 
 ## Usage
+
+In a component you can use the hook:
 
 ```jsx
 import React from 'react'
@@ -40,3 +40,5 @@ export const Toggle = () => {
   )
 }
 ```
+
+[perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/perfect-dark-mode

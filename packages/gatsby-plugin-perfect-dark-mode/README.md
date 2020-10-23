@@ -15,69 +15,14 @@ This plugin makes it easy to add `perfect-dark-mode` to Gatsby.
 
 ## Installation
 
-You do not need to install `perfect-dark-mode` like you do for `react-perfect-dark-mode`.
+You do not need to add `perfect-dark-mode` to `<head>` like you do for `react-perfect-dark-mode`.
 This plugin puts `perfect-dark-mode` in `<head>` for you.
 
 ```bash
 yarn add gatsby-plugin-perfect-dark-mode
 ```
 
-## Setup
-
 Add `gatsby-plugin-perfect-dark-mode` to your `gatsby-config.js` file.
-
-You'll need to add some CSS.
-
-```css
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-background: #fff;
-    --color-primary: #005b99;
-    --color-text: #2e353f;
-    --color-text-light: #4f5969;
-    --color-heading: #1a202c;
-    --color-heading-black: black;
-    --color-accent: #d1dce5;
-  }
-}
-
-.pdm-light {
-  --color-background: #fff;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
-  --color-text-light: #4f5969;
-  --color-heading: #1a202c;
-  --color-heading-black: black;
-  --color-accent: #d1dce5;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #000;
-    --color-primary: #005b99;
-    --color-text: #fff;
-    --color-text-light: #fff;
-    --color-heading: #fff;
-    --color-heading-black: white;
-    --color-accent: #d1dce5;
-  }
-}
-
-.pdm-dark {
-  --color-background: #000;
-  --color-primary: #005b99;
-  --color-text: #fff;
-  --color-text-light: #fff;
-  --color-heading: #fff;
-  --color-heading-black: white;
-  --color-accent: #d1dce5;
-}
-
-:root {
-  color: var(--color);
-  background: var(--color-background);
-}
-```
 
 ## Usage
 

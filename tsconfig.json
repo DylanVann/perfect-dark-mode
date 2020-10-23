@@ -5,11 +5,10 @@
     "strict": true,
     "esModuleInterop": true,
     "emitDeclarationOnly": true,
+    "moduleResolution": "node",
     "declaration": true,
     "declarationDir": "dist",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src"],
-  "exclude": ["src/code.template.ts"]
+  }
 }

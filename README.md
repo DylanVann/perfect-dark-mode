@@ -12,10 +12,10 @@
 
 - No flicker.
 - Framework agnostic, easily supports **React** | **Vue** | **Svelte** | etc.
-  - [`react-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/react-perfect-dark-mode)
-  - [`gatsby-plugin-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/gatsby-plugin-perfect-dark-mode)
-  - [`next-plugin-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/next-plugin-perfect-dark-mode)
-  - [`vue-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/vue-perfect-dark-mode)
+  - [`react-perfect-dark-mode`][react-perfect-dark-mode]
+  - [`gatsby-plugin-perfect-dark-mode`][gatsby-plugin-perfect-dark-mode]
+  - [`next-plugin-perfect-dark-mode`][next-plugin-perfect-dark-mode]
+  - [`vue-perfect-dark-mode`][vue-perfect-dark-mode]
   - Svelte - This was written for Svelte :). `window.__pdm__.mode` is a [`Writable`](https://svelte.dev/docs#writable).
 - Supports SSR.
 - Supports no-js.
@@ -28,6 +28,11 @@
 - Syncs across tabs.
 - Built for the web.
 
+[react-perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/react-perfect-dark-mode
+[gatsby-plugin-perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/gatsby-plugin-perfect-dark-mode
+[next-plugin-perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/next-plugin-perfect-dark-mode
+[vue-perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/vue-perfect-dark-mode
+
 ## Installation
 
 ### Yarn
@@ -36,7 +41,7 @@
 yarn add perfect-dark-mode
 ```
 
-Then you must somehow add `node_modules/perfect-dark-mode/dist/index.js` as a script in the `<head>` of your page.
+Then you must add `node_modules/perfect-dark-mode/dist/index.js` as a script in the `<head>` of your page.
 
 How you do this will depend on the framework you are using.
 
@@ -45,7 +50,15 @@ How you do this will depend on the framework you are using.
 Add this code to the `<head>` of your page:
 
 ```html
-<script src="https://unpkg.com/perfect-dark-mode@0.0.9/dist/index.js"></script>
+<script src="https://unpkg.com/perfect-dark-mode@0.0.16/dist/index.js"></script>
+```
+
+### Copy and Paste
+
+Add this code to the `<head>` of your page:
+
+```js
+<script>(()=>{const M=({prefix:l="pdm",modes:C=["light","dark"]}={})=>{const i=l,u=window.localStorage;let s=C;const h=(()=>{const r=new Set,d=e=>{s=e,r.forEach(a=>a(e))};return{subscribe(e){return e(s),r.add(e),()=>r.delete(e)},set:d,update(e){d(e(s))}}})(),f=(()=>{const r=new Set,d=matchMedia("(prefers-color-scheme: dark)");let e;const a=({matches:t})=>{const n=t?"dark":"light";e=n,r.forEach(o=>o(n))};return d.addEventListener?d.addEventListener("change",a):d.addListener(a),a(d),{subscribe(t){return t(e),r.add(t),()=>r.delete(t)}}})(),c=(()=>{const r=o=>o?s.includes(o)?o:s[0]:void 0,d=new Set;let e;const a=o=>{if(o===e)return;o!==void 0?u.setItem(i,o):u.removeItem(i),d.forEach(g=>g(o)),e=o},t=u.getItem(i),n=r(t);return e=n,window.addEventListener("storage",o=>o.key===i&&a(o.newValue||void 0)),{subscribe(o){return o(n),d.add(o),()=>d.delete(o)},set:a,update(o){a(o(e))}}})(),m=(()=>{let r,d,e;const a=new Set;return c.subscribe(t=>{r=t;const n=r||d;n!==e&&(e=n,a.forEach(o=>o(e)))}),f.subscribe(t=>{d=t;const n=r||d;n!==e&&(e=n,a.forEach(o=>o(e)))}),{subscribe(t){return a.add(t),t(e),()=>a.delete(t)},set:c.set,update(t){const n=s.indexOf(e)||0;c.set(t(e,s,n))}}})(),b=document.documentElement.classList;let p;return m.subscribe(r=>{p&&b.remove(`${l}-${p}`),r&&b.add(`${l}-${r}`),p=r}),b.add(l),{mode:m,modes:h,modeOS:f,modeSaved:c}};window.__pdm__=M({modes:document.documentElement.dataset.pdm?.split(" ")});})();</script>
 ```
 
 ## Usage
@@ -172,3 +185,4 @@ This version comes in a couple module formats:
 
 - `dist/pure.js` - CJS
 - `dist/pure.mjs` - ESM
+

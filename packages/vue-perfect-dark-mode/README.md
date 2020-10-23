@@ -10,15 +10,15 @@
 
 ## Installation
 
-For this to work you need to first install [`perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/perfect-dark-mode)
-into the `<head>` of your document.
-This needs to be done so the mode is setup as soon as possible.
+You must first install [`perfect-dark-mode`][perfect-dark-mode] into the `<head>` of your document.
 
 ```bash
 yarn add vue-perfect-dark-mode
 ```
 
 ## Usage
+
+In a component you can use the hook:
 
 ```html
 <script>
@@ -29,7 +29,7 @@ yarn add vue-perfect-dark-mode
     setup(props) {
       const { mode, updateMode } = usePerfectDarkMode()
       return {
-        mode: mode || 'light',
+        mode,
         onClick() {
           updateMode(
             (mode, modes, modeIndex) => modes[(modeIndex + 1) % modes.length],
@@ -54,34 +54,7 @@ yarn add vue-perfect-dark-mode
   .visible {
     visibility: visible;
   }
-
-  @media (prefers-color-scheme: light) {
-    :root {
-      --color: #2e353f;
-      --background: #fff;
-    }
-  }
-
-  .pdm-light {
-    --color: #2e353f;
-    --background: #fff;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color: #fff;
-      --background: #000;
-    }
-  }
-
-  .pdm-dark {
-    --color: #fff;
-    --background: #000;
-  }
-
-  :root {
-    color: var(--color);
-    background: var(--background);
-  }
 </style>
 ```
+
+[perfect-dark-mode]: https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/perfect-dark-mode

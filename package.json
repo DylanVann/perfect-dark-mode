@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "wsrun --stages --exclude-missing build",
+    "build": "yarn && wsrun --stages --exclude-missing build && yarn build:md",
+    "build:md": "node -r esm -r esbuild-register build.ts",
     "serve": "wsrun --exclude-missing serve"
   },
   "prettier": {
@@ -15,6 +16,11 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.2",
+    "esbuild": "^0.7.19",
+    "esbuild-register": "^1.1.0",
+    "esm": "^3.2.25",
+    "fs-extra": "^9.0.1",
     "prettier": "^2.1.2",
     "wsrun": "^5.2.4"
   }
