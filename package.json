@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.2",
-    "esbuild": "^0.7.19",
+    "esbuild": "^0.7.21",
     "esbuild-register": "^1.1.0",
     "esm": "^3.2.25",
     "fs-extra": "^9.0.1",
