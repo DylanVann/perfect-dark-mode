@@ -3,6 +3,42 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--color);
   margin-top: 60px;
+}
+
+/* This supports users with JS disabled. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: white;
+    --background: black;
+  }
+}
+
+/* This supports users with JS disabled. */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color: black;
+    --background: white;
+  }
+}
+
+/* Styles for when light mode is enabled. */
+.pdm-light {
+  --color: black;
+  --background: white;
+}
+
+/* Styles for when dark mode is enabled. */
+.pdm-dark {
+  --color: white;
+  --background: black;
+}
+
+/* Default color and background. */
+/* If you add a color or background on other components (e.g. body or some custom Button) */
+/* that will override these. You will need to change those styles to use these CSS variables. */
+:root {
+  color: var(--color);
+  background: var(--background);
 }
