@@ -28,6 +28,6 @@ jobs:
               run: yarn test
 
             - name: Test Coverage
-              run: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
+              run: bash <(curl -s https://codecov.io/bash) -f packages/perfect-dark-mode/coverage/lcov.info
               env:
                   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
