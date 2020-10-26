@@ -8,7 +8,8 @@
   "scripts": {
     "build": "yarn && wsrun --stages --exclude-missing build && yarn build:md",
     "build:md": "node -r esm -r esbuild-register build.ts",
-    "serve": "wsrun --exclude-missing serve"
+    "serve": "wsrun --exclude-missing serve",
+    "test": "wsrun --exclude-missing test"
   },
   "prettier": {
     "semi": false,

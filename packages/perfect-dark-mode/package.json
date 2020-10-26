@@ -23,7 +23,8 @@
   "scripts": {
     "build": "run-p build:ts build:js",
     "build:js": "node build.js",
-    "build:ts": "tsc"
+    "build:ts": "tsc",
+    "test": "dv-scripts test --coverage"
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",
