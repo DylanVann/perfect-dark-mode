@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "emitDeclarationOnly": true,
     "declaration": true,
+    "types": ["jest", "node"],
     "declarationDir": "dist",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true

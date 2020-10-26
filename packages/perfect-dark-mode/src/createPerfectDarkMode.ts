@@ -120,12 +120,12 @@ export const createPerfectDarkMode = ({
   const modeSaved: Writable<ColorMode | undefined> = ((): Writable<
     ColorMode | undefined
   > => {
-    const parseColorMode = (mode: string | null): ColorMode | undefined =>
-      mode
-        ? currentModes.includes(mode)
-          ? (mode as ColorMode)
-          : currentModes[0]
-        : undefined
+    const parseColorMode = (mode: string | null): ColorMode | undefined => {
+      if (!mode || !currentModes.includes(mode)) {
+        return undefined
+      }
+      return mode as ColorMode
+    }
     const listeners = new Set<Function>()
     let mode: ColorMode | undefined
     const set = (colorMode?: ColorMode) => {
@@ -189,7 +189,8 @@ export const createPerfectDarkMode = ({
       },
       set: modeSaved.set,
       update(updater) {
-        const index = currentModes.indexOf(cmMerged) || 0
+        let index = currentModes.indexOf(cmMerged)
+        index = index === -1 ? 0 : index
         modeSaved.set(updater(cmMerged, currentModes, index))
       },
     }
@@ -201,9 +202,7 @@ export const createPerfectDarkMode = ({
     if (prevMode) {
       htmlClassList.remove(`${prefix}-${prevMode}`)
     }
-    if (v) {
-      htmlClassList.add(`${prefix}-${v}`)
-    }
+    htmlClassList.add(`${prefix}-${v}`)
     prevMode = v
   })
 
