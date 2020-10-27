@@ -1,0 +1,11 @@
+mixin badgeLarge(name, text)
+    svg(xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100' height='20' role='img' aria-label=name + ': ' + text)
+        title #{name}: #{text}
+        g
+            rect(width='55' height='20' fill='#555')
+            rect(x='55' width='45' height='20' fill='black' class="background")
+        g(fill='#fff' text-anchor='middle' font-family='Verdana,Geneva,DejaVu Sans,sans-serif' text-rendering='geometricPrecision' font-size='110')
+            text(aria-hidden='true' x='280' y='150' fill='#010101' fill-opacity='.3' transform='scale(.1)' textlength='450') #{name}
+            text(x='280' y='140' transform='scale(.1)' fill='#fff' textlength='450') #{name}
+            text(aria-hidden='true' x='780' y='150' fill='#010101' fill-opacity='.3' transform='scale(.1)' textlength='350' class="text-shadow") #{text}
+            text(x='780' y='140' transform='scale(.1)' fill='#fff' textlength='350' class="text") #{text}
