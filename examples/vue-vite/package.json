@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "vue": "^3.0.0-rc.1",
-    "vue-perfect-dark-mode": "0.0.16"
+    "vue-perfect-dark-mode": "*"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.0-rc.1",
