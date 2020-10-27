@@ -6,7 +6,7 @@
 This plugin makes it easy to add `perfect-dark-mode` to Gatsby.
 
 - [Example](https://perfect-dark-mode-gatsby.netlify.app/)
-- [Example Code](https://github.com/DylanVann/perfect-dark-mode/tree/main/examples/gatsby-starter-blog)
+- [Example Code](https://github.com/DylanVann/perfect-dark-mode/tree/main/examples/react-gatsby)
 
 ## Installation
 

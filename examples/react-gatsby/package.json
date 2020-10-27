@@ -1,19 +1,11 @@
 {
-  "name": "perfect-dark-mode-gatsby-starter-blog",
+  "name": "perfect-dark-mode-example-react-gatsby",
   "version": "0.1.0",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
   "keywords": [
     "gatsby"
   ],
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
-  },
   "license": "0BSD",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "main": "n/a",
