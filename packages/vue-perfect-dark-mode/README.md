@@ -3,6 +3,11 @@
 [![Version](https://img.shields.io/npm/v/vue-perfect-dark-mode.svg)](https://www.npmjs.com/package/vue-perfect-dark-mode)
 [![Size](https://img.shields.io/bundlephobia/minzip/vue-perfect-dark-mode?label=size)](https://bundlephobia.com/result?p=vue-perfect-dark-mode)
 
+- [Example](https://perfect-dark-mode-vue.netlify.app/)
+- [Example Code](https://github.com/DylanVann/perfect-dark-mode/tree/main/examples/vue-vite)
+
+**This integration is for Vue 3.**
+
 ## Installation
 
 You must first install [`perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/perfect-dark-mode) into the `<head>` of your document.
