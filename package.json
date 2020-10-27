@@ -22,6 +22,7 @@
     "esbuild-register": "^1.1.0",
     "esm": "^3.2.25",
     "fs-extra": "^9.0.1",
+    "netlify-cli": "^2.67.0",
     "prettier": "^2.1.2",
     "wsrun": "^5.2.4"
   }
