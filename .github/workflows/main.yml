@@ -35,16 +35,16 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Deploy Docs
-        run: yarn netlify deploy --site 55d1ba1e-2ee7-4201-b555-f6d1720efe44 --dir=docs/dist
+        run: yarn netlify deploy --site 55d1ba1e-2ee7-4201-b555-f6d1720efe44 --dir=docs/dist --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
       - name: Deploy Gatsby
-        run: yarn netlify deploy --site 1e21ee7f-6173-4073-9282-ab566c59d6ab --dir=examples/gatsby-starter-blog/public
+        run: yarn netlify deploy --site 1e21ee7f-6173-4073-9282-ab566c59d6ab --dir=examples/gatsby-starter-blog/public --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
       - name: Deploy Next
-        run: yarn netlify deploy --site 703f9b97-57f8-49df-9a6c-2e3d004196c9 --dir=examples/nextjs-blog/out
+        run: yarn netlify deploy --site 703f9b97-57f8-49df-9a6c-2e3d004196c9 --dir=examples/nextjs-blog/out --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
