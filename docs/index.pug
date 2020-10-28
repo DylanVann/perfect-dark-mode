@@ -1,6 +1,5 @@
 include ./badge
 include ./badgeSimple
-include ./badgeLarge
 doctype html
 html(data-pdm="light dark blue" lang="en")
     head
@@ -34,13 +33,13 @@ html(data-pdm="light dark blue" lang="en")
                         span.ml-1.pdm-label(style="visibility: hidden;")
                     span.text-xs (Click Me)
 
-            div.flex.space-x-2.justify-center(class="md:justify-start")
+            div.flex.space-x-1.justify-center(class="md:justify-start")
                 a.badge.rounded-sm.overflow-hidden(href='https://www.npmjs.com/package/perfect-dark-mode' target="blank" rel="noopener" class=outline)
-                    +badge("npm", version)
+                    +badge("npm", version, 35, 45)
                 a.badge.rounded-sm.overflow-hidden(href='https://bundlephobia.com/result?p=perfect-dark-mode' target="blank" rel="noopener" class=outline)
-                    +badge("size", size)
+                    +badge("size", size, 35, 45)
                 a.badge.rounded-sm.overflow-hidden(href='https://codecov.io/gh/DylanVann/perfect-dark-mode' target="blank" rel="noopener" class=outline)
-                    +badgeLarge("codecov", '100%')
+                    +badge("codecov", '100%', 60, 45)
                 a.badge.rounded-sm.overflow-hidden(href="https://github.com/DylanVann/perfect-dark-mode" target="blank" rel="noopener" class=outline)
                     +badgeSimple("GitHub")
 
