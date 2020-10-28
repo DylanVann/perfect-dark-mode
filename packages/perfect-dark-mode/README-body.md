@@ -45,6 +45,8 @@ This is done before the rest of your page is rendered (that's why it needs to be
 - Provide UI components for you.
   - This page does show some examples of how to make simple controls in various frameworks that listen to the mode.
 
+### Example CSS Implementation
+
 Here is a simple implementation of dark and light modes using CSS variables and the classes added by PDM:
 
 ```css
