@@ -5,16 +5,16 @@
   }
 }
 
-.pdm-light {
-  --color: #2e353f;
-  --background: #fff;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --color: #fff;
     --background: #000;
   }
+}
+
+.pdm-light {
+  --color: #2e353f;
+  --background: #fff;
 }
 
 .pdm-dark {

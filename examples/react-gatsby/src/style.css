@@ -68,16 +68,6 @@
   }
 }
 
-.pdm-light {
-  --color-background: #fff;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
-  --color-text-light: #4f5969;
-  --color-heading: #1a202c;
-  --color-heading-black: black;
-  --color-accent: #d1dce5;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: #000;
@@ -88,6 +78,16 @@
     --color-heading-black: white;
     --color-accent: #d1dce5;
   }
+}
+
+.pdm-light {
+  --color-background: #fff;
+  --color-primary: #005b99;
+  --color-text: #2e353f;
+  --color-text-light: #4f5969;
+  --color-heading: #1a202c;
+  --color-heading-black: black;
+  --color-accent: #d1dce5;
 }
 
 .pdm-dark {
