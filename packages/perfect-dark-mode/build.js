@@ -1,7 +1,6 @@
 const execa = require('execa')
 const path = require('path')
 const fs = require('fs-extra')
-const replaceAll = require('string.prototype.replaceall')
 
 const run = async () => {
   await execa('esbuild', [
@@ -9,7 +8,8 @@ const run = async () => {
     'src/index.ts',
     '--platform=browser',
     `--outfile=dist/index.js`,
-    `--format=iife`,
+    `--format=esm`,
+    `--avoid-tdz`,
     '--minify',
   ])
 
@@ -36,17 +36,22 @@ const run = async () => {
     { encoding: 'utf8' },
   )
 
-  const perfectDarkModeCode = await fs.readFile(
-    path.join(__dirname, 'dist/index.js'),
-    {
-      encoding: 'utf8',
-    },
-  )
+  const perfectDarkModeCodePath = path.join(__dirname, 'dist/index.js')
+
+  let perfectDarkModeCode = await fs.readFile(perfectDarkModeCodePath, {
+    encoding: 'utf8',
+  })
+
+  perfectDarkModeCode = perfectDarkModeCode
+    .replaceAll(/\bconst\b/g, 'var')
+    .replaceAll(/\blet\b/g, 'var')
+
+  await fs.writeFile(perfectDarkModeCodePath, perfectDarkModeCode)
 
   const escape = (v) => {
     let out = v
-    out = replaceAll(out, '`', '\\`')
-    out = replaceAll(out, '$', '\\$')
+    out = out.replaceAll('`', '\\`')
+    out = out.replaceAll('$', '\\$')
     return out
   }
   const rendered = template.replace('{{code}}', escape(perfectDarkModeCode))

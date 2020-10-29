@@ -75,126 +75,127 @@ export const createPerfectDarkMode = ({
   const colorModeKey = prefix
   const localStorage = window.localStorage
 
+  // ------------------------------------------------------
+  // Modes
+  // ------------------------------------------------------
   let currentModes = modes
-  const modesWritable: Writable<ColorMode[]> = ((): Writable<ColorMode[]> => {
-    const modesListeners = new Set<Function>()
-    const set = (v: string[]) => {
-      currentModes = v
-      modesListeners.forEach((cb) => cb(v))
-    }
-    return {
-      subscribe(cb) {
-        cb(currentModes)
-        modesListeners.add(cb)
-        return () => modesListeners.delete(cb)
-      },
-      set,
-      update(updater) {
-        set(updater(currentModes))
-      },
-    }
-  })()
+  const modesListeners = new Set<Function>()
+  const modesSet = (v: string[]) => {
+    currentModes = v
+    modesListeners.forEach((cb) => cb(v))
+  }
+  const modesWritable: Writable<ColorMode[]> = {
+    subscribe(cb) {
+      cb(currentModes)
+      modesListeners.add(cb)
+      return () => modesListeners.delete(cb)
+    },
+    set: modesSet,
+    update(updater) {
+      modesSet(updater(currentModes))
+    },
+  }
 
-  const modeOS: Readable<ColorMode> = ((): Readable<ColorMode> => {
-    const listeners = new Set<Function>()
-    const mediaQuery = matchMedia('(prefers-color-scheme: dark)')
-    let colorMode: ColorMode
-    const onChangeMediaQuery = ({ matches }: { matches: boolean }) => {
-      const newMode = matches ? 'dark' : 'light'
-      colorMode = newMode
-      listeners.forEach((cb) => cb(newMode))
-    }
-    mediaQuery.addEventListener
-      ? mediaQuery.addEventListener('change', onChangeMediaQuery)
-      : mediaQuery.addListener(onChangeMediaQuery)
-    onChangeMediaQuery(mediaQuery)
-    return {
-      subscribe(cb) {
-        cb(colorMode)
-        listeners.add(cb)
-        return () => listeners.delete(cb)
-      },
-    }
-  })()
+  // ------------------------------------------------------
+  // ModeOS
+  // ------------------------------------------------------
+  const modeOSListeners = new Set<Function>()
+  const modeOSMediaQuery = matchMedia('(prefers-color-scheme: dark)')
+  let colorMode: ColorMode
+  const modeOSOnChangeMediaQuery = ({ matches }: { matches: boolean }) => {
+    const newMode = matches ? 'dark' : 'light'
+    colorMode = newMode
+    modeOSListeners.forEach((cb) => cb(newMode))
+  }
+  modeOSMediaQuery.addEventListener
+    ? modeOSMediaQuery.addEventListener('change', modeOSOnChangeMediaQuery)
+    : modeOSMediaQuery.addListener(modeOSOnChangeMediaQuery)
+  modeOSOnChangeMediaQuery(modeOSMediaQuery)
+  const modeOS: Readable<ColorMode> = {
+    subscribe(cb) {
+      cb(colorMode)
+      modeOSListeners.add(cb)
+      return () => modeOSListeners.delete(cb)
+    },
+  }
 
-  const modeSaved: Writable<ColorMode | undefined> = ((): Writable<
-    ColorMode | undefined
-  > => {
-    const parseColorMode = (mode: string | null): ColorMode | undefined => {
-      if (!mode || !currentModes.includes(mode)) {
-        return undefined
-      }
-      return mode as ColorMode
+  // ------------------------------------------------------
+  // ModeSaved
+  // ------------------------------------------------------
+  const modeSavedParseMode = (mode: string | null): ColorMode | undefined => {
+    if (!mode || !currentModes.includes(mode)) {
+      return undefined
     }
-    const listeners = new Set<Function>()
-    let mode: ColorMode | undefined
-    const set = (colorMode?: ColorMode) => {
-      if (colorMode === mode) {
-        return
-      }
-      if (colorMode !== undefined) {
-        localStorage.setItem(colorModeKey, colorMode)
-      } else {
-        localStorage.removeItem(colorModeKey)
-      }
-      listeners.forEach((cb) => cb(colorMode))
-      mode = colorMode
+    return mode as ColorMode
+  }
+  const modeSavedListeners = new Set<Function>()
+  let modeSavedMode: ColorMode | undefined
+  const modeSavedSet = (colorMode?: ColorMode) => {
+    if (colorMode === modeSavedMode) {
+      return
     }
-    const savedMode = localStorage.getItem(colorModeKey)
-    const colorMode = parseColorMode(savedMode)
-    mode = colorMode
-    window.addEventListener(
-      'storage',
-      (e) => e.key === colorModeKey && set(e.newValue || undefined),
-    )
-    return {
-      subscribe(cb) {
-        cb(colorMode)
-        listeners.add(cb)
-        return () => listeners.delete(cb)
-      },
-      set,
-      update(updater) {
-        set(updater(mode))
-      },
+    if (colorMode !== undefined) {
+      localStorage.setItem(colorModeKey, colorMode)
+    } else {
+      localStorage.removeItem(colorModeKey)
     }
-  })()
+    modeSavedListeners.forEach((cb) => cb(colorMode))
+    modeSavedMode = colorMode
+  }
+  const modeSavedSavedMode = localStorage.getItem(colorModeKey)
+  modeSavedMode = modeSavedParseMode(modeSavedSavedMode)
+  window.addEventListener(
+    'storage',
+    (e) => e.key === colorModeKey && modeSavedSet(e.newValue || undefined),
+  )
+  const modeSaved: Writable<ColorMode | undefined> = {
+    subscribe(cb) {
+      cb(modeSavedMode)
+      modeSavedListeners.add(cb)
+      return () => modeSavedListeners.delete(cb)
+    },
+    set: modeSavedSet,
+    update(updater) {
+      modeSavedSet(updater(modeSavedMode))
+    },
+  }
 
-  const mode: ColorModeWritableWithEnhancedUpdater = ((): ColorModeWritableWithEnhancedUpdater => {
-    let cmSaved: ColorMode | undefined
-    let cmOS: ColorMode
-    let cmMerged: ColorMode
-    const listeners = new Set<Function>()
-    modeSaved.subscribe((v) => {
-      cmSaved = v
-      const newMode = cmSaved || cmOS
-      if (newMode !== cmMerged) {
-        cmMerged = newMode
-        listeners.forEach((cb) => cb(cmMerged))
-      }
-    })
-    modeOS.subscribe((v) => {
-      cmOS = v
-      const newMode = cmSaved || cmOS
-      if (newMode !== cmMerged) {
-        cmMerged = newMode
-        listeners.forEach((cb) => cb(cmMerged))
-      }
-    })
-    return {
-      subscribe(listener) {
-        listeners.add(listener)
-        listener(cmMerged)
-        return () => listeners.delete(listener)
-      },
-      set: modeSaved.set,
-      update(updater) {
-        let index = currentModes.indexOf(cmMerged)
-        index = index === -1 ? 0 : index
-        modeSaved.set(updater(cmMerged, currentModes, index))
-      },
+  // ------------------------------------------------------
+  // Mode
+  // ------------------------------------------------------
+  let cmSaved: ColorMode | undefined
+  let cmOS: ColorMode
+  let cmMerged: ColorMode
+  const listeners = new Set<Function>()
+  modeSaved.subscribe((v) => {
+    cmSaved = v
+    const newMode = cmSaved || cmOS
+    if (newMode !== cmMerged) {
+      cmMerged = newMode
+      listeners.forEach((cb) => cb(cmMerged))
     }
-  })()
+  })
+  modeOS.subscribe((v) => {
+    cmOS = v
+    const newMode = cmSaved || cmOS
+    if (newMode !== cmMerged) {
+      cmMerged = newMode
+      listeners.forEach((cb) => cb(cmMerged))
+    }
+  })
+  const mode: ColorModeWritableWithEnhancedUpdater = {
+    subscribe(listener) {
+      listeners.add(listener)
+      listener(cmMerged)
+      return () => listeners.delete(listener)
+    },
+    set: modeSaved.set,
+    update(updater) {
+      let index = currentModes.indexOf(cmMerged)
+      index = index === -1 ? 0 : index
+      modeSaved.set(updater(cmMerged, currentModes, index))
+    },
+  }
 
   const htmlClassList = document.documentElement.classList
   let prevMode: string | undefined

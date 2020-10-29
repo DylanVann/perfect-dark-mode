@@ -5,8 +5,6 @@ import 'prismjs/components/prism-jsx.min'
 import markdownIt from 'markdown-it'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor'
 import gzipSize from 'gzip-size'
-// @ts-ignore
-import replaceAll from 'string.prototype.replaceall'
 import { code } from 'perfect-dark-mode/dist/code'
 
 const pkg = require('perfect-dark-mode/package.json')
@@ -22,7 +20,7 @@ const addButton = (html: string, codeName: string) =>
 const renderedCopyTextCode = addButton(
   wrapRenderedCode(
     prism.highlight(
-      `<script>${code.trim()}</script>`,
+      `<script type="module">${code.trim()}</script>`,
       prism.languages.html,
       'html',
     ),
@@ -35,7 +33,7 @@ const renderedCopyTextCode = addButton(
 const renderedUnpkgCode = addButton(
   wrapRenderedCode(
     prism.highlight(
-      `<script src="https://unpkg.com/perfect-dark-mode@${pkg.version}/dist/index.js"></script>`,
+      `<script type="module" src="https://unpkg.com/perfect-dark-mode@${pkg.version}/dist/index.js"></script>`,
       prism.languages.html,
       'html',
     ),
@@ -48,38 +46,32 @@ const renderedUnpkgCode = addButton(
 export const renderMarkdown = (markdownPath: string) => {
   const { dir } = path.parse(markdownPath)
   let text = fs.readFileSync(markdownPath, { encoding: 'utf8' })
-  text = replaceAll(
-    text,
+  text = text.replaceAll(
     /<markdown src="(.*)" \/>/g,
     (_match: any, src: string) => renderMarkdown(path.join(dir, src)),
   )
-  text = replaceAll(
-    text,
+  text = text.replaceAll(
     'https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/perfect-dark-mode',
     '#perfect-dark-mode',
   )
-  text = replaceAll(
-    text,
+  text = text.replaceAll(
     'https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/vue-perfect-dark-mode',
     '#vue-perfect-dark-mode',
   )
-  text = replaceAll(
-    text,
+  text = text.replaceAll(
     'https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/react-perfect-dark-mode',
     '#react-perfect-dark-mode',
   )
-  text = replaceAll(
-    text,
+  text = text.replaceAll(
     'https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/gatsby-plugin-perfect-dark-mode',
     '#gatsby-plugin-perfect-dark-mode',
   )
-  text = replaceAll(
-    text,
+  text = text.replaceAll(
     'https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/next-plugin-perfect-dark-mode',
     '#next-plugin-perfect-dark-mode',
   )
-  text = replaceAll(text, /<copy-inline-code \/>/g, () => renderedCopyTextCode)
-  text = replaceAll(text, /<copy-unpkg-code \/>/g, () => renderedUnpkgCode)
+  text = text.replaceAll(/<copy-inline-code \/>/g, () => renderedCopyTextCode)
+  text = text.replaceAll(/<copy-unpkg-code \/>/g, () => renderedUnpkgCode)
   return text
 }
 
@@ -150,8 +142,7 @@ module.exports = {
 
       text = md.render(text)
 
-      text = replaceAll(
-        text,
+      text = text.replaceAll(
         /<include lang="(.*)" src="(.*)" \/>/g,
         (match, lang, src) => {
           const text = fs.readFileSync(path.join(__dirname, src), {

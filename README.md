@@ -44,7 +44,7 @@ How you do this will depend on the framework you are using.
 Add this code to the `<head>` of your page:
 
 ```html
-<script src="https://unpkg.com/perfect-dark-mode@0.0.17/dist/index.js"></script>
+<script type="module" src="https://unpkg.com/perfect-dark-mode@0.0.17/dist/index.js"></script>
 ```
 
 ### Copy and Paste
@@ -52,7 +52,7 @@ Add this code to the `<head>` of your page:
 Add this code to the `<head>` of your page:
 
 ```js
-<script>(()=>{const M=({prefix:l="pdm",modes:C=["light","dark"]}={})=>{const i=l,u=window.localStorage;let s=C;const h=(()=>{const t=new Set,a=e=>{s=e,t.forEach(n=>n(e))};return{subscribe(e){return e(s),t.add(e),()=>t.delete(e)},set:a,update(e){a(e(s))}}})(),f=(()=>{const t=new Set,a=matchMedia("(prefers-color-scheme: dark)");let e;const n=({matches:r})=>{const d=r?"dark":"light";e=d,t.forEach(o=>o(d))};return a.addEventListener?a.addEventListener("change",n):a.addListener(n),n(a),{subscribe(r){return r(e),t.add(r),()=>t.delete(r)}}})(),c=(()=>{const t=o=>!o||!s.includes(o)?void 0:o,a=new Set;let e;const n=o=>{if(o===e)return;o!==void 0?u.setItem(i,o):u.removeItem(i),a.forEach(g=>g(o)),e=o},r=u.getItem(i),d=t(r);return e=d,window.addEventListener("storage",o=>o.key===i&&n(o.newValue||void 0)),{subscribe(o){return o(d),a.add(o),()=>a.delete(o)},set:n,update(o){n(o(e))}}})(),m=(()=>{let t,a,e;const n=new Set;return c.subscribe(r=>{t=r;const d=t||a;d!==e&&(e=d,n.forEach(o=>o(e)))}),f.subscribe(r=>{a=r;const d=t||a;d!==e&&(e=d,n.forEach(o=>o(e)))}),{subscribe(r){return n.add(r),r(e),()=>n.delete(r)},set:c.set,update(r){let d=s.indexOf(e);d=d===-1?0:d,c.set(r(e,s,d))}}})(),b=document.documentElement.classList;let p;return m.subscribe(t=>{p&&b.remove(`${l}-${p}`),b.add(`${l}-${t}`),p=t}),b.add(l),{mode:m,modes:h,modeOS:f,modeSaved:c}};window.__pdm__=M({modes:document.documentElement.dataset.pdm?.split(" ")});})();</script>
+<script type="module">var W=({prefix:n="pdm",modes:x=["light","dark"]}={})=>{var s=n,u=window.localStorage;var t=x;var b=new Set,C=e=>{t=e,b.forEach(o=>o(e))},y={subscribe(e){return e(t),b.add(e),()=>b.delete(e)},set:C,update(e){C(e(t))}},m=new Set,i=matchMedia("(prefers-color-scheme: dark)");var k;var p=({matches:e})=>{var o=e?"dark":"light";k=o,m.forEach(a=>a(o))};i.addEventListener?i.addEventListener("change",p):i.addListener(p),p(i);var w={subscribe(e){return e(k),m.add(e),()=>m.delete(e)}},T=e=>!e||!t.includes(e)?void 0:e,f=new Set;var r;var M=e=>{if(e===r)return;e!==void 0?u.setItem(s,e):u.removeItem(s),f.forEach(o=>o(e)),r=e},O=u.getItem(s);r=T(O),window.addEventListener("storage",e=>e.key===s&&M(e.newValue||void 0));var l={subscribe(e){return e(r),f.add(e),()=>f.delete(e)},set:M,update(e){M(e(r))}};var v,S,d;var c=new Set;l.subscribe(e=>{v=e;var o=v||S;o!==d&&(d=o,c.forEach(a=>a(d)))}),w.subscribe(e=>{S=e;var o=v||S;o!==d&&(d=o,c.forEach(a=>a(d)))});var E={subscribe(e){return c.add(e),e(d),()=>c.delete(e)},set:l.set,update(e){var o=t.indexOf(d);o=o===-1?0:o,l.set(e(d,t,o))}},g=document.documentElement.classList;var h;return E.subscribe(e=>{h&&g.remove(`${n}-${h}`),g.add(`${n}-${e}`),h=e}),g.add(n),{mode:E,modes:y,modeOS:w,modeSaved:l}};window.__pdm__=W({modes:document.documentElement.dataset.pdm?.split(" ")});</script>
 ```
 
 ## Usage

@@ -6,21 +6,20 @@ import { code } from 'perfect-dark-mode/dist/code'
 
 const pkg = require('perfect-dark-mode/package.json')
 
-const copyText = `${'```js'}\n<script>${code.trim()}</script>\n${'```'}`
-const unpkgText = `${'```html'}\n<script src="https://unpkg.com/perfect-dark-mode@${
+const copyText = `${'```js'}\n<script type="module">${code.trim()}</script>\n${'```'}`
+const unpkgText = `${'```html'}\n<script type="module" src="https://unpkg.com/perfect-dark-mode@${
   pkg.version
 }/dist/index.js"></script>\n${'```'}`
 
 export const renderMarkdown = (markdownPath: string) => {
   const { dir } = path.parse(markdownPath)
   let text = fs.readFileSync(markdownPath, { encoding: 'utf8' })
-  text = replaceAll(
-    text,
+  text = text.replaceAll(
     /<markdown src="(.*)" \/>/g,
     (_match: any, src: string) => renderMarkdown(path.join(dir, src)),
   )
-  text = replaceAll(text, /<copy-inline-code \/>/g, () => copyText)
-  text = replaceAll(text, /<copy-unpkg-code \/>/g, () => unpkgText)
+  text = text.replaceAll(/<copy-inline-code \/>/g, () => copyText)
+  text = text.replaceAll(/<copy-unpkg-code \/>/g, () => unpkgText)
   return text
 }
 

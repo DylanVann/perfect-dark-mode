@@ -43,7 +43,6 @@
     "pug": "^3.0.0",
     "pug-cli": "^1.0.0-alpha6",
     "serve": "^11.3.2",
-    "string.prototype.replaceall": "^1.0.3",
     "tailwindcss": "^1.9.6"
   }
 }
