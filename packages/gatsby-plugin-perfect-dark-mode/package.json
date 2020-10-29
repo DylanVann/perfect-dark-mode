@@ -26,9 +26,9 @@
     "react-perfect-dark-mode": "*"
   },
   "devDependencies": {
-    "@types/react": "^16.9.53",
+    "@types/react": "^16.9.55",
     "react": "^16.14.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.5"
   },
   "peerDependencies": {
     "react": "*"
