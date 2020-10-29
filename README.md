@@ -24,6 +24,9 @@
 - Syncs across tabs.
 - Built for the web.
 
+
+## Try using [the docs website](https://perfect-dark-mode.netlify.app/).
+
 ## Installation
 
 There are a few options for installing `perfect-dark-mode`.
