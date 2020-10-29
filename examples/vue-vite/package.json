@@ -1,6 +1,7 @@
 {
   "name": "perfect-dark-mode-example-vue-vite",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "build": "vite build",
     "dev": "vite"
