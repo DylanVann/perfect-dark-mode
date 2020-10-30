@@ -6,6 +6,5 @@ var labelEls = document.querySelectorAll('.pdm-label')
 // Listen to the color mode and update the UI.
 mode.subscribe((m) => labelEls.forEach((el) => (el.textContent = m)))
 
-// At this point our callback will have been called,
-// so the text of these will be correct and we can show them.
+// At this point we can show the elements.
 labelEls.forEach((el) => (el.style.visibility = 'unset'))

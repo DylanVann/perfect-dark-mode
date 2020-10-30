@@ -132,9 +132,9 @@ mode.update((mode) => (mode === 'light' ? 'dark' : 'light'))
     - `subscribe(listener: (mode: ColorMode) => void): () => void`
   - `modeOS: Readable<ColorMode>`
     - This is mainly for debugging, prefer using `mode`.
-    - The OS mode cannot be written by JS, it can
+    - The system mode cannot be written by JS, it can
       be updated by the user in their system settings.
-    - We do listen for changes to the OS color mode.
+    - We do listen for changes to the system color mode.
     - `subscribe(listener: (mode: ColorMode) => void): () => void`
 
 ## Pure Usage

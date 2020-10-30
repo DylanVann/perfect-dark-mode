@@ -59,7 +59,7 @@ export interface PerfectDarkMode {
    */
   modeSaved: Writable<ColorMode | undefined>
   /**
-   * The OS color mode, probably only useful for debugging.
+   * The system color mode, probably only useful for debugging.
    */
   modeOS: Readable<ColorMode>
   /**
@@ -101,11 +101,10 @@ export const createPerfectDarkMode = ({
   // ------------------------------------------------------
   const modeOSListeners = new Set<Function>()
   const modeOSMediaQuery = matchMedia('(prefers-color-scheme: dark)')
-  let colorMode: ColorMode
+  let modeOSColorMode: ColorMode
   const modeOSOnChangeMediaQuery = ({ matches }: { matches: boolean }) => {
-    const newMode = matches ? 'dark' : 'light'
-    colorMode = newMode
-    modeOSListeners.forEach((cb) => cb(newMode))
+    modeOSColorMode = matches ? 'dark' : 'light'
+    modeOSListeners.forEach((cb) => cb(modeOSColorMode))
   }
   modeOSMediaQuery.addEventListener
     ? modeOSMediaQuery.addEventListener('change', modeOSOnChangeMediaQuery)
@@ -113,7 +112,7 @@ export const createPerfectDarkMode = ({
   modeOSOnChangeMediaQuery(modeOSMediaQuery)
   const modeOS: Readable<ColorMode> = {
     subscribe(cb) {
-      cb(colorMode)
+      cb(modeOSColorMode)
       modeOSListeners.add(cb)
       return () => modeOSListeners.delete(cb)
     },
@@ -129,7 +128,9 @@ export const createPerfectDarkMode = ({
     return mode as ColorMode
   }
   const modeSavedListeners = new Set<Function>()
-  let modeSavedMode: ColorMode | undefined
+  let modeSavedMode: ColorMode | undefined = modeSavedParseMode(
+    localStorage.getItem(colorModeKey),
+  )
   const modeSavedSet = (colorMode?: ColorMode) => {
     if (colorMode === modeSavedMode) {
       return
@@ -142,8 +143,6 @@ export const createPerfectDarkMode = ({
     modeSavedListeners.forEach((cb) => cb(colorMode))
     modeSavedMode = colorMode
   }
-  const modeSavedSavedMode = localStorage.getItem(colorModeKey)
-  modeSavedMode = modeSavedParseMode(modeSavedSavedMode)
   window.addEventListener(
     'storage',
     (e) => e.key === colorModeKey && modeSavedSet(e.newValue || undefined),
@@ -167,27 +166,26 @@ export const createPerfectDarkMode = ({
   let cmOS: ColorMode
   let cmMerged: ColorMode
   const listeners = new Set<Function>()
-  modeSaved.subscribe((v) => {
-    cmSaved = v
+  const onChange = () => {
     const newMode = cmSaved || cmOS
     if (newMode !== cmMerged) {
       cmMerged = newMode
       listeners.forEach((cb) => cb(cmMerged))
     }
+  }
+  modeSaved.subscribe((v) => {
+    cmSaved = v
+    onChange()
   })
   modeOS.subscribe((v) => {
     cmOS = v
-    const newMode = cmSaved || cmOS
-    if (newMode !== cmMerged) {
-      cmMerged = newMode
-      listeners.forEach((cb) => cb(cmMerged))
-    }
+    onChange()
   })
   const mode: ColorModeWritableWithEnhancedUpdater = {
-    subscribe(listener) {
-      listeners.add(listener)
-      listener(cmMerged)
-      return () => listeners.delete(listener)
+    subscribe(cb) {
+      cb(cmMerged)
+      listeners.add(cb)
+      return () => listeners.delete(cb)
     },
     set: modeSaved.set,
     update(updater) {

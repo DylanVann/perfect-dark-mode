@@ -1,15 +1,13 @@
 var { modeSaved, modeOS } = window.__pdm__
 
-// Get some elements we will use.
-var modeSavedEls = document.querySelectorAll('.pdm-mode-saved')
-var modeOSEls = document.querySelectorAll('.pdm-mode-os')
-
 // Show the saved mode for debugging.
+var modeSavedEls = document.querySelectorAll('.pdm-mode-saved')
 modeSaved.subscribe((v) =>
   modeSavedEls.forEach((el) => (el.textContent = `Saved Color Mode: ${v}`)),
 )
 
-// Show the OS mode for debugging.
+// Show the system mode for debugging.
+var modeSystemEls = document.querySelectorAll('.pdm-mode-system')
 modeOS.subscribe((v) =>
-  modeOSEls.forEach((el) => (el.textContent = `OS Color Mode: ${v}`)),
+  modeSystemEls.forEach((el) => (el.textContent = `System Color Mode: ${v}`)),
 )

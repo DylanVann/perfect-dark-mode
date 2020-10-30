@@ -8,6 +8,5 @@ mode.subscribe((m) =>
   emojiEls.forEach((el) => (el.className = `pdm-emoji emoji ${m}`)),
 )
 
-// At this point our callback will have been called,
-// so the text of these will be correct and we can show them.
+// At this point we can show the elements.
 emojiEls.forEach((el) => (el.style.visibility = 'unset'))

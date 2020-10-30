@@ -27,7 +27,7 @@ You can toggle the color mode.
   <span class="pdm-label ml-1" style="visibility: hidden;">Light</span>
 </button>
 
-<include lang="js" src="./components/toggle-button.js" />
+<include lang="js" src="./components/toggle.js" />
 
 ### Select
 
@@ -68,16 +68,16 @@ You can reset the color mode and fallback to system color mode.
 
 ### Mode
 
-For debugging/understanding here is the saved color mode and the OS color mode.
+For debugging/understanding here is the saved color mode and the system color mode.
 
-The displayed color mode is `SavedColorMode || OSColorMode`.
+The displayed color mode is `SavedColorMode || SystemColorMode`.
 
 <pre>
   <code class="pdm-mode-saved">Saved:</code>
 </pre>
 
 <pre>
-  <code class="pdm-mode-os">OS:</code>
+  <code class="pdm-mode-system">System:</code>
 </pre>
 
 <include lang="js" src="./components/mode.js" />
@@ -108,3 +108,14 @@ You may wish to switch syntax highlighting themes based on the mode.
 You should add the transition property with JS to avoid a transition between no-js and js.
 
 <include lang="js" src="./components/root.js" />
+
+### Toggle with System Mode
+
+This is a toggle that includes showing when we are using the system color mode.
+
+<button class="pdm-toggle-with-system-mode min-w-1 rounded-sm focus:outline-none focus:shadow-outline">
+  <i class="pdm-emoji emoji light" style="visibility: hidden;"></i>
+  <span class="pdm-label-with-system-mode ml-1" style="visibility: hidden;">Light</span>
+</button>
+
+<include lang="js" src="./components/toggle-with-system-mode.js" />

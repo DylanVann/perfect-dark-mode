@@ -55,7 +55,7 @@ Add this code to the `<head>` of your page:
 Add this code to the `<head>` of your page:
 
 ```js
-<script type="module">var W=({prefix:n="pdm",modes:x=["light","dark"]}={})=>{var s=n,u=window.localStorage;var t=x;var b=new Set,C=e=>{t=e,b.forEach(o=>o(e))},y={subscribe(e){return e(t),b.add(e),()=>b.delete(e)},set:C,update(e){C(e(t))}},m=new Set,i=matchMedia("(prefers-color-scheme: dark)");var k;var p=({matches:e})=>{var o=e?"dark":"light";k=o,m.forEach(a=>a(o))};i.addEventListener?i.addEventListener("change",p):i.addListener(p),p(i);var w={subscribe(e){return e(k),m.add(e),()=>m.delete(e)}},T=e=>!e||!t.includes(e)?void 0:e,f=new Set;var r;var M=e=>{if(e===r)return;e!==void 0?u.setItem(s,e):u.removeItem(s),f.forEach(o=>o(e)),r=e},O=u.getItem(s);r=T(O),window.addEventListener("storage",e=>e.key===s&&M(e.newValue||void 0));var l={subscribe(e){return e(r),f.add(e),()=>f.delete(e)},set:M,update(e){M(e(r))}};var v,S,d;var c=new Set;l.subscribe(e=>{v=e;var o=v||S;o!==d&&(d=o,c.forEach(a=>a(d)))}),w.subscribe(e=>{S=e;var o=v||S;o!==d&&(d=o,c.forEach(a=>a(d)))});var E={subscribe(e){return c.add(e),e(d),()=>c.delete(e)},set:l.set,update(e){var o=t.indexOf(d);o=o===-1?0:o,l.set(e(d,t,o))}},g=document.documentElement.classList;var h;return E.subscribe(e=>{h&&g.remove(`${n}-${h}`),g.add(`${n}-${e}`),h=e}),g.add(n),{mode:E,modes:y,modeOS:w,modeSaved:l}};window.__pdm__=W({modes:document.documentElement.dataset.pdm?.split(" ")});</script>
+<script type="module">var x=({prefix:r="pdm",modes:E=["light","dark"]}={})=>{var a=r,l=window.localStorage;var d=E;var c=new Set,C=e=>{d=e,c.forEach(o=>o(e))},T={subscribe(e){return e(d),c.add(e),()=>c.delete(e)},set:C,update(e){C(e(d))}},u=new Set,n=matchMedia("(prefers-color-scheme: dark)");var b;var m=({matches:e})=>{b=e?"dark":"light",u.forEach(o=>o(b))};n.addEventListener?n.addEventListener("change",m):n.addListener(m),m(n);var S={subscribe(e){return e(b),u.add(e),()=>u.delete(e)}},w=e=>!e||!d.includes(e)?void 0:e,p=new Set;var s=w(l.getItem(a));var f=e=>{if(e===s)return;e!==void 0?l.setItem(a,e):l.removeItem(a),p.forEach(o=>o(e)),s=e};window.addEventListener("storage",e=>e.key===a&&f(e.newValue||void 0));var i={subscribe(e){return e(s),p.add(e),()=>p.delete(e)},set:f,update(e){f(e(s))}};var h,k,t;var M=new Set,y=()=>{var e=h||k;e!==t&&(t=e,M.forEach(o=>o(t)))};i.subscribe(e=>{h=e,y()}),S.subscribe(e=>{k=e,y()});var W={subscribe(e){return e(t),M.add(e),()=>M.delete(e)},set:i.set,update(e){var o=d.indexOf(t);o=o===-1?0:o,i.set(e(t,d,o))}},v=document.documentElement.classList;var g;return W.subscribe(e=>{g&&v.remove(`${r}-${g}`),v.add(`${r}-${e}`),g=e}),v.add(r),{mode:W,modes:T,modeOS:S,modeSaved:i}};window.__pdm__=x({modes:document.documentElement.dataset.pdm?.split(" ")});</script>
 ```
 
 ## Usage
@@ -165,9 +165,9 @@ mode.update((mode) => (mode === 'light' ? 'dark' : 'light'))
     - `subscribe(listener: (mode: ColorMode) => void): () => void`
   - `modeOS: Readable<ColorMode>`
     - This is mainly for debugging, prefer using `mode`.
-    - The OS mode cannot be written by JS, it can
+    - The system mode cannot be written by JS, it can
       be updated by the user in their system settings.
-    - We do listen for changes to the OS color mode.
+    - We do listen for changes to the system color mode.
     - `subscribe(listener: (mode: ColorMode) => void): () => void`
 
 ## Pure Usage
