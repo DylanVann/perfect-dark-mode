@@ -1,7 +1,5 @@
 import * as fs from 'fs-extra'
 import * as path from 'path'
-// @ts-ignore
-import replaceAll from 'string.prototype.replaceall'
 import { code } from 'perfect-dark-mode/dist/code'
 
 const pkg = require('perfect-dark-mode/package.json')
