@@ -6,14 +6,13 @@ var colorModeLinks = document.querySelectorAll('.codestyle')
 // Disable color mode links we don't need.
 mode.subscribe((m) => {
   colorModeLinks.forEach((link) => {
-    const disabled = !link.className.includes(m)
-    if (link.disabled !== disabled) {
-      if (disabled) {
-        link.disabled = true
-      } else {
-        link.disabled = false
-        link.media = 'screen'
-      }
+    const enabled = link.className.includes(m)
+    const disabled = !enabled
+    if (enabled && link.media !== 'screen') {
+      link.disabled = false
+      link.media = 'screen'
+    } else if (disabled && !link.disabled) {
+      link.disabled = true
     }
   })
 })
