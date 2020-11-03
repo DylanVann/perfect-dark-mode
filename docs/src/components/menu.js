@@ -1,3 +1,4 @@
+const main = document.querySelector('main')
 const nav = document.querySelector('nav')
 const navContentContainer = document.querySelector('.nav-content-container')
 const navContent = document.querySelector('.nav-content')
@@ -28,6 +29,7 @@ const showDialog = () => {
   nav.classList.add('bg-white')
   navContentContainer.classList.remove('hidden')
   navContentContainer.classList.remove('pointer-events-none')
+  main.classList.add('pointer-events-none')
   navContent.scrollTop = 0
   open = true
 }
@@ -53,6 +55,7 @@ const closeDialog = () => {
   nav.classList.remove('bg-white')
   navContentContainer.classList.add('hidden')
   navContentContainer.classList.add('pointer-events-none')
+  main.classList.remove('pointer-events-none')
   open = false
 }
 
