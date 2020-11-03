@@ -23,15 +23,15 @@ html(data-pdm="light dark blue" lang="en")
         link(class="codestyle dark" rel="stylesheet" href="/syntax/prism-nord.css" media="(prefers-color-scheme: dark)")
         style
             include ./index.css
-    body.max-w-4xl.mx-auto.relative.overflow-x-hidden
+    body.max-w-6xl.mx-auto.relative.overflow-x-hidden
         nav
             div.nav-bar.fixed.top-0.left-0.right-0.z-20.pointer-events-none
-                div.flex.flew-row.justify-between.px-3.pb-3.pt-3.max-w-4xl.mx-auto(class="lg:pt-12")
+                div.flex.flew-row.justify-between.px-3.pb-3.pt-3.max-w-6xl.mx-auto(class="lg:pt-12")
                     button.rounded-sm.pdm-menu.floating-button.pointer-events-auto(class=outline + ' ' + floatingButton)
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white" color="#FFF"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     button.rounded-sm.pdm-cycle.floating-button.pointer-events-auto(class=outline + ' ' + floatingButton)
                         i.emoji.emoji-light.pdm-emoji(style="visibility: hidden;")
-            div.nav-content.fixed.top-0.left-0.right-0.bottom-0.z-10.hidden.pointer-events-none.bg-white(class="sm:block sm:bg-transparent sm:max-w-4xl sm:mx-auto")
+            div.nav-content.fixed.top-0.left-0.right-0.bottom-0.z-10.hidden.pointer-events-none.bg-white(class="sm:block sm:bg-transparent sm:max-w-6xl sm:mx-auto")
                 div.pt-16.px-3.toc.w-screen.h-full.overflow-y-auto(class="sm:block sm:w-sidebar sm:pt-3 lg:pt-12 sm:pointer-events-auto")
                     a.block.mb-3.font-title.h-10.leading-10(href="#pdm")
                         span.mb-3.text-base <i class="emoji emoji-dark"></i><i class="emoji emoji-light"></i> Perfect Dark Mode
