@@ -127,11 +127,15 @@ hr {
   border-style: solid;
 }
 
-a {
+a,
+.prose a,
+.prose a code {
   color: var(--color);
 }
 
-a:visited {
+a:visited,
+.prose a:visited,
+.prose a code {
   color: var(--color);
 }
 

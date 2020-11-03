@@ -105,9 +105,9 @@ module.exports = {
     'markdown-toc': (originalText, options: { filename: string }) => {
       const markdownPath = path.join(path.resolve(), options.filename)
       let text = renderMarkdown(markdownPath)
-      let toc: string
+      let toc: string = ''
 
-      const md = markdownIt({
+      markdownIt({
         html: true,
         linkify: true,
         typographer: true,
@@ -119,6 +119,18 @@ module.exports = {
           },
         })
         .render(text)
+
+      const replacements = [
+        ['react-perfect-dark-mode', 'React'],
+        ['gatsby-plugin-perfect-dark-mode', 'Gatsby'],
+        ['next-plugin-perfect-dark-mode', 'Next.js'],
+        ['vue-perfect-dark-mode', 'Vue'],
+      ]
+
+      replacements.forEach(
+        ([original, replacement]) =>
+          (toc = toc.replaceAll(`<code>${original}</code>`, replacement)),
+      )
 
       return toc
     },

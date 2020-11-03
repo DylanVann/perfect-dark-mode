@@ -30,13 +30,13 @@ Add this code to the `<head>` of your page:
 A class indicating the color mode will be added to `<html>` (e.g. `pdm-light` or `pdm-dark`).
 This is done before the rest of your page is rendered (that's why it needs to be in head).
 
-### This package does:
+### This does:
 
 - Determine the correct color mode when the page is loaded.
 - Save changes to the mode.
 - Allow for listening to the mode and building controls that depend on it.
 
-### This package does not:
+### This does not:
 
 - Handle styling for you.
   - Styling should be done using CSS variables.
@@ -45,7 +45,7 @@ This is done before the rest of your page is rendered (that's why it needs to be
 - Provide UI components for you.
   - This page does show some examples of how to make simple controls in various frameworks that listen to the mode.
 
-### Example CSS Implementation
+### Example CSS
 
 Here is a simple implementation of dark and light modes using CSS variables and the classes added by PDM:
 
