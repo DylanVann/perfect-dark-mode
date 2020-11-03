@@ -1,4 +1,5 @@
 const nav = document.querySelector('nav')
+const navContentContainer = document.querySelector('.nav-content-container')
 const navContent = document.querySelector('.nav-content')
 const navBar = document.querySelector('.nav-bar')
 
@@ -25,8 +26,8 @@ const showDialog = () => {
   body.style.right = `${scrollbarWidth}px`
   navBar.style.right = `${scrollbarWidth}px`
   nav.classList.add('bg-white')
-  navContent.classList.remove('hidden')
-  navContent.classList.remove('pointer-events-none')
+  navContentContainer.classList.remove('hidden')
+  navContentContainer.classList.remove('pointer-events-none')
   navContent.scrollTop = 0
   open = true
 }
@@ -50,8 +51,8 @@ const closeDialog = () => {
     ),
   )
   nav.classList.remove('bg-white')
-  navContent.classList.add('hidden')
-  navContent.classList.add('pointer-events-none')
+  navContentContainer.classList.add('hidden')
+  navContentContainer.classList.add('pointer-events-none')
   open = false
 }
 
