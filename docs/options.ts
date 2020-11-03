@@ -90,6 +90,11 @@ const getData = () => {
   return { version, size }
 }
 
+const tocOptions = {
+  tocFirstLevel: 1,
+  wrapHeadingTextInAnchor: true,
+}
+
 module.exports = {
   filters: {
     code: (text, options) => {
@@ -108,8 +113,7 @@ module.exports = {
         typographer: true,
       })
         .use(markdownItTocAndAnchor, {
-          wrapHeadingTextInAnchor: true,
-          tocFirstLevel: 1,
+          ...tocOptions,
           tocCallback: (tocMarkdown, tocArray, tocHtml) => {
             toc = tocHtml
           },
@@ -120,6 +124,7 @@ module.exports = {
     },
     markdown: (originalText, options: { filename: string }) => {
       const markdownPath = path.join(path.resolve(), options.filename)
+      const markdownDir = path.parse(markdownPath).dir
       let text = renderMarkdown(markdownPath)
       const md = markdownIt({
         html: true,
@@ -135,17 +140,14 @@ module.exports = {
           }
           return ''
         },
-      }).use(markdownItTocAndAnchor, {
-        wrapHeadingTextInAnchor: true,
-        tocFirstLevel: 2,
-      })
+      }).use(markdownItTocAndAnchor, tocOptions)
 
       text = md.render(text)
 
       text = text.replaceAll(
         /<include lang="(.*)" src="(.*)" \/>/g,
         (match, lang, src) => {
-          const text = fs.readFileSync(path.join(__dirname, src), {
+          const text = fs.readFileSync(path.join(markdownDir, src), {
             encoding: 'utf8',
           })
           const code = prism.highlight(text, prism.languages[lang], lang)

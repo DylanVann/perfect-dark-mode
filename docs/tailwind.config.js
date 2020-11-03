@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 const merge = (target, source) => {
   for (const key of Object.keys(source)) {
     if (source[key] instanceof Object && key in target)
@@ -18,6 +20,10 @@ const em = (px, base) => `${round(px / base)}em`
 const fontTitle = ['Libre Baskerville', 'serif']
 
 const defaultTheme = {
+  fontFamily: {
+    title: ['Libre Baskerville', 'serif'],
+    body: ['Montserrat', 'sans-serif'],
+  },
   colors: {
     ...require('tailwindcss/defaultTheme').colors,
     color: 'var(--color)',
@@ -70,7 +76,7 @@ const typographyTheme = {
       css: [
         {
           color: defaultTheme.colors.gray[700],
-          maxWidth: '65ch',
+          maxWidth: false,
           '[class~="lead"]': {
             color: defaultTheme.colors.gray[700],
           },
@@ -1125,7 +1131,7 @@ const typographyTheme = {
 const theme = merge(defaultTheme, typographyTheme)
 
 module.exports = {
-  purge: ['index.pug', 'components/*.js', 'markdown/*.md'],
+  purge: ['src/*.pug', 'src/components/*.js', 'src/markdown/*.md'],
   future: {
     defaultLineHeights: true,
     purgeLayersByDefault: true,
@@ -1139,5 +1145,18 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/custom-forms'),
+    plugin(({ addUtilities }) =>
+      addUtilities(
+        {
+          '.pl-sidebar': {
+            paddingLeft: 'var(--sidebar-width)',
+          },
+          '.w-sidebar': {
+            width: 'var(--sidebar-width)',
+          },
+        },
+        ['responsive'],
+      ),
+    ),
   ],
 }

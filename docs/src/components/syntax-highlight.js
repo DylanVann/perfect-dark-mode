@@ -8,11 +8,10 @@ mode.subscribe((m) => {
   colorModeLinks.forEach((link) => {
     const enabled = link.className.includes(m)
     const disabled = !enabled
-    if (enabled && link.media !== 'screen') {
-      link.disabled = false
-      link.media = 'screen'
-    } else if (disabled && !link.disabled) {
-      link.disabled = true
+    const media = enabled ? 'screen' : 'none'
+    if (link.media !== media) {
+      link.media = media
+      link.disabled = disabled
     }
   })
 })
