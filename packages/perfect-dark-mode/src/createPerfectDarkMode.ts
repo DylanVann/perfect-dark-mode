@@ -131,7 +131,7 @@ export const createPerfectDarkMode = ({
   let modeSavedMode: ColorMode | undefined = modeSavedParseMode(
     localStorage.getItem(colorModeKey),
   )
-  const modeSavedSet = (colorMode?: ColorMode, save: boolean = false) => {
+  const modeSavedSet = (colorMode?: ColorMode, save: boolean = true) => {
     if (colorMode === modeSavedMode) {
       return
     }
