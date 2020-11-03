@@ -55,7 +55,7 @@ Add this code to the `<head>` of your page:
 Add this code to the `<head>` of your page:
 
 ```js
-<script type="module">var x=({prefix:r="pdm",modes:E=["light","dark"]}={})=>{var a=r,l=window.localStorage;var d=E;var c=new Set,C=e=>{d=e,c.forEach(o=>o(e))},T={subscribe(e){return e(d),c.add(e),()=>c.delete(e)},set:C,update(e){C(e(d))}},u=new Set,n=matchMedia("(prefers-color-scheme: dark)");var b;var m=({matches:e})=>{b=e?"dark":"light",u.forEach(o=>o(b))};n.addEventListener?n.addEventListener("change",m):n.addListener(m),m(n);var S={subscribe(e){return e(b),u.add(e),()=>u.delete(e)}},w=e=>!e||!d.includes(e)?void 0:e,f=new Set;var s=w(l.getItem(a));var p=(e,o=!1)=>{if(e===s)return;o&&(e!==void 0?l.setItem(a,e):l.removeItem(a)),f.forEach(O=>O(e)),s=e};window.addEventListener("storage",e=>e.key===a&&p(e.newValue||void 0,!1));var i={subscribe(e){return e(s),f.add(e),()=>f.delete(e)},set:p,update(e){p(e(s))}};var h,k,t;var M=new Set,y=()=>{var e=h||k;e!==t&&(t=e,M.forEach(o=>o(t)))};i.subscribe(e=>{h=e,y()}),S.subscribe(e=>{k=e,y()});var W={subscribe(e){return e(t),M.add(e),()=>M.delete(e)},set:i.set,update(e){var o=d.indexOf(t);o=o===-1?0:o,i.set(e(t,d,o))}},v=document.documentElement.classList;var g;return W.subscribe(e=>{g&&v.remove(`${r}-${g}`),v.add(`${r}-${e}`),g=e}),v.add(r),{mode:W,modes:T,modeOS:S,modeSaved:i}};window.__pdm__=x({modes:document.documentElement.dataset.pdm?.split(" ")});</script>
+<script type="module">var x=({prefix:r="pdm",modes:E=["light","dark"]}={})=>{var a=r,l=window.localStorage;var d=E;var c=new Set,C=e=>{d=e,c.forEach(o=>o(e))},T={subscribe(e){return e(d),c.add(e),()=>c.delete(e)},set:C,update(e){C(e(d))}},u=new Set,n=matchMedia("(prefers-color-scheme: dark)");var b;var m=({matches:e})=>{b=e?"dark":"light",u.forEach(o=>o(b))};n.addEventListener?n.addEventListener("change",m):n.addListener(m),m(n);var S={subscribe(e){return e(b),u.add(e),()=>u.delete(e)}},w=e=>!e||!d.includes(e)?void 0:e,p=new Set;var s=w(l.getItem(a));var f=(e,o=!0)=>{if(e===s)return;o&&(e!==void 0?l.setItem(a,e):l.removeItem(a)),p.forEach(O=>O(e)),s=e};window.addEventListener("storage",e=>e.key===a&&f(e.newValue||void 0,!1));var i={subscribe(e){return e(s),p.add(e),()=>p.delete(e)},set:f,update(e){f(e(s))}};var h,k,t;var M=new Set,y=()=>{var e=h||k;e!==t&&(t=e,M.forEach(o=>o(t)))};i.subscribe(e=>{h=e,y()}),S.subscribe(e=>{k=e,y()});var W={subscribe(e){return e(t),M.add(e),()=>M.delete(e)},set:i.set,update(e){var o=d.indexOf(t);o=o===-1?0:o,i.set(e(t,d,o))}},v=document.documentElement.classList;var g;return W.subscribe(e=>{g&&v.remove(`${r}-${g}`),v.add(`${r}-${e}`),g=e}),v.add(r),{mode:W,modes:T,modeOS:S,modeSaved:i}};window.__pdm__=x({modes:document.documentElement.dataset.pdm?.split(" ")});</script>
 ```
 
 ## Usage
@@ -63,13 +63,13 @@ Add this code to the `<head>` of your page:
 A class indicating the color mode will be added to `<html>` (e.g. `pdm-light` or `pdm-dark`).
 This is done before the rest of your page is rendered (that's why it needs to be in head).
 
-### This package does:
+### This does:
 
 - Determine the correct color mode when the page is loaded.
 - Save changes to the mode.
 - Allow for listening to the mode and building controls that depend on it.
 
-### This package does not:
+### This does not:
 
 - Handle styling for you.
   - Styling should be done using CSS variables.
@@ -78,7 +78,7 @@ This is done before the rest of your page is rendered (that's why it needs to be
 - Provide UI components for you.
   - This page does show some examples of how to make simple controls in various frameworks that listen to the mode.
 
-### Example CSS Implementation
+### Example CSS
 
 Here is a simple implementation of dark and light modes using CSS variables and the classes added by PDM:
 
