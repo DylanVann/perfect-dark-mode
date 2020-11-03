@@ -1,0 +1,98 @@
+include ./badge
+include ./badgeSimple
+
+- var outline = ['focus:outline-none focus:shadow-outline']
+- var label = 'block text-gray-700 text-sm font-bold mb-2'
+- var input = 'shadow appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white'
+- var floatingButton = 'w-10 h-10 p-0 flex items-center justify-center'
+
+doctype html
+html(data-pdm="light dark blue" lang="en")
+    head
+        meta(name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover")
+        meta(charset="utf-8")
+        meta(name="description" content="Perfect dark mode, no flicker, framework agnostic.")
+        title Perfect Dark Mode
+        link(rel="icon" type="image/png" href="images/light.png")
+        script(src="perfect-dark-mode/dist/index.js")
+        link(rel="stylesheet" href="tailwind.css")
+        link(rel="preload" as="font" href="libre-baskerville-latin-700-normal.woff2" type="font/woff2" crossorigin="anonymous")
+        link(rel="preload" as="font" href="montserrat-latin-400-normal.woff2" type="font/woff2" crossorigin="anonymous")
+        link(rel="preload" as="font" href="montserrat-latin-700-normal.woff2" type="font/woff2" crossorigin="anonymous")
+        link(class="codestyle light blue" rel="stylesheet" href="/syntax/prism-base16-ateliersulphurpool.light.css")
+        style
+            include ./index.css
+    body.max-w-6xl.mx-auto.relative.overflow-x-hidden
+        nav
+            div.nav-bar.fixed.top-0.left-0.right-0.z-20.pointer-events-none
+                div.flex.flew-row.justify-between.px-3.pb-3.pt-3.max-w-6xl.mx-auto(class="lg:pt-12")
+                    button.rounded-sm.pdm-menu.floating-button.pointer-events-auto(class=outline + ' ' + floatingButton)
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white" color="#FFF"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    button.rounded-sm.pdm-cycle.floating-button.pointer-events-auto(class=outline + ' ' + floatingButton)
+                        i.emoji.emoji-light.pdm-emoji(style="visibility: hidden;")
+            div.nav-content.fixed.top-0.left-0.right-0.bottom-0.z-10.hidden.pointer-events-none.bg-white(class="sm:block sm:bg-transparent sm:max-w-6xl sm:mx-auto")
+                div.pt-16.px-3.toc.w-screen.h-full.overflow-y-auto(class="sm:block sm:w-sidebar sm:pt-3 lg:pt-12 sm:pointer-events-auto")
+                    a.block.mb-3.font-title.h-10.leading-10(href="#pdm")
+                        span.mb-3.text-base <i class="emoji emoji-dark"></i><i class="emoji emoji-light"></i> Perfect Dark Mode
+                    include:markdown-toc ./markdown/docs.md
+
+        main.mx-3.pt-16(class="sm:pl-sidebar sm:pt-3 lg:pt-12")
+            div.mb-3
+                div#pdm.header.flex.flex-row.items-center.justify-center.flex-col.space-y-3
+                    h1.h-10.leading-10.font-title.text-3xl(class="sm:text-xl sm:leading-10 md:text-3xl md:leading-10") <i class="emoji emoji-dark"></i><i class="emoji emoji-light"></i> Perfect Dark Mode
+                    button.min-w-1.rounded-sm.pdm-toggle.flex.flex-col.items-center(class=outline)
+                        div
+                            i.emoji.emoji-light.pdm-emoji(style="visibility: hidden;")
+                            span.ml-1.pdm-label(style="visibility: hidden;")
+                        span.text-xs (Click Me)
+                    div.flex.space-x-1.justify-center
+                        a.badge.rounded-sm.overflow-hidden(href='https://www.npmjs.com/package/perfect-dark-mode' target="blank" rel="noopener" class=outline)
+                            +badge("npm", version, 35, 55)
+                        a.badge.rounded-sm.overflow-hidden(href='https://bundlephobia.com/result?p=perfect-dark-mode' target="blank" rel="noopener" class=outline)
+                            +badge("size", size, 35, 45)
+                        a.badge.rounded-sm.overflow-hidden(href='https://codecov.io/gh/DylanVann/perfect-dark-mode' target="blank" rel="noopener" class=outline)
+                            +badge("codecov", '100%', 60, 45)
+                        a.badge.rounded-sm.overflow-hidden(href="https://github.com/DylanVann/perfect-dark-mode" target="blank" rel="noopener" class=outline)
+                            +badgeSimple("GitHub")
+
+            div.prose.mb-12
+                include:markdown ./markdown/docs.md
+
+                hr
+
+                p.mb-3
+                    strong Join my Newsletter
+                    br
+                    | I'll send you an email when I have something interesting to show.
+                form.subscribe.relative
+                    div.subscribed.absolute.top-0.bottom-0.left-0.right-0.flex.items-center.justify-center.bg-white.hidden Subscribed!
+                    div.content.flex.flex-col.space-y-4
+                        div
+                            label(for='name' class=label) Name
+                            input(type='text' name='name' placeholder="Name" class=input)
+                        div
+                            label(for='email' class=label) Email
+                            input(required='' name='email' type='email' placeholder="Email" class=input)
+                        button.min-w-1.rounded-sm.overflow-hidden(type='submit' class=outline) Subscribe
+                        a(href='https://twitter.com/atomarranger' target="blank" rel="noopener" class=outline) Or follow me on Twitter for more stuff like this.
+
+    script
+        include ./components/change-favicon.js
+        include ./components/cycle-button.js
+        include ./components/emoji.js
+        include ./components/label.js
+        include ./components/mode.js
+        include ./components/reset-button.js
+        include ./components/root.js
+        include ./components/select.js
+        include ./components/toggle.js
+        include ./components/toggle-with-system-mode.js
+        include ./components/form.js
+        include ./components/copy-code.js
+        include ./components/menu.js
+    script(async src="https://www.googletagmanager.com/gtag/js?id=G-1YYBH15NGE")
+    script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1YYBH15NGE');

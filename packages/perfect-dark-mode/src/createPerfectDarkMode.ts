@@ -131,21 +131,24 @@ export const createPerfectDarkMode = ({
   let modeSavedMode: ColorMode | undefined = modeSavedParseMode(
     localStorage.getItem(colorModeKey),
   )
-  const modeSavedSet = (colorMode?: ColorMode) => {
+  const modeSavedSet = (colorMode?: ColorMode, save: boolean = true) => {
     if (colorMode === modeSavedMode) {
       return
     }
-    if (colorMode !== undefined) {
-      localStorage.setItem(colorModeKey, colorMode)
-    } else {
-      localStorage.removeItem(colorModeKey)
+    if (save) {
+      if (colorMode !== undefined) {
+        localStorage.setItem(colorModeKey, colorMode)
+      } else {
+        localStorage.removeItem(colorModeKey)
+      }
     }
     modeSavedListeners.forEach((cb) => cb(colorMode))
     modeSavedMode = colorMode
   }
   window.addEventListener(
     'storage',
-    (e) => e.key === colorModeKey && modeSavedSet(e.newValue || undefined),
+    (e) =>
+      e.key === colorModeKey && modeSavedSet(e.newValue || undefined, false),
   )
   const modeSaved: Writable<ColorMode | undefined> = {
     subscribe(cb) {

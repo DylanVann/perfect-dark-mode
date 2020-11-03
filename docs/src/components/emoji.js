@@ -5,7 +5,7 @@ var emojiEls = document.querySelectorAll('.pdm-emoji')
 
 // Listen to the color mode and update the UI.
 mode.subscribe((m) =>
-  emojiEls.forEach((el) => (el.className = `pdm-emoji emoji ${m}`)),
+  emojiEls.forEach((el) => (el.className = `pdm-emoji emoji emoji-${m}`)),
 )
 
 // At this point we can show the elements.

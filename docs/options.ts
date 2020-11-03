@@ -90,6 +90,11 @@ const getData = () => {
   return { version, size }
 }
 
+const tocOptions = {
+  tocFirstLevel: 1,
+  wrapHeadingTextInAnchor: true,
+}
+
 module.exports = {
   filters: {
     code: (text, options) => {
@@ -100,26 +105,38 @@ module.exports = {
     'markdown-toc': (originalText, options: { filename: string }) => {
       const markdownPath = path.join(path.resolve(), options.filename)
       let text = renderMarkdown(markdownPath)
-      let toc: string
+      let toc: string = ''
 
-      const md = markdownIt({
+      markdownIt({
         html: true,
         linkify: true,
         typographer: true,
       })
         .use(markdownItTocAndAnchor, {
-          wrapHeadingTextInAnchor: true,
-          tocFirstLevel: 1,
+          ...tocOptions,
           tocCallback: (tocMarkdown, tocArray, tocHtml) => {
             toc = tocHtml
           },
         })
         .render(text)
 
+      const replacements = [
+        ['react-perfect-dark-mode', 'React'],
+        ['gatsby-plugin-perfect-dark-mode', 'Gatsby'],
+        ['next-plugin-perfect-dark-mode', 'Next.js'],
+        ['vue-perfect-dark-mode', 'Vue'],
+      ]
+
+      replacements.forEach(
+        ([original, replacement]) =>
+          (toc = toc.replaceAll(`<code>${original}</code>`, replacement)),
+      )
+
       return toc
     },
     markdown: (originalText, options: { filename: string }) => {
       const markdownPath = path.join(path.resolve(), options.filename)
+      const markdownDir = path.parse(markdownPath).dir
       let text = renderMarkdown(markdownPath)
       const md = markdownIt({
         html: true,
@@ -135,17 +152,14 @@ module.exports = {
           }
           return ''
         },
-      }).use(markdownItTocAndAnchor, {
-        wrapHeadingTextInAnchor: true,
-        tocFirstLevel: 2,
-      })
+      }).use(markdownItTocAndAnchor, tocOptions)
 
       text = md.render(text)
 
       text = text.replaceAll(
         /<include lang="(.*)" src="(.*)" \/>/g,
         (match, lang, src) => {
-          const text = fs.readFileSync(path.join(__dirname, src), {
+          const text = fs.readFileSync(path.join(markdownDir, src), {
             encoding: 'utf8',
           })
           const code = prism.highlight(text, prism.languages[lang], lang)
