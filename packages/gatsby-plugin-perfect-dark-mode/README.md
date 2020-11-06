@@ -1,7 +1,7 @@
 # `gatsby-plugin-perfect-dark-mode`
 
-[![Version](https://img.shields.io/npm/v/gatsby-plugin-perfect-dark-mode.svg)](https://www.npmjs.com/package/gatsby-plugin-perfect-dark-mode)
-[![Size](https://img.shields.io/bundlephobia/minzip/gatsby-plugin-perfect-dark-mode?label=size)](https://bundlephobia.com/result?p=gatsby-plugin-perfect-dark-mode)
+[![Version](https://img.shields.io/npm/v/gatsby-plugin-perfect-dark-mode.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/gatsby-plugin-perfect-dark-mode)
+[![Size](https://img.shields.io/bundlephobia/minzip/gatsby-plugin-perfect-dark-mode?label=size&style=flat&colorA=000000&colorB=000000)](https://bundlephobia.com/result?p=gatsby-plugin-perfect-dark-mode)
 
 This plugin makes it easy to add `perfect-dark-mode` to Gatsby.
 

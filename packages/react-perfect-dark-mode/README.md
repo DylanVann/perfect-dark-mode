@@ -1,7 +1,7 @@
 # `react-perfect-dark-mode`
 
-[![Version](https://img.shields.io/npm/v/react-perfect-dark-mode.svg)](https://www.npmjs.com/package/react-perfect-dark-mode)
-[![Size](https://img.shields.io/bundlephobia/minzip/react-perfect-dark-mode?label=size)](https://bundlephobia.com/result?p=react-perfect-dark-mode)
+[![Version](https://img.shields.io/npm/v/react-perfect-dark-mode.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/react-perfect-dark-mode)
+[![Size](https://img.shields.io/bundlephobia/minzip/react-perfect-dark-mode?label=size&style=flat&colorA=000000&colorB=000000)](https://bundlephobia.com/result?p=react-perfect-dark-mode)
 
 ## Installation
 
