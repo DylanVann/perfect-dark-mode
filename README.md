@@ -7,19 +7,18 @@
 
 
 - No flicker.
-- Framework agnostic, easily supports **React** | **Vue** | **Svelte** | etc.
+- Framework agnostic. Supports **React** | **Vue** | **Svelte**.
   - [`react-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/react-perfect-dark-mode)
   - [`gatsby-plugin-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/gatsby-plugin-perfect-dark-mode)
   - [`next-plugin-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/next-plugin-perfect-dark-mode)
   - [`vue-perfect-dark-mode`](https://github.com/DylanVann/perfect-dark-mode/tree/main/packages/vue-perfect-dark-mode)
   - Svelte - This was written for Svelte :). `window.__pdm__.mode` is a [`Writable`](https://svelte.dev/docs#writable).
-- Supports SSR.
-- Supports no-js.
 - Tiny, less than 1kb.
-- Supports `prefers-color-scheme`.
-- Listens for changes to `prefers-color-scheme`.
-- Allows user to override and save their preference to `localStorage`.
-- Allows clearing the saved preference and falling back to `prefers-color-scheme`.
+- Works with server side rendering.
+- Uses system color mode when JS is disabled.
+- Listens for changes to the system color mode.
+- Allows user to override the system color mode and save their preference.
+- Allows clearing the saved preference and falling back to the system mode.
 - Supports any number of color modes, not just `light` and `dark`.
 - Syncs across tabs.
 - Built for the web.
@@ -47,7 +46,7 @@ How you do this will depend on the framework you are using.
 Add this code to the `<head>` of your page:
 
 ```html
-<script type="module" src="https://unpkg.com/perfect-dark-mode@0.0.18/dist/index.js"></script>
+<script type="module" src="https://unpkg.com/perfect-dark-mode@0.0.19/dist/index.js"></script>
 ```
 
 ### Copy and Paste

@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "build": "yarn && wsrun --stages --exclude-missing build && yarn build:md",
-    "build:md": "esbuild --bundle build.ts --outfile=build.js --platform=node --target=node15.1",
+    "build:md": "esbuild --bundle build.ts --outfile=build.js --platform=node --target=node15.1 && node build.js",
     "serve": "wsrun --exclude-missing serve",
     "test": "wsrun --exclude-missing test"
   },
