@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "build": "yarn && wsrun --stages --exclude-missing build && yarn build:md",
-    "build:md": "node -r esm -r esbuild-register build.ts",
+    "build:md": "esbuild --bundle build.ts --outfile=build.js --platform=node --target=node15.1",
     "serve": "wsrun --exclude-missing serve",
     "test": "wsrun --exclude-missing test"
   },
@@ -17,12 +17,10 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.2",
-    "esbuild": "^0.7.21",
-    "esbuild-register": "^1.1.0",
-    "esm": "^3.2.25",
+    "@types/fs-extra": "^9.0.3",
+    "esbuild": "^0.8.4",
     "fs-extra": "^9.0.1",
-    "netlify-cli": "^2.67.0",
+    "netlify-cli": "^2.68.0",
     "prettier": "^2.1.2",
     "wsrun": "^5.2.4"
   }
