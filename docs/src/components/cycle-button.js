@@ -1,7 +1,7 @@
-var { mode } = window.__pdm__
+const { mode } = window.__pdm__
 
 // Get some elements we will use.
-var cycleEls = document.querySelectorAll('.pdm-cycle')
+const cycleEls = document.querySelectorAll('.pdm-cycle')
 
 // These elements will cycle through all modes.
 cycleEls.forEach((el) => {

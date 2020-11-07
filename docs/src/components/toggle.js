@@ -1,7 +1,7 @@
-var { mode } = window.__pdm__
+const { mode } = window.__pdm__
 
 // Get some elements we will use.
-var toggleEls = document.querySelectorAll('.pdm-toggle')
+const toggleEls = document.querySelectorAll('.pdm-toggle')
 
 // These elements will toggle between light and dark modes.
 toggleEls.forEach((el) => {

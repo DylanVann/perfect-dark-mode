@@ -1,10 +1,10 @@
-var { mode } = window.__pdm__
+const { mode } = window.__pdm__
 
 // For changing the tab icon.
-var changeFavicon = (src) => {
-  var oldLink = document.querySelector('link[rel="icon"]')
+const changeFavicon = (src) => {
+  const oldLink = document.querySelector('link[rel="icon"]')
   document.head.removeChild(oldLink)
-  var link = document.createElement('link')
+  const link = document.createElement('link')
   link.rel = 'icon'
   link.type = 'image/png'
   link.href = src

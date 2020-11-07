@@ -9,19 +9,18 @@ include ./badgeSimple
 doctype html
 html(data-pdm="light dark blue" lang="en")
     head
+        title Perfect Dark Mode
         meta(name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover")
         meta(charset="utf-8")
         meta(name="description" content="Perfect dark mode, no flicker, framework agnostic.")
-        title Perfect Dark Mode
         link(rel="icon" type="image/png" href="images/light.png")
-        script(src="perfect-dark-mode/dist/index.js")
-        link(rel="stylesheet" href="tailwind.css")
         link(rel="preload" as="font" href="libre-baskerville-latin-700-normal.woff2" type="font/woff2" crossorigin="anonymous")
         link(rel="preload" as="font" href="montserrat-latin-400-normal.woff2" type="font/woff2" crossorigin="anonymous")
         link(rel="preload" as="font" href="montserrat-latin-700-normal.woff2" type="font/woff2" crossorigin="anonymous")
-        link(class="codestyle light blue" rel="stylesheet" href="/syntax/prism-base16-ateliersulphurpool.light.css")
-        style
-            include ./index.css
+        link(rel="stylesheet" href="syntax/prism-base16-ateliersulphurpool.light.css")
+        link(rel="stylesheet" href="tailwind.css")
+        link(rel="stylesheet" href="index.css")
+        script(src="perfect-dark-mode/dist/index.js")
     body.max-w-6xl.mx-auto.relative.overflow-x-hidden
         nav
             div.nav-bar.fixed.top-0.left-0.right-0.z-20.pointer-events-none
@@ -76,20 +75,7 @@ html(data-pdm="light dark blue" lang="en")
                         button.min-w-1.rounded-sm.overflow-hidden(type='submit' class=outline) Subscribe
                         a(href='https://twitter.com/atomarranger' target="blank" rel="noopener" class=outline) Or follow me on Twitter for more stuff like this.
 
-    script
-        include ./components/change-favicon.js
-        include ./components/cycle-button.js
-        include ./components/emoji.js
-        include ./components/label.js
-        include ./components/mode.js
-        include ./components/reset-button.js
-        include ./components/root.js
-        include ./components/select.js
-        include ./components/toggle.js
-        include ./components/toggle-with-system-mode.js
-        include ./components/form.js
-        include ./components/copy-code.js
-        include ./components/menu.js
+    script(type="module" src="index.js")
     script(async src="https://www.googletagmanager.com/gtag/js?id=G-1YYBH15NGE")
     script.
         window.dataLayer = window.dataLayer || [];

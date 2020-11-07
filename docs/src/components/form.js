@@ -1,13 +1,13 @@
 // Get the elements.
-var subscribeButtons = document.querySelectorAll('.subscribe')
+const subscribeButtons = document.querySelectorAll('.subscribe')
 
 // Handle submit functions.
 subscribeButtons.forEach((el) => {
   el.addEventListener('submit', (e) => {
     e.preventDefault()
-    var formId = 1747454
-    var name = e.target.elements.name.value
-    var email = e.target.elements.email.value
+    const formId = 1747454
+    const name = e.target.elements.name.value
+    const email = e.target.elements.email.value
     document
       .querySelectorAll('.subscribed')
       .forEach((el) => el.classList.remove('hidden'))

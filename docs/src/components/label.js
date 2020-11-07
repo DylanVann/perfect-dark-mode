@@ -1,7 +1,7 @@
-var { mode } = window.__pdm__
+const { mode } = window.__pdm__
 
 // Get some elements we will use.
-var labelEls = document.querySelectorAll('.pdm-label')
+const labelEls = document.querySelectorAll('.pdm-label')
 
 // Listen to the color mode and update the UI.
 mode.subscribe((m) => labelEls.forEach((el) => (el.textContent = m)))

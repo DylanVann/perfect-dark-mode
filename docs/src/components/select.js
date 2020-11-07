@@ -1,14 +1,14 @@
-var { mode, modes } = window.__pdm__
+const { mode, modes } = window.__pdm__
 
 // We can use a select element for choosing a color mode
 // instead of a toggle button.
-var selectEls = document.querySelectorAll('.pdm-select')
+const selectEls = document.querySelectorAll('.pdm-select')
 
 // Update the select options with the modes.
 modes.subscribe((modes) => {
   selectEls.forEach((el) => {
     // Preserve the current selection by saving then re-assigning.
-    var prevValue = el.value
+    const prevValue = el.value
     el.innerHTML = modes
       .map(
         (m) =>

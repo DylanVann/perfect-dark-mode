@@ -1,7 +1,7 @@
-var { mode } = window.__pdm__
+const { mode } = window.__pdm__
 
 // Get some elements we will use.
-var emojiEls = document.querySelectorAll('.pdm-emoji')
+const emojiEls = document.querySelectorAll('.pdm-emoji')
 
 // Listen to the color mode and update the UI.
 mode.subscribe((m) =>

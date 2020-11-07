@@ -1,7 +1,7 @@
-var { mode } = window.__pdm__
+const { mode } = window.__pdm__
 
 // Get the color mode links.
-var colorModeLinks = document.querySelectorAll('.codestyle')
+const colorModeLinks = document.querySelectorAll('.codestyle')
 
 // Disable color mode links we don't need.
 mode.subscribe((m) => {
