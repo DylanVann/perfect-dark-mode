@@ -4,9 +4,9 @@ import prism from 'prismjs'
 import 'prismjs/components/prism-jsx.min'
 import markdownIt from 'markdown-it'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor'
-import gzipSize from 'gzip-size'
 import { code } from 'perfect-dark-mode/dist/code'
 
+const data = require('./data.json')
 const pkg = require('perfect-dark-mode/package.json')
 
 const wrapRenderedCode = (code: string, lang = 'html', className = '') =>
@@ -73,21 +73,6 @@ export const renderMarkdown = (markdownPath: string) => {
   text = text.replaceAll(/<copy-inline-code \/>/g, () => renderedCopyTextCode)
   text = text.replaceAll(/<copy-unpkg-code \/>/g, () => renderedUnpkgCode)
   return text
-}
-
-const getData = () => {
-  const pkg = fs.readJSONSync(
-    path.join(path.resolve(), '../packages/perfect-dark-mode/package.json'),
-  )
-  const fileContent = fs.readFileSync(
-    require.resolve('perfect-dark-mode/dist/index.js'),
-  )
-  const versionWithoutV = pkg.version
-  const sizeInBytes = gzipSize.sync(fileContent)
-
-  const version = `v${versionWithoutV}`
-  const size = `${sizeInBytes} B`
-  return { version, size }
 }
 
 const tocOptions = {
@@ -170,5 +155,5 @@ module.exports = {
       return text
     },
   },
-  ...getData(),
+  ...data,
 }

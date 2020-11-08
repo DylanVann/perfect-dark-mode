@@ -152,27 +152,9 @@ select {
   color: var(--background);
 }
 
-a.badge {
-  text-decoration: none;
-  display: inline-block;
-}
-
 svg {
   display: block;
   float: left;
-}
-
-svg .background {
-  fill: var(--color);
-}
-
-svg .text {
-  fill: var(--background);
-}
-
-svg .text-shadow {
-  fill: var(--background);
-  opacity: 0.6;
 }
 
 .prose pre {
@@ -284,4 +266,17 @@ ul.markdownIt-TOC {
 
 .toc > ul > li > ul {
   margin-bottom: 0.75rem;
+}
+
+svg rect[fill='#000000'],
+svg rect[fill='black'] {
+  fill: var(--color);
+}
+
+svg text[fill='#fff'] {
+  fill: var(--background);
+}
+
+stop {
+  stop-opacity: 0;
 }

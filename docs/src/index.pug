@@ -1,7 +1,7 @@
 include ./badge
 include ./badgeSimple
 
-- var outline = ['focus:outline-none focus:shadow-outline']
+- var outline = 'focus:outline-none focus:shadow-outline'
 - var label = 'block text-gray-700 text-sm font-bold mb-2'
 - var input = 'shadow appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white'
 - var floatingButton = 'w-10 h-10 p-0 flex items-center justify-center'
@@ -19,7 +19,8 @@ html(data-pdm="light dark blue" lang="en")
         link(rel="preload" as="font" href="montserrat-latin-700-normal.woff2" type="font/woff2" crossorigin="anonymous")
         link(rel="stylesheet" href="syntax/prism-base16-ateliersulphurpool.light.css")
         link(rel="stylesheet" href="tailwind.css")
-        link(rel="stylesheet" href="index.css")
+        style
+            include ./index.css
         script(src="perfect-dark-mode/dist/index.js")
     body.max-w-6xl.mx-auto.relative.overflow-x-hidden
         nav
@@ -45,14 +46,15 @@ html(data-pdm="light dark blue" lang="en")
                             span.ml-1.pdm-label(style="visibility: hidden;")
                         span.text-xs (Click Me)
                     div.flex.space-x-1.justify-center
-                        a.badge.rounded-sm.overflow-hidden(href='https://www.npmjs.com/package/perfect-dark-mode' target="blank" rel="noopener" class=outline)
-                            +badge("npm", version, 35, 55)
-                        a.badge.rounded-sm.overflow-hidden(href='https://bundlephobia.com/result?p=perfect-dark-mode' target="blank" rel="noopener" class=outline)
-                            +badge("size", size, 35, 45)
-                        a.badge.rounded-sm.overflow-hidden(href='https://codecov.io/gh/DylanVann/perfect-dark-mode' target="blank" rel="noopener" class=outline)
-                            +badge("coverage", '100%', 70, 45)
-                        a.badge.rounded-sm.overflow-hidden(href="https://github.com/DylanVann/perfect-dark-mode" target="blank" rel="noopener" class=outline)
-                            +badgeSimple("GitHub")
+                        - var badge = 'overflow-hidden rounded-sm'
+                        a(href='https://www.npmjs.com/package/perfect-dark-mode' target="blank" rel="noopener" class=outline class=badge)
+                            | !{badgeNpm}
+                        a(href='https://bundlephobia.com/result?p=perfect-dark-mode' target="blank" rel="noopener" class=outline class=badge)
+                            | !{badgeSize}
+                        a(href='https://codecov.io/gh/DylanVann/perfect-dark-mode' target="blank" rel="noopener" class=outline class=badge)
+                            | !{badgeCoverage}
+                        a(href="https://github.com/DylanVann/perfect-dark-mode" target="blank" rel="noopener" class=outline class=badge)
+                            | !{badgeGitHub}
 
             div.prose.mb-12
                 include:markdown ./markdown/docs.md
