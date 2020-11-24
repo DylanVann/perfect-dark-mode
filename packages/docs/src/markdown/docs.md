@@ -1,0 +1,9 @@
+<markdown src="../../../perfect-dark-mode/README-features.md" />
+Created by [@atomarranger](https://twitter.com/atomarranger)
+<markdown src="./examples.md" />
+<markdown src="../../../perfect-dark-mode/README-header.md" />
+<markdown src="../../../perfect-dark-mode/README-body.md" />
+<markdown src="../../../react-perfect-dark-mode/README.md" />
+<markdown src="../../../gatsby-plugin-perfect-dark-mode/README.md" />
+<markdown src="../../../next-plugin-perfect-dark-mode/README.md" />
+<markdown src="../../../vue-perfect-dark-mode/README.md" />
