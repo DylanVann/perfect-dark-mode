@@ -5,45 +5,24 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      CI: true
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: '15'
-
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-        env:
-          CI: true
-
-      - name: Build
-        run: yarn build
-        env:
-          CI: true
-
-      - name: Test
-        run: yarn test
-        env:
-          CI: true
-
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn test
       - name: Upload Test Coverage
         run: bash <(curl -s https://codecov.io/bash) -f packages/perfect-dark-mode/coverage/lcov.info
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Deploy Docs
-        run: yarn netlify deploy --site 55d1ba1e-2ee7-4201-b555-f6d1720efe44 --dir=docs/dist --prod
-
-      - name: Deploy React/Gatsby
-        run: yarn netlify deploy --site 1e21ee7f-6173-4073-9282-ab566c59d6ab --dir=examples/react-gatsby/public --prod
-
-      - name: Deploy React/Next
-        run: yarn netlify deploy --site 703f9b97-57f8-49df-9a6c-2e3d004196c9 --dir=examples/react-next/out --prod
-
-      - name: Deploy Vue/Vite
-        run: yarn netlify deploy --site 43103433-c873-422a-ad70-e8be8512fd2f --dir=examples/vue-vite/dist --prod
+      - run: yarn netlify deploy --site 55d1ba1e-2ee7-4201-b555-f6d1720efe44 --dir=packages/docs/dist --prod
+      - run: yarn netlify deploy --site 1e21ee7f-6173-4073-9282-ab566c59d6ab --dir=packages/example-react-gatsby/public --prod
+      - run: yarn netlify deploy --site 703f9b97-57f8-49df-9a6c-2e3d004196c9 --dir=packages/example-react-next/out --prod
+      - run: yarn netlify deploy --site 43103433-c873-422a-ad70-e8be8512fd2f --dir=packages/example-vue-vite/dist --prod
