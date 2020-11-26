@@ -20,7 +20,7 @@ const addButton = (html: string, codeName: string) =>
 const renderedCopyTextCode = addButton(
   wrapRenderedCode(
     prism.highlight(
-      `<script type="module">${code.trim()}</script>`,
+      `<script>${code.trim()}</script>`,
       prism.languages.html,
       'html',
     ),
@@ -33,7 +33,7 @@ const renderedCopyTextCode = addButton(
 const renderedUnpkgCode = addButton(
   wrapRenderedCode(
     prism.highlight(
-      `<script type="module" src="https://unpkg.com/perfect-dark-mode@${pkg.version}/dist/index.js"></script>`,
+      `<script src="https://unpkg.com/perfect-dark-mode@${pkg.version}/dist/index.js"></script>`,
       prism.languages.html,
       'html',
     ),

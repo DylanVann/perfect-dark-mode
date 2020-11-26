@@ -4,8 +4,8 @@ import { code } from 'perfect-dark-mode/dist/code'
 
 const pkg = require('perfect-dark-mode/package.json')
 
-const copyText = `${'```js'}\n<script type="module">${code.trim()}</script>\n${'```'}`
-const unpkgText = `${'```html'}\n<script type="module" src="https://unpkg.com/perfect-dark-mode@${
+const copyText = `${'```js'}\n<script>${code.trim()}</script>\n${'```'}`
+const unpkgText = `${'```html'}\n<script src="https://unpkg.com/perfect-dark-mode@${
   pkg.version
 }/dist/index.js"></script>\n${'```'}`
 

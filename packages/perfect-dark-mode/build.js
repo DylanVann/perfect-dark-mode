@@ -9,7 +9,6 @@ const run = async () => {
     '--platform=browser',
     `--outfile=dist/index.js`,
     `--format=esm`,
-    `--avoid-tdz`,
     '--minify',
   ])
 
