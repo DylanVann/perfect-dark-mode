@@ -8,7 +8,7 @@ const run = async () => {
     'src/index.ts',
     '--platform=browser',
     `--outfile=dist/index.js`,
-    `--format=esm`,
+    `--format=iife`,
     '--minify',
   ])
 
