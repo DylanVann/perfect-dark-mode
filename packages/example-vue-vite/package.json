@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "serve": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.0.0-rc.1",
+    "vue": "^3.0.4",
     "vue-perfect-dark-mode": "*"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.0-rc.1",
-    "vite": "^1.0.0-rc.9"
+    "@vue/compiler-sfc": "^3.0.4",
+    "vite": "^1.0.0-rc.13"
   }
 }
