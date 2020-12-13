@@ -18,9 +18,9 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.5",
-    "esbuild": "^0.8.21",
+    "esbuild": "^0.8.22",
     "fs-extra": "^9.0.1",
-    "netlify-cli": "^2.69.6",
+    "netlify-cli": "^2.69.8",
     "prettier": "^2.2.1",
     "wsrun": "^5.2.4"
   }
