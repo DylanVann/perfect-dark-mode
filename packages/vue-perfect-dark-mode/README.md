@@ -3,8 +3,8 @@
 [![Version](https://img.shields.io/npm/v/vue-perfect-dark-mode.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/vue-perfect-dark-mode)
 [![Size](https://img.shields.io/bundlephobia/minzip/vue-perfect-dark-mode?label=size&style=flat&colorA=000000&colorB=000000)](https://bundlephobia.com/result?p=vue-perfect-dark-mode)
 
-- [Example](https://perfect-dark-mode-vue.netlify.app/)
-- [Example Code](https://github.com/DylanVann/perfect-dark-mode/tree/main/examples/vue-vite)
+- [Example](https://vue-perfect-dark-mode-example.netlify.app/)
+- [Example Code](https://github.com/DylanVann/perfect-dark-mode/tree/main/examples/vue-perfect-dark-mode-example)
 
 **This integration is for Vue 3.**
 

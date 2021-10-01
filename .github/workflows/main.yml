@@ -26,3 +26,4 @@ jobs:
       - run: yarn netlify deploy --site 1e21ee7f-6173-4073-9282-ab566c59d6ab --dir=packages/gatsby-plugin-perfect-dark-mode-example/public --prod
       - run: yarn netlify deploy --site 703f9b97-57f8-49df-9a6c-2e3d004196c9 --dir=packages/next-plugin-perfect-dark-mode-example/out --prod
       - run: yarn netlify deploy --site 43103433-c873-422a-ad70-e8be8512fd2f --dir=packages/vue-perfect-dark-mode-example/dist --prod
+      - run: yarn netlify deploy --site 9b2e9581-5b79-4d20-9362-4e47ad3dc089 --dir=packages/react-perfect-dark-mode-example/dist --prod
