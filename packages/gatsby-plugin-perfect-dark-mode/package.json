@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-perfect-dark-mode",
-  "version": "0.0.19",
+  "version": "1.0.0",
   "description": "Perfect dark mode.",
   "keywords": [
     "perfect",
@@ -22,8 +22,8 @@
     "src"
   ],
   "dependencies": {
-    "perfect-dark-mode": "*",
-    "react-perfect-dark-mode": "*"
+    "perfect-dark-mode": "1.0.0",
+    "react-perfect-dark-mode": "1.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.26",

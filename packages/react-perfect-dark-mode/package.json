@@ -1,6 +1,6 @@
 {
   "name": "react-perfect-dark-mode",
-  "version": "0.0.19",
+  "version": "1.0.0",
   "description": "Perfect dark mode.",
   "keywords": [
     "perfect",
@@ -26,7 +26,7 @@
     "build:ts": "tsc"
   },
   "dependencies": {
-    "perfect-dark-mode": "*"
+    "perfect-dark-mode": "1.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.26",

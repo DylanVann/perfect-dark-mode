@@ -1,6 +1,6 @@
 {
   "name": "next-plugin-perfect-dark-mode",
-  "version": "0.0.19",
+  "version": "1.0.0",
   "description": "Perfect dark mode.",
   "keywords": [
     "perfect",
@@ -18,7 +18,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
     "build": "run-p build:ts build:js",
@@ -26,8 +26,8 @@
     "build:ts": "tsc"
   },
   "dependencies": {
-    "perfect-dark-mode": "*",
-    "react-perfect-dark-mode": "*"
+    "perfect-dark-mode": "1.0.0",
+    "react-perfect-dark-mode": "1.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.26",
