@@ -23,6 +23,6 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - run: yarn netlify deploy --site 55d1ba1e-2ee7-4201-b555-f6d1720efe44 --dir=packages/docs/dist --prod
-      - run: yarn netlify deploy --site 1e21ee7f-6173-4073-9282-ab566c59d6ab --dir=packages/example-react-gatsby/public --prod
-      - run: yarn netlify deploy --site 703f9b97-57f8-49df-9a6c-2e3d004196c9 --dir=packages/example-react-next/out --prod
-      - run: yarn netlify deploy --site 43103433-c873-422a-ad70-e8be8512fd2f --dir=packages/example-vue-vite/dist --prod
+      - run: yarn netlify deploy --site 1e21ee7f-6173-4073-9282-ab566c59d6ab --dir=packages/gatsby-plugin-perfect-dark-mode-example/public --prod
+      - run: yarn netlify deploy --site 703f9b97-57f8-49df-9a6c-2e3d004196c9 --dir=packages/next-plugin-perfect-dark-mode-example/out --prod
+      - run: yarn netlify deploy --site 43103433-c873-422a-ad70-e8be8512fd2f --dir=packages/vue-perfect-dark-mode-example/dist --prod
