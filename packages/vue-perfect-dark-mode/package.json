@@ -1,6 +1,6 @@
 {
   "name": "vue-perfect-dark-mode",
-  "version": "0.0.19",
+  "version": "0.0.25",
   "description": "Perfect dark mode.",
   "keywords": [
     "perfect",
@@ -26,7 +26,7 @@
     "build:ts": "tsc"
   },
   "dependencies": {
-    "perfect-dark-mode": "*"
+    "perfect-dark-mode": "0.0.25"
   },
   "devDependencies": {
     "esbuild": "^0.13.3",

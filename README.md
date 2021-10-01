@@ -46,7 +46,7 @@ How you do this will depend on the framework you are using.
 Add this code to the `<head>` of your page:
 
 ```html
-<script src="https://unpkg.com/perfect-dark-mode@0.0.19/dist/index.js"></script>
+<script src="https://unpkg.com/perfect-dark-mode@0.0.25/dist/index.js"></script>
 ```
 
 ### Copy and Paste
