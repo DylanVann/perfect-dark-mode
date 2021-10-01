@@ -1,7 +1,6 @@
-@import 'fontsource-libre-baskerville/latin-700-normal';
-
-@import 'fontsource-montserrat/latin-400-normal';
-@import 'fontsource-montserrat/latin-700-normal';
+@import '@fontsource/libre-baskerville/latin-700';
+@import '@fontsource/montserrat/latin-400';
+@import '@fontsource/montserrat/latin-700';
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';

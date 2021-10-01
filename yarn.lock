@@ -1201,6 +1201,16 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.11.3.tgz#a759863867befa7e583400d322652a3f44820924"
   integrity sha512-0o4l6pZC+hI88+bzuaX/6BgOvQVhbt2PfmxauVaYOGgbsAw14wdKyvMCZXnsnsHys94iadcF+RG/wZyx6+ZZBw==
 
+"@fontsource/libre-baskerville@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/libre-baskerville/-/libre-baskerville-4.5.0.tgz#82871a1e7fc5b2455b37db17342f73aade205eca"
+  integrity sha512-Mutp11P4DtpYYT3NlB5i5TQ7GU53NL1AHcLnqEQDRkLBFuziILhXwOsE+J5IID16qqJ3+VwynkvWLjDoWCijOw==
+
+"@fontsource/montserrat@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.1.tgz#64a33ffdb77bbc63484c0321710bed272cc5b16f"
+  integrity sha512-xdMkzsnFlzDt5Vj9+AWuUp4Vd9F3hYN2I0GTZZYscWN/bQ20wVOGtdWLO8Okfv7SZ9t/z39/EayAAt+f/8tAvw==
+
 "@fullhuman/postcss-purgecss@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-3.0.0.tgz#e39bf7a7d2a2c664ed151b639785b2efcbca33ff"
@@ -9626,16 +9636,6 @@ follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
-
-fontsource-libre-baskerville@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/fontsource-libre-baskerville/-/fontsource-libre-baskerville-3.1.5.tgz#3821e39bc2e74ea7046673285d8ef2b4b021d939"
-  integrity sha512-eQ4uEGrGStiQuGzeawKFfvOi039wLthZi1FVZ0pzWnCuRMaW98S+0bdHz+r8zY7FsBmboN+BZ0pe1gHunS+2OA==
-
-fontsource-montserrat@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/fontsource-montserrat/-/fontsource-montserrat-3.1.5.tgz#766d71f9255a4abe9abb628e47e95a8912b45897"
-  integrity sha512-wLmozvb4j/yDbPEBrzHmkAM2PDHp+GV7l6T/GzrmiM8rHeLDIQuUfWJ3b05pAu7q5xRhuG2cDqr+bCagaKws0w==
 
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
