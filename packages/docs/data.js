@@ -1,8 +1,14 @@
-const fetch = require('node-fetch')
-const gzipSize = require('gzip-size')
-const fs = require('fs-extra')
-const path = require('path')
-const { makeBadge } = require('badge-maker')
+import fetch from 'node-fetch'
+import gzipSize from 'gzip-size'
+import fs from 'fs-extra'
+import * as path from 'path'
+import { makeBadge } from 'badge-maker'
+import { createRequire } from 'module'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const require = createRequire(import.meta.url)
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const replace = (text, id, replacement) =>
   text

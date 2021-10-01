@@ -1,6 +1,10 @@
-const execa = require('execa')
-const path = require('path')
-const fs = require('fs-extra')
+import execa from 'execa'
+import * as path from 'path'
+import * as fs from 'fs/promises'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const run = async () => {
   await execa('esbuild', [
@@ -17,20 +21,11 @@ const run = async () => {
     'src/pure.ts',
     '--platform=browser',
     `--outfile=dist/pure.js`,
-    `--format=cjs`,
-    '--minify',
-  ])
-
-  await execa('esbuild', [
-    '--bundle',
-    'src/pure.ts',
-    '--platform=browser',
-    `--outfile=dist/pure.mjs`,
     `--format=esm`,
     '--minify',
   ])
 
-  const template = fs.readFileSync(
+  const template = await fs.readFile(
     path.join(__dirname, 'src/code.template.ts'),
     { encoding: 'utf8' },
   )
@@ -61,15 +56,6 @@ const run = async () => {
     'src/code.ts',
     '--platform=browser',
     `--outfile=dist/code.js`,
-    `--format=cjs`,
-    '--minify',
-  ])
-
-  await execa('esbuild', [
-    '--bundle',
-    'src/code.ts',
-    '--platform=browser',
-    `--outfile=dist/code.mjs`,
     `--format=esm`,
     '--minify',
   ])

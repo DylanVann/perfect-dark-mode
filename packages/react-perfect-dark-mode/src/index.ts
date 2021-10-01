@@ -44,8 +44,8 @@ export const usePerfectDarkMode = (): UsePerfectDarkMode => {
   const modes = useSubscribe(_modes, () => [])
   return {
     mode,
-    modeOS,
     modeSaved,
+    modeOS,
     setMode: _mode && _mode.set,
     updateMode: _mode && _mode.update,
     modes,

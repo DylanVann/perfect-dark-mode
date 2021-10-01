@@ -146,8 +146,3 @@ import { createPerfectDarkMode } from 'perfect-dark-mode'
 
 const pdm = createPerfectDarkMode()
 ```
-
-This version comes in a couple module formats:
-
-- `dist/pure.js` - CJS
-- `dist/pure.mjs` - ESM

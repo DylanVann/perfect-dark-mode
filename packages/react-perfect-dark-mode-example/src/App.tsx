@@ -27,7 +27,7 @@ function App() {
         </p>
         <p>
           <button type="button" onClick={onClickedMode}>
-            {mode ?? 'system'}
+            {mode || 'system'}
           </button>
         </p>
         <p>

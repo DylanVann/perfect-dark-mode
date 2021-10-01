@@ -1,13 +1,20 @@
-import * as fs from 'fs-extra'
+import fs from 'fs-extra'
 import * as path from 'path'
 import prism from 'prismjs'
-import 'prismjs/components/prism-jsx.min'
+import 'prismjs/components/prism-jsx.min.js'
 import markdownIt from 'markdown-it'
-import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor'
-import { code } from 'perfect-dark-mode/dist/code'
+import markdownItTocAndAnchorExports from 'markdown-it-toc-and-anchor'
+import { code } from 'perfect-dark-mode/dist/code.js'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import { createRequire } from 'module'
 
-const data = require('./data.json')
-const pkg = require('perfect-dark-mode/package.json')
+const markdownItTocAndAnchor = markdownItTocAndAnchorExports.default
+const require = createRequire(import.meta.url)
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+const data = fs.readJsonSync(path.join(__dirname, './data.json'))
+const pkg = fs.readJsonSync(require.resolve('perfect-dark-mode/package.json'))
 
 const wrapRenderedCode = (code: string, lang = 'html', className = '') =>
   `<pre><code class="${[`language-${lang}`, className].join(
@@ -80,7 +87,7 @@ const tocOptions = {
   wrapHeadingTextInAnchor: true,
 }
 
-module.exports = {
+export default {
   filters: {
     code: (text, options) => {
       const lang = options.lang

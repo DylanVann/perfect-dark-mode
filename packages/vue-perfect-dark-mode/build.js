@@ -1,4 +1,4 @@
-const execa = require('execa')
+import execa from 'execa'
 
 const run = async () => {
   await execa('esbuild', [
@@ -6,21 +6,10 @@ const run = async () => {
     'src/index.ts',
     '--platform=browser',
     `--outfile=dist/index.js`,
-    `--format=cjs`,
-    '--external:vue',
-    '--external:perfect-dark-mode',
-    '--minify'
-  ])
-
-  await execa('esbuild', [
-    '--bundle',
-    'src/index.ts',
-    '--platform=browser',
-    `--outfile=dist/index.mjs`,
     `--format=esm`,
     '--external:vue',
     '--external:perfect-dark-mode',
-    '--minify'
+    '--minify',
   ])
 }
 

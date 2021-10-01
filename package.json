@@ -20,7 +20,7 @@
     "@types/fs-extra": "^9.0.13",
     "esbuild": "^0.13.3",
     "fs-extra": "^10.0.0",
-    "netlify-cli": "^2.69.8",
+    "netlify-cli": "^6.9.28",
     "prettier": "^2.4.1",
     "wsrun": "^5.2.4"
   }
