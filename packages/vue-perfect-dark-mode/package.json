@@ -29,7 +29,6 @@
     "perfect-dark-mode": "1.0.0"
   },
   "devDependencies": {
-    "esbuild": "^0.13.12",
     "execa": "^5.1.1",
     "npm-run-all": "^4.1.5",
     "typescript": "^4.4.4",
